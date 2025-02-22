@@ -1,91 +1,55 @@
-  <?= $this->extend('admin/sidebar/sidebar') ?>
+<!DOCTYPE html>
+<html lang="en">
 
-  <?= $this->section('simple') ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Footer</title>
+</head>
 
+<body>
 
-  <div class="content">
-      <!-- Navbar Top with Toggle -->
-      <div class="top-bar">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-              <i class="bi bi-list fs-3"></i>
-          </button>
-          <h4>
-              <footer></footer>
-              Settings
-          </h4>
-          <div class="d-flex align-items-center">
-              <div class="notification me-3">
-                  <i class="bi bi-bell fs-4"></i>
-                  <span class="badge rounded-circle">2</span>
-              </div>
-              <i class="bi bi-gear fs-4"></i>
-          </div>
-      </div>
-      <div class="row g-3 mt-3">
-          <div class="col-md-4">
-              <div class="card">
-                  <div class="d-flex justify-content-between">
-                      <div>
-                          <h6>Total Users</h6>
-                          <h4>2,543</h4>
-                          <small class="text-success">+12.5% from last month</small>
-                      </div>
-                      <i class="bi bi-people fs-1"></i>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card">
-                  <div class="d-flex justify-content-between">
-                      <div>
-                          <h6>Revenue</h6>
-                          <h4>$45,678</h4>
-                          <small class="text-success">+8.2% from last month</small>
-                      </div>
-                      <i class="bi bi-cash-coin fs-1"></i>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card">
-                  <div class="d-flex justify-content-between">
-                      <div>
-                          <h6>Active Projects</h6>
-                          <h4>95</h4>
-                          <small class="text-danger">-2.4% from last month</small>
-                      </div>
-                      <i class="bi bi-clipboard-check fs-1"></i>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <h5 class="mt-4">Recent Activity</h5>
-      <div class="list-group mt-2">
-          <div class="list-group-item d-flex align-items-center">
-              <div class="rounded-circle bg-secondary text-white p-2 me-3">SJ</div>
-              <div>
-                  <strong>Sarah Johnson</strong> created a new project<br />
-                  <small class="text-muted">2 hours ago</small>
-              </div>
-          </div>
-          <div class="list-group-item d-flex align-items-center">
-              <div class="rounded-circle bg-secondary text-white p-2 me-3">MW</div>
-              <div>
-                  <strong>Mike Wilson</strong> updated user settings<br />
-                  <small class="text-muted">4 hours ago</small>
-              </div>
-          </div>
-          <div class="list-group-item d-flex align-items-center">
-              <div class="rounded-circle bg-secondary text-white p-2 me-3">ED</div>
-              <div>
-                  <strong>Emily Davis</strong> completed task review<br />
-                  <small class="text-muted">6 hours ago</small>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/admin/script.js"></script>
+    <h1>Edit Footer</h1>
 
-  </html>
+    <form action="<?= site_url('admin/footer/update'); ?>" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="logo">Logo</label>
+            <input type="file" name="logo" id="logo">
+            <div>
+                <img src="<?= base_url($footer['logo_path']); ?>" width="100" alt="Logo Footer" />
+            </div>
+        </div>
+        <div>
+            <label for="facebook_link">Facebook Link</label>
+            <input type="text" name="facebook_link" id="facebook_link"
+                value="<?= old('facebook_link', $footer['facebook_link']); ?>">
+        </div>
+        <div>
+            <label for="twitter_link">Twitter Link</label>
+            <input type="text" name="twitter_link" id="twitter_link"
+                value="<?= old('twitter_link', $footer['twitter_link']); ?>">
+        </div>
+        <div>
+            <label for="youtube_link">YouTube Link</label>
+            <input type="text" name="youtube_link" id="youtube_link"
+                value="<?= old('youtube_link', $footer['youtube_link']); ?>">
+        </div>
+        <div>
+            <label for="instagram_link">Instagram Link</label>
+            <input type="text" name="instagram_link" id="instagram_link"
+                value="<?= old('instagram_link', $footer['instagram_link']); ?>">
+        </div>
+        <div>
+            <label for="linkedin_link">LinkedIn Link</label>
+            <input type="text" name="linkedin_link" id="linkedin_link"
+                value="<?= old('linkedin_link', $footer['linkedin_link']); ?>">
+        </div>
+
+        <button type="submit">Update Footer</button>
+    </form>
+
+    <p><a href="<?= site_url('admin/dashboard'); ?>">Back to Dashboard</a></p>
+
+</body>
+
+</html>

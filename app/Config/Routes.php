@@ -14,8 +14,9 @@ $routes->post('admin/update_about_us', 'AboutUsController::updateAboutUs');  // 
 $routes->get('admin/goals', 'GoalsController::admin');
 $routes->post('goals/update', 'GoalsController::update');
 
-$routes->get('/admin/programs/edit/(:num)', 'ProgramController::edit/$1');
-$routes->post('/admin/programs/update/(:num)', 'ProgramController::update/$1');
+$routes->get('/admin/programs', 'Programs::admin');
+$routes->post('/admin/updateImage', 'Programs::updateImage');
+$routes->post('/admin/updateContent', 'Programs::updateContent');
 
 $routes->get('/admin/materials', 'MaterialController::admin');
 $routes->post('/admin/materials/create', 'MaterialController::create');
@@ -40,7 +41,18 @@ $routes->get('admin/coaches/edit/(:num)', 'CoachController::edit/$1'); // Edit c
 $routes->post('admin/coaches/update/(:num)', 'CoachController::update/$1'); // Update coach
 $routes->get('admin/coaches/delete/(:num)', 'CoachController::delete/$1'); // Delete coach
 
+$routes->get('admin/contact', 'ContactController::index');  // Menampilkan halaman admin
+$routes->post('admin/contact/update', 'ContactController::update');  // Menangani form update
 
+$routes->get('admin/sponsor', 'SponsorController::admin');
+$routes->get('admin/sponsor/create', 'SponsorController::create');
+$routes->post('admin/sponsor/store', 'SponsorController::store');
+$routes->get('admin/sponsor/edit/(:num)', 'SponsorController::edit/$1');
+$routes->post('admin/sponsor/update/(:num)', 'SponsorController::update/$1');
+$routes->get('admin/sponsor/delete/(:num)', 'SponsorController::delete/$1');
+
+$routes->get('admin/footer', 'FooterController::index');
+$routes->post('admin/footer/update', 'FooterController::update');
 
 $routes->get('/', 'Pages::index');
 $routes->get('admin', 'Dash::index');

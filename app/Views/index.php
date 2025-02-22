@@ -187,31 +187,32 @@
         <!-- Programs -->
         <section id="program" class="program section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="text-center mb-5">ACADEMY PROGRAM</h2>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <img src="<?= base_url($image['image_path']); ?>" class="img-fluid" alt="Program Image">
                     </div>
-                </div>
+                    <div class="col-lg-7">
+                        <ul class="nav nav-pills mb-3">
+                            <?php foreach ($contents as $content) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill"
+                                    href="#program-<?= $content['id']; ?>"><?= $content['title1']; ?></a>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
 
-                <div class="container">
-                    <div class="row g-4 g-lg-5">
-                        <!-- Pastikan menggunakan $programData, bukan $programs -->
-                        <?php foreach ($programData as $program): ?>
-                        <div class="col-lg-4">
-                            <div class="program-card">
-                                <img src="<?= base_url('uploads/' . $program['image']) ?>" class="img-fluid"
-                                    alt="Program Image">
-                                <h4><?= esc($program['title']) ?></h4>
-                                <p><?= esc($program['description']) ?></p>
+                        <div class="tab-content">
+                            <?php foreach ($contents as $content) : ?>
+                            <div class="tab-pane fade" id="program-<?= $content['id']; ?>">
+                                <h4><?= $content['subtitle1']; ?></h4>
+                                <p><?= $content['description1']; ?></p>
                             </div>
+                            <?php endforeach; ?>
                         </div>
-                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
         </section>
-
-
 
 
 
@@ -367,28 +368,32 @@
                     <div class="contact-info col-lg-6 wow fadeInUp" data-wow-duration="500ms">
                         <h3>Contact Details</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam,
-                            vero, provident, eum eligendi blanditiis ex explicabo vitae
-                            nostrum facilis asperiores dolorem illo officiis ratione vel
-                            fugiat dicta laboriosam labore adipisci.
+                            <?= !empty($contactData['contact_description']) ? esc($contactData['contact_description']) : 'Description not available'; ?>
                         </p>
                         <div class="contact-details">
                             <div class="con-info clearfix">
-                                <i class="ti-location-pin"></i>
-                                <span>Semarang</span>
+                                <!-- Using Bootstrap Icon for Location -->
+                                <i class="bi bi-geo-alt"></i>
+                                <span>Address:
+                                    <?= !empty($contactData['contact_address']) ? esc($contactData['contact_address']) : 'Address not available'; ?></span>
                             </div>
 
                             <div class="con-info clearfix">
-                                <i class="ti-mobile"></i>
-                                <span>Phone: +62 81234567890</span>
+                                <!-- Using Bootstrap Icon for Phone -->
+                                <i class="bi bi-phone"></i>
+                                <span>Phone:
+                                    <?= !empty($contactData['contact_phone']) ? esc($contactData['contact_phone']) : 'Phone not available'; ?></span>
                             </div>
 
                             <div class="con-info clearfix">
-                                <i class="ti-email"></i>
-                                <span>Email: example@gmail.com</span>
+                                <!-- Using Bootstrap Icon for Email -->
+                                <i class="bi bi-envelope"></i>
+                                <span>Email:
+                                    <?= !empty($contactData['contact_email']) ? esc($contactData['contact_email']) : 'Email not available'; ?></span>
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Contact Form -->
                     <div class="contact-form col-lg-6 mt-4 mt-lg-0 wow fadeInUp" data-wow-duration="500ms"
@@ -426,24 +431,21 @@
             <!-- Google Map -->
             <div class="google-map mt-5">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3258.910836907539!2d110.42073637399831!3d-6.9862436930146945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708ba57a60efe3%3A0x2972b3bc54d632ea!2sAmare%20Media%20Group!5e1!3m2!1sid!2sid!4v1737787058342!5m2!1sid!2sid"
+                    src="<?= !empty($contactData['contact_map_url']) ? esc($contactData['contact_map_url']) : ''; ?>"
                     width="100%" height="100%" style="border: 0; border-radius: 15px" allowfullscreen=""
                     loading="lazy"></iframe>
             </div>
         </section>
+
+
     </main>
 
     <!-- Sponsor -->
     <div class="logos">
         <div class="logos-slide">
-            <img src="assets/logos/3m.svg" />
-            <img src="assets/logos/barstool-store.svg" />
-            <img src="assets/logos/budweiser.svg" />
-            <img src="assets/logos/buzzfeed.svg" />
-            <img src="assets/logos/forbes.svg" />
-            <img src="assets/logos/macys.svg" />
-            <img src="assets/logos/menshealth.svg" />
-            <img src="assets/logos/mrbeast.svg" />
+            <?php foreach ($sponsorData as $sponsor): ?>
+            <img src="<?= base_url($sponsor['logo_path']); ?>" alt="<?= esc($sponsor['logo_name']); ?>" />
+            <?php endforeach; ?>
         </div>
     </div>
 
@@ -456,19 +458,19 @@
                     <div class="footer-social-icon">
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href="<?= $footer['facebook_link']; ?>"><i class="bi bi-facebook"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href="<?= $footer['twitter_link']; ?>"><i class="bi bi-twitter"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href=""><i class="bi bi-youtube"></i></a>
+                                <a href="<?= $footer['youtube_link']; ?>"><i class="bi bi-youtube"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href="<?= $footer['instagram_link']; ?>"><i class="bi bi-instagram"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href=""><i class="bi bi-linkedin"></i></a>
+                                <a href="<?= $footer['linkedin_link']; ?>"><i class="bi bi-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -477,7 +479,7 @@
                     <!-- copyright -->
                     <div class="footer-copyright text-center">
                         <a href="index.html">
-                            <img src="assets/imgs/placeholder.svg" alt="logo" class="footer-logo" />
+                            <img src="<?= base_url($footer['logo_path']); ?>" alt="logo" class="footer-logo" />
                         </a>
 
                         <p class="mt-3">
@@ -492,12 +494,10 @@
                     </div>
                     <!-- /copyright -->
                 </div>
-                <!-- end col lg 12 -->
             </div>
-            <!-- end row -->
         </div>
-        <!-- end container -->
     </footer>
+
 
     <!-- JAVASCRIPT FILES -->
     <script src="assets/js/jquery.min.js"></script>

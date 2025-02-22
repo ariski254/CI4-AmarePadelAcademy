@@ -23,7 +23,6 @@
         <a href="/admin/portfolio"><i class="bi bi-briefcase me-2"></i> Portfolio Settings</a>
         <a href="/admin/coach"><i class="bi bi-person me-2"></i> Coach Settings</a>
         <a href="/admin/contact"><i class="bi bi-envelope me-2"></i> Contact Settings</a>
-        <a href="/admin/maps"><i class="bi bi-map me-2"></i> Maps Settings</a>
         <a href="/admin/sponsor"><i class="bi bi-people me-2"></i> Sponsor Settings</a>
         <a href="/admin/footer"><i class="bi bi-file-earmark-text me-2"></i> Footer Settings</a>
     </div>

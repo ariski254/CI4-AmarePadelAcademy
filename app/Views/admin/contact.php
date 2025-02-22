@@ -1,85 +1,67 @@
-  <?= $this->extend('admin/sidebar/sidebar') ?>
+<!DOCTYPE html>
+<html lang="en">
 
-  <?= $this->section('simple') ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Contact Details</title>
+</head>
 
+<body>
+    <h1>Update Contact Details</h1>
 
-  <div class="content">
-      <!-- Navbar Top with Toggle -->
-      <div class="top-bar">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-              <i class="bi bi-list fs-3"></i>
-          </button>
-          <h4>Contact Settings</h4>
-          <div class="d-flex align-items-center">
-              <div class="notification me-3">
-                  <i class="bi bi-bell fs-4"></i>
-                  <span class="badge rounded-circle">2</span>
-              </div>
-              <i class="bi bi-gear fs-4"></i>
-          </div>
-      </div>
-      <div class="row g-3 mt-3">
-          <div class="col-md-4">
-              <div class="card">
-                  <div class="d-flex justify-content-between">
-                      <div>
-                          <h6>Total Users</h6>
-                          <h4>2,543</h4>
-                          <small class="text-success">+12.5% from last month</small>
-                      </div>
-                      <i class="bi bi-people fs-1"></i>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card">
-                  <div class="d-flex justify-content-between">
-                      <div>
-                          <h6>Revenue</h6>
-                          <h4>$45,678</h4>
-                          <small class="text-success">+8.2% from last month</small>
-                      </div>
-                      <i class="bi bi-cash-coin fs-1"></i>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card">
-                  <div class="d-flex justify-content-between">
-                      <div>
-                          <h6>Active Projects</h6>
-                          <h4>95</h4>
-                          <small class="text-danger">-2.4% from last month</small>
-                      </div>
-                      <i class="bi bi-clipboard-check fs-1"></i>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <h5 class="mt-4">Recent Activity</h5>
-      <div class="list-group mt-2">
-          <div class="list-group-item d-flex align-items-center">
-              <div class="rounded-circle bg-secondary text-white p-2 me-3">SJ</div>
-              <div>
-                  <strong>Sarah Johnson</strong> created a new project<br />
-                  <small class="text-muted">2 hours ago</small>
-              </div>
-          </div>
-          <div class="list-group-item d-flex align-items-center">
-              <div class="rounded-circle bg-secondary text-white p-2 me-3">MW</div>
-              <div>
-                  <strong>Mike Wilson</strong> updated user settings<br />
-                  <small class="text-muted">4 hours ago</small>
-              </div>
-          </div>
-          <div class="list-group-item d-flex align-items-center">
-              <div class="rounded-circle bg-secondary text-white p-2 me-3">ED</div>
-              <div>
-                  <strong>Emily Davis</strong> completed task review<br />
-                  <small class="text-muted">6 hours ago</small>
-              </div>
-          </div>
-      </div>
-  </div>
+    <!-- Success message -->
+    <?php if (session()->get('success')): ?>
+    <div style="color: green;">
+        <?= session()->get('success') ?>
+    </div>
+    <?php endif; ?>
 
-  <?= $this->endSection() ?>
+    <!-- Error messages -->
+    <?php if (session()->get('errors')): ?>
+    <div style="color: red;">
+        <ul>
+            <?php foreach (session()->get('errors') as $error): ?>
+            <li><?= esc($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php endif; ?>
+
+    <form action="/admin/contact/update" method="post">
+        <?= csrf_field() ?>
+
+        <div>
+            <label for="contact_description">Description:</label>
+            <textarea name="contact_description" id="contact_description"
+                rows="5"><?= esc($contact['contact_description']) ?></textarea>
+        </div>
+
+        <div>
+            <label for="contact_address">Address:</label>
+            <input type="text" name="contact_address" id="contact_address"
+                value="<?= esc($contact['contact_address']) ?>">
+        </div>
+
+        <div>
+            <label for="contact_phone">Phone:</label>
+            <input type="text" name="contact_phone" id="contact_phone" value="<?= esc($contact['contact_phone']) ?>">
+        </div>
+
+        <div>
+            <label for="contact_email">Email:</label>
+            <input type="email" name="contact_email" id="contact_email" value="<?= esc($contact['contact_email']) ?>">
+        </div>
+
+        <div>
+            <label for="contact_map_url">Google Map URL:</label>
+            <textarea name="contact_map_url" id="contact_map_url"
+                rows="3"><?= esc($contact['contact_map_url']) ?></textarea>
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+
+</body>
+
+</html>

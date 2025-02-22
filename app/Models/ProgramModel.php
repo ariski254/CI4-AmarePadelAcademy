@@ -6,24 +6,29 @@ use CodeIgniter\Model;
 
 class ProgramModel extends Model
 {
-    protected $table = 'programs';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['program_type', 'title', 'description', 'image_path'];
-    protected $useTimestamps = true;
+    protected $table = 'programs';  // Table name
+    protected $primaryKey = 'id';   // Primary key
+    protected $allowedFields = [
+        'title1',
+        'title2',
+        'title3',
+        'title4',
+        'title5',
+        'title6',
+        'subtitle1',
+        'subtitle2',
+        'subtitle3',
+        'subtitle4',
+        'subtitle5',
+        'subtitle6',
+        'description1',
+        'description2',
+        'description3',
+        'description4',
+        'description5',
+        'description6',
+        'program_type'   // Assuming this field exists in your table
+    ];  // Allowed fields for inserts or updates
 
-    // Mendapatkan data program berdasarkan jenisnya (kids, adult, competition)
-    public function getPrograms($program_type = null)
-    {
-        if ($program_type) {
-            return $this->where('program_type', $program_type)->findAll();
-        }
-
-        return $this->findAll();
-    }
-
-    // Update data program
-    public function updateProgram($id, $data)
-    {
-        return $this->update($id, $data);
-    }
+    protected $useTimestamps = true;  // Automatically manage created_at and updated_at fields
 }
