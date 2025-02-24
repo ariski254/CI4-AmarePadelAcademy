@@ -187,33 +187,39 @@
         <!-- Programs -->
         <section id="program" class="program section">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <img src="<?= base_url($image['image_path']); ?>" class="img-fluid" alt="Program Image">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 text-center wow fadeInUp" data-wow-duration="500ms">
+                        <h2 class="text-center mb-5">ACADEMY PROGRAM</h2>
                     </div>
-                    <div class="col-lg-7">
-                        <ul class="nav nav-pills mb-3">
-                            <?php foreach ($contents as $content) : ?>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="pill"
-                                    href="#program-<?= $content['id']; ?>"><?= $content['title1']; ?></a>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
+                </div>
 
-                        <div class="tab-content">
-                            <?php foreach ($contents as $content) : ?>
-                            <div class="tab-pane fade" id="program-<?= $content['id']; ?>">
-                                <h4><?= $content['subtitle1']; ?></h4>
-                                <p><?= $content['description1']; ?></p>
-                            </div>
-                            <?php endforeach; ?>
+                <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+                    <?php foreach ($programs as $program): ?>
+                    <div class="col-lg-5">
+                        <div class="program-img">
+                            <img src="<?= base_url('uploads/' . $program['image']); ?>" class="img-fluid rounded shadow"
+                                alt="Program Image">
                         </div>
                     </div>
+
+                    <div class="col-lg-7">
+                        <h3><?= $program['title']; ?></h3>
+                        <p><?= $program['description']; ?></p>
+
+                        <ul>
+                            <?php foreach ($program['details'] as $detail): ?>
+                            <?php if ($detail['type'] == 'li'): ?>
+                            <li><strong><?= $detail['content']; ?></strong></li>
+                            <?php elseif ($detail['type'] == 'p'): ?>
+                            <p><?= $detail['content']; ?></p>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
-
 
 
         <!-- Material -->

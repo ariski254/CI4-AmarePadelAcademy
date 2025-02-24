@@ -14,9 +14,10 @@ $routes->post('admin/update_about_us', 'AboutUsController::updateAboutUs');  // 
 $routes->get('admin/goals', 'GoalsController::admin');
 $routes->post('goals/update', 'GoalsController::update');
 
-$routes->get('/admin/programs', 'Programs::admin');
-$routes->post('/admin/updateImage', 'Programs::updateImage');
-$routes->post('/admin/updateContent', 'Programs::updateContent');
+$routes->get('/admin/programs', 'ProgramsController::adminPrograms');
+$routes->get('/admin/program/edit/(:num)', 'ProgramsController::editProgram/$1');
+$routes->post('/admin/program/update/(:num)', 'ProgramsController::updateProgram/$1');
+
 
 $routes->get('/admin/materials', 'MaterialController::admin');
 $routes->post('/admin/materials/create', 'MaterialController::create');

@@ -1,57 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<h2>Edit Program</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Program List</title>
-    <!-- Add your stylesheets and scripts here -->
-</head>
-
-<body>
-    <div class="container">
-        <h2>Admin Program List</h2>
-
-        <a href="<?= site_url('admin/programs/edit/0'); ?>" class="btn btn-success mb-3">Add New Program</a>
-
-        <!-- Programs Table -->
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Last Updated</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($programs)): ?>
-                <?php foreach ($programs as $program): ?>
-                <tr>
-                    <td><?= esc($program['id']); ?></td>
-                    <td><?= esc($program['title']); ?></td>
-                    <td><?= esc($program['category']); ?></td>
-                    <td><?= esc($program['updated_at']); ?></td>
-                    <td>
-                        <a href="<?= site_url('admin/programs/edit/' . $program['id']); ?>"
-                            class="btn btn-warning">Edit</a>
-                        <!-- You can add a delete action here as well -->
-                        <a href="<?= site_url('admin/programs/delete/' . $program['id']); ?>" class="btn btn-danger"
-                            onclick="return confirm('Are you sure you want to delete this program?');">Delete</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-                <?php else: ?>
-                <tr>
-                    <td colspan="5" class="text-center">No programs available.</td>
-                </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+<form action="/admin/programs/update/<?= $program['id'] ?>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="program_name">Program Name</label>
+        <input type="text" class="form-control" id="program_name" name="program_name"
+            value="<?= esc($program['program_name']) ?>" required>
     </div>
 
-    <!-- Include your footer or other scripts -->
-</body>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="5"
+            required><?= esc($program['description']) ?></textarea>
+    </div>
 
-</html>
+    <div class="form-group">
+        <label for="image">Program Image</label>
+        <input type="file" class="form-control" id="image" name="image">
+        <img src="/uploads/<?= esc($program['image']) ?>" width="100" alt="Current Image">
+    </div>
+
+    <div class="form-group">
+        <label for="tab_link">Tab Link</label>
+        <input type="text" class="form-control" id="tab_link" name="tab_link" value="<?= esc($program['tab_link']) ?>"
+            required>
+    </div>
+
+    <div class="form-group">
+        <label for="tab_content">Tab Content</label>
+        <textarea class="form-control" id="tab_content" name="tab_content" rows="5"
+            required><?= esc($program['tab_content']) ?></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Program</button>
+</form>

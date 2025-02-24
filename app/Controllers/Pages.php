@@ -7,7 +7,6 @@ use App\Models\AboutUsModel;
 use App\Models\HeroModel;
 use App\Models\GoalsModel;
 use App\Models\ProgramModel;
-use App\Models\ProgramImageModel;  // Add this import
 use App\Models\MaterialModel;
 use App\Models\CertificationModel;
 use App\Models\PortfolioModel;
@@ -22,7 +21,7 @@ class Pages extends BaseController
     protected $heroModel;
     protected $goalsModel;
     protected $programModel;
-    protected $programImageModel; // Declare the new model here
+
     protected $materialModel;
     protected $certificationModel;
     protected $portfolioModel;
@@ -38,7 +37,7 @@ class Pages extends BaseController
         $this->heroModel = new HeroModel();
         $this->goalsModel = new GoalsModel();
         $this->programModel = new ProgramModel();
-        $this->programImageModel = new ProgramImageModel(); // Initialize the ProgramImageModel here
+
         $this->materialModel = new MaterialModel();
         $this->certificationModel = new CertificationModel();
         $this->portfolioModel = new PortfolioModel();
@@ -54,7 +53,13 @@ class Pages extends BaseController
         $aboutUsData = $this->aboutUsModel->getAboutUs();
         $heroData = $this->heroModel->getHero();
         $goalsData = $this->goalsModel->getGoals();
-        $programsData = $this->programModel->findAll(); // Fetch all programs
+
+        // Fetch program data, categorizing it for different types of programs (Kids, Adults, and Competitions)
+        $kidsProgram = $this->programModel->getProgramByCategory('kids');
+        $adultProgram = $this->programModel->getProgramByCategory('adult');
+        $competitionProgram = $this->programModel->getProgramByCategory('competition');
+
+        // Fetch other related data
         $materialData = $this->materialModel->findAll();
         $certificationData = $this->certificationModel->getCertification();
         $portfolioData = $this->portfolioModel->findAll();
@@ -63,15 +68,14 @@ class Pages extends BaseController
         $sponsorData = $this->sponsorModel->getAllSponsors();
         $footerData = $this->footerModel->getFooter(); // Footer data
 
-        // Fetch the image (if necessary)
-        $imageData = $this->programImageModel->first(); // Retrieve the first image from the database
-
         // Pass the data to the view, including the image
         return view('index', [
             'aboutUsData' => $aboutUsData,
             'heroData' => $heroData,
             'goalsData' => $goalsData,
-            'programs' => $programsData, // Pass programs data correctly
+            'kidsProgram' => $kidsProgram, // Send Kids Program data
+            'adultProgram' => $adultProgram, // Send Adult Program data
+            'competitionProgram' => $competitionProgram, // Send Competition Program data
             'materialData' => $materialData,
             'certificationData' => $certificationData,
             'portfolioData' => $portfolioData,
@@ -79,7 +83,7 @@ class Pages extends BaseController
             'contactData' => $contactData,
             'sponsorData' => $sponsorData,
             'footer' => $footerData, // Pass footer data correctly
-            'image' => $imageData // Pass the image data correctly
+
         ]);
     }
 }

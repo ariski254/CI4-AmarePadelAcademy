@@ -6,29 +6,29 @@ use CodeIgniter\Model;
 
 class ProgramModel extends Model
 {
-    protected $table = 'programs';  // Table name
-    protected $primaryKey = 'id';   // Primary key
-    protected $allowedFields = [
-        'title1',
-        'title2',
-        'title3',
-        'title4',
-        'title5',
-        'title6',
-        'subtitle1',
-        'subtitle2',
-        'subtitle3',
-        'subtitle4',
-        'subtitle5',
-        'subtitle6',
-        'description1',
-        'description2',
-        'description3',
-        'description4',
-        'description5',
-        'description6',
-        'program_type'   // Assuming this field exists in your table
-    ];  // Allowed fields for inserts or updates
+    protected $table      = 'programs';
+    protected $primaryKey = 'id';
 
-    protected $useTimestamps = true;  // Automatically manage created_at and updated_at fields
+    protected $useAutoIncrement = true;
+    protected $returnType     = 'array';
+    protected $useSoftDeletes = false;
+
+    protected $allowedFields = ['title', 'description'];
+
+    protected $useTimestamps = true;
+
+    public function getPrograms()
+    {
+        return $this->findAll();
+    }
+
+    public function getProgram($id)
+    {
+        return $this->find($id);
+    }
+
+    public function updateProgram($id, $data)
+    {
+        return $this->update($id, $data);
+    }
 }
