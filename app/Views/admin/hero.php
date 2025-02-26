@@ -1,39 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+  <?= $this->extend('admin/sidebar/sidebar') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Hero Section</title>
-</head>
+  <?= $this->section('simple') ?>
 
-<body>
 
-    <h1>Edit Hero Section</h1>
+  <section class="Hero">
+      <div class="content">
+          <!-- Navbar Top with Toggle -->
+          <div class="top-bar">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <i class="bi bi-list fs-3"></i>
+              </button>
+              <h4>Page Home</h4>
+              <div class="d-flex align-items-center">
+                  <div class="notification me-3">
+                      <i class="bi bi-bell fs-4"></i>
+                      <span class="badge rounded-circle">2</span>
+                  </div>
+                  <i class="bi bi-gear fs-4"></i>
+              </div>
+          </div>
+          <?php if (!empty($heroData)): ?>
+          <form action="/admin/hero/update" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="id" value="<?= $heroData[0]['id']; ?>">
 
-    <?php if (!empty($heroData)): ?>
-    <form action="/admin/hero/update" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?= $heroData[0]['id']; ?>">
+              <label>Welcome Text:</label>
+              <input type="text" name="welcome_text" value="<?= $heroData[0]['welcome_text']; ?>"><br><br>
 
-        <label>Welcome Text:</label>
-        <input type="text" name="welcome_text" value="<?= $heroData[0]['welcome_text']; ?>"><br><br>
+              <label>Main Title:</label>
+              <input type="text" name="main_title" value="<?= $heroData[0]['main_title']; ?>"><br><br>
 
-        <label>Main Title:</label>
-        <input type="text" name="main_title" value="<?= $heroData[0]['main_title']; ?>"><br><br>
+              <label>Subtitle:</label>
+              <input type="text" name="sub_title" value="<?= $heroData[0]['sub_title']; ?>"><br><br>
 
-        <label>Subtitle:</label>
-        <input type="text" name="sub_title" value="<?= $heroData[0]['sub_title']; ?>"><br><br>
+              <label>Video File:</label>
+              <input type="file" name="video_file"><br><br>
 
-        <label>Video File:</label>
-        <input type="file" name="video_file"><br><br>
+              <label>Poster Image:</label>
+              <input type="file" name="poster_image"><br><br>
 
-        <label>Poster Image:</label>
-        <input type="file" name="poster_image"><br><br>
+              <button type="submit">Update</button>
+          </form>
+          <?php endif; ?>
 
-        <button type="submit">Update</button>
-    </form>
-    <?php endif; ?>
 
-</body>
+      </div>
 
-</html>
+  </section>
+
+
+
+  <?= $this->endSection() ?>

@@ -67,6 +67,13 @@ class CoachController extends BaseController
         return redirect()->to('/admin/coach')->with('message', 'Coach added successfully');
     }
 
+
+    public function edit($id)
+    {
+        $model = new CoachModel();
+        $coach = $model->find($id);
+        return view('admin/edit_coach', ['coach' => $coach]);
+    }
     // Method untuk menyimpan perubahan edit coach
     public function update($id)
     {

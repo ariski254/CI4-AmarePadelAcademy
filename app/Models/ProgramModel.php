@@ -8,17 +8,14 @@ class ProgramModel extends Model
 {
     protected $table      = 'programs';
     protected $primaryKey = 'id';
-
-    protected $useAutoIncrement = true;
-    protected $returnType     = 'array';
-    protected $useSoftDeletes = false;
-
-    protected $allowedFields = ['title', 'description'];
-
+    protected $allowedFields = ['category', 'name', 'description', 'details'];
     protected $useTimestamps = true;
 
-    public function getPrograms()
+    public function getPrograms($category = null)
     {
+        if ($category) {
+            return $this->where('category', $category)->findAll();
+        }
         return $this->findAll();
     }
 
@@ -30,5 +27,10 @@ class ProgramModel extends Model
     public function updateProgram($id, $data)
     {
         return $this->update($id, $data);
+    }
+
+    public function insertProgram($data)
+    {
+        return $this->insert($data);
     }
 }

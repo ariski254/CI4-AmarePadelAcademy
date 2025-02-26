@@ -7,10 +7,11 @@ use CodeIgniter\Controller;
 
 class PortfolioController extends Controller
 {
-
     public function create()
     {
-        return view('admin/portfolio');
+        $portfolioModel = new PortfolioModel();
+        $data['portfolios'] = $portfolioModel->findAll();
+        return view('admin/portfolio', $data);
     }
 
     public function store()
@@ -44,7 +45,8 @@ class PortfolioController extends Controller
     public function edit($id)
     {
         $portfolioModel = new PortfolioModel();
-        $data['portfolio'] = $portfolioModel->find($id);
+        // Corrected to object access
+        $data['portfolio'] = $portfolioModel->find($id); // The result of find() is an object
 
         return view('admin/portfolio_edit', $data);
     }
@@ -58,7 +60,12 @@ class PortfolioController extends Controller
             'title' => 'required|min_length[3]',
             'description' => 'required|min_length[5]',
         ])) {
-            return redirect()->to('/admin/portfolio/' . $id . '/edit')->withInput();
+            // Debugging: Check if validation fails and print the errors
+            echo '<pre>';
+            print_r($this->validator->getErrors()); // This will show validation error messages
+            echo '</pre>';
+
+            return redirect()->to('/admin/portfolio/' . $id . '/edit')->withInput();  // Return to the edit form with input data
         }
 
         // Update data portfolio
@@ -72,8 +79,8 @@ class PortfolioController extends Controller
         if ($image && $image->isValid()) {
             // Hapus gambar lama jika ada
             $portfolio = $portfolioModel->find($id);
-            if ($portfolio['image']) {
-                unlink('assets/imgs/portfolio/' . $portfolio['image']);
+            if ($portfolio && $portfolio->image) {  // Ensure object property access
+                unlink('assets/imgs/portfolio/' . $portfolio->image);
             }
             $imagePath = $image->getRandomName();
             $image->move('assets/imgs/portfolio/', $imagePath);
@@ -81,19 +88,32 @@ class PortfolioController extends Controller
         }
 
         // Update database
-        $portfolioModel->update($id, $data);
-
-        return redirect()->to('/admin/portfolio');
+        if ($portfolioModel->update($id, $data)) {
+            // Successfully updated, redirect to portfolio list
+            return redirect()->to('/admin/portfolio');
+        } else {
+            // Debugging: if update fails, show an error
+            echo "Failed to update the portfolio.";
+            echo "<br>";
+            print_r($data);
+            exit;
+        }
     }
+
 
     public function delete($id)
     {
         $portfolioModel = new PortfolioModel();
         $portfolio = $portfolioModel->find($id);
 
+        // Check if the portfolio exists
+        if (!$portfolio) {
+            return redirect()->to('/admin/portfolio')->with('error', 'Portfolio item not found.');
+        }
+
         // Hapus gambar dari folder
-        if ($portfolio['image']) {
-            unlink('assets/imgs/portfolio/' . $portfolio['image']);
+        if ($portfolio->image) {  // Correct object property access
+            unlink('assets/imgs/portfolio/' . $portfolio->image);
         }
 
         // Hapus data dari database

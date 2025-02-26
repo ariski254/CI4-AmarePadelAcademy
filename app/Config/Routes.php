@@ -14,9 +14,15 @@ $routes->post('admin/update_about_us', 'AboutUsController::updateAboutUs');  // 
 $routes->get('admin/goals', 'GoalsController::admin');
 $routes->post('goals/update', 'GoalsController::update');
 
-$routes->get('/admin/programs', 'ProgramsController::adminPrograms');
-$routes->get('/admin/program/edit/(:num)', 'ProgramsController::editProgram/$1');
-$routes->post('/admin/program/update/(:num)', 'ProgramsController::updateProgram/$1');
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+    $routes->get('programs', 'ProgramController::index');
+    $routes->get('programs/create', 'ProgramController::create');
+    $routes->post('programs/store', 'ProgramController::store');
+    $routes->get('programs/edit/(:num)', 'ProgramController::edit/$1');
+    $routes->post('programs/update/(:num)', 'ProgramController::update/$1');
+    $routes->get('programs/delete/(:num)', 'ProgramController::delete/$1');
+});
+
 
 
 $routes->get('/admin/materials', 'MaterialController::admin');
@@ -28,12 +34,12 @@ $routes->get('/admin/materials/delete/(:num)', 'MaterialController::delete/$1');
 $routes->get('admin/certification', 'CertificationController::admin');  // Admin page to edit certification
 $routes->post('admin/certification/update', 'CertificationController::update');  // Admin page to update certification
 
-
 $routes->get('/admin/portfolio', 'PortfolioController::create');
 $routes->post('/portfolio/store', 'PortfolioController::store');
 $routes->get('/admin/portfolio/(:num)/edit', 'PortfolioController::edit/$1');
 $routes->post('/portfolio/update/(:num)', 'PortfolioController::update/$1');
 $routes->get('/portfolio/delete/(:num)', 'PortfolioController::delete/$1');
+
 
 $routes->get('admin/coach', 'CoachController::admin'); // This will point to the CoachController's admin method
 $routes->get('admin/coaches/create', 'CoachController::create'); // Form for creating coach
@@ -57,13 +63,3 @@ $routes->post('admin/footer/update', 'FooterController::update');
 
 $routes->get('/', 'Pages::index');
 $routes->get('admin', 'Dash::index');
-
-
-// $routes->get('/admin/hero', 'HeroController::admin');
-// $routes->post('/admin/hero/update', 'HeroController::update');
-// $routes->get('/admin/about_us', 'AboutUsController::admin');  // Halaman admin
-// $routes->post('/about_us/update', 'AboutUsController::update');  // Update data "About Us"
-// $routes->get('admin/goals', 'GoalsController::edit'); // Admin page to edit goals
-// $routes->post('admin/goals/update', 'GoalsController::update'); // Handle the update
-// $routes->get('/admin/programs/(:num)', 'ProgramController::edit/$1');
-// $routes->post('/admin/programs/(:num)', 'ProgramController::update/$1');

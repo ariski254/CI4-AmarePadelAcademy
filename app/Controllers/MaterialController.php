@@ -74,36 +74,56 @@ class MaterialController extends Controller
         // Validasi input
         if (!$this->validate([
             'name' => 'required',
-            'image' => 'uploaded[image]|max_size[image,1024]|is_image[image]'
+            // Gambar adalah opsional, validasi hanya jika diupload
+            'image' => 'if_exist|uploaded[image]|max_size[image,1024]|is_image[image]'
         ])) {
             return redirect()->to('/admin/materials/edit/' . $id)->withInput();
+        }
+
+        // Ambil data material lama
+        $material = $materialModel->find($id);
+
+        // Cek jika material tidak ditemukan
+        if (!$material) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Material tidak ditemukan');
         }
 
         // Mengelola upload gambar
         $image = $this->request->getFile('image');
         if ($image && $image->isValid() && !$image->hasMoved()) {
+            // Jika ada gambar baru, simpan gambar baru
             $newName = $image->getRandomName();
             $image->move('uploads/materials', $newName);
 
-            // Menyiapkan data untuk update
+            // Hapus gambar lama jika ada
+            if ($material['image_path'] && file_exists($material['image_path'])) {
+                unlink($material['image_path']);
+            }
+
+            // Siapkan data untuk update termasuk gambar baru
             $data = [
                 'name' => $this->request->getPost('name'),
                 'image_path' => 'uploads/materials/' . $newName
             ];
         } else {
-            // Tanpa mengganti gambar
+            // Jika tidak ada gambar baru, hanya update nama
             $data = [
                 'name' => $this->request->getPost('name')
             ];
         }
 
-        // Update data material
+        // Update material di database
         if ($materialModel->updateMaterial($id, $data)) {
-            return redirect()->to('/admin/materials')->with('success', 'Material berhasil diperbarui');
+            return redirect()->to('/admin/materials')->with(
+                'success',
+                'Material berhasil diperbarui'
+            );
         } else {
-            return redirect()->to('/admin/materials')->with('error', 'Terjadi kesalahan');
+            return redirect()->to('/admin/materials')->with('error', 'Terjadi kesalahan saat memperbarui material');
         }
     }
+
+
 
     // Fungsi untuk menghapus material
     public function delete($id)

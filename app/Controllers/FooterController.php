@@ -28,32 +28,46 @@ class FooterController extends Controller
 
         // Validasi input form
         if ($this->validate([
-            'logo' => 'uploaded[logo]|max_size[logo,1024]|ext_in[logo,jpg,jpeg,png]',
+            'logo' => 'if_exist|uploaded[logo]|max_size[logo,1024]|ext_in[logo,jpg,jpeg,png]',
             'facebook_link' => 'valid_url',
             'twitter_link' => 'valid_url',
             'youtube_link' => 'valid_url',
             'instagram_link' => 'valid_url',
             'linkedin_link' => 'valid_url'
         ])) {
-            // Proses upload logo
-            $logoFile = $this->request->getFile('logo');
-            $logoPath = $logoFile->getName();
-            $logoFile->move('assets/imgs/');
+            // Ambil data footer saat ini
+            $footer = $this->footerModel->getFooter();
 
-            // Mengambil data dari form
-            $data = [
-                'logo_path' => 'assets/imgs/' . $logoPath,
-                'facebook_link' => $this->request->getPost('facebook_link'),
-                'twitter_link' => $this->request->getPost('twitter_link'),
-                'youtube_link' => $this->request->getPost('youtube_link'),
-                'instagram_link' => $this->request->getPost('instagram_link'),
-                'linkedin_link' => $this->request->getPost('linkedin_link')
-            ];
+            // Jika ada logo baru yang diupload
+            $logoFile = $this->request->getFile('logo');
+            if ($logoFile && $logoFile->isValid() && !$logoFile->hasMoved()) {
+                // Pindahkan file logo baru ke folder assets/imgs
+                $logoPath = $logoFile->getRandomName();
+                $logoFile->move('assets/imgs/', $logoPath);
+
+                // Hapus logo lama jika ada
+                if ($footer['logo_path'] && file_exists($footer['logo_path'])) {
+                    unlink($footer['logo_path']);
+                }
+
+                // Perbarui data logo
+                $data['logo_path'] = 'assets/imgs/' . $logoPath;
+            } else {
+                // Jika tidak ada gambar baru, pertahankan gambar lama
+                $data['logo_path'] = $footer['logo_path'];
+            }
+
+            // Perbarui data media sosial
+            $data['facebook_link'] = $this->request->getPost('facebook_link');
+            $data['twitter_link'] = $this->request->getPost('twitter_link');
+            $data['youtube_link'] = $this->request->getPost('youtube_link');
+            $data['instagram_link'] = $this->request->getPost('instagram_link');
+            $data['linkedin_link'] = $this->request->getPost('linkedin_link');
 
             // Memperbarui data footer
             $this->footerModel->updateFooter($data);
 
-            return redirect()->to('/admin/footer');
+            return redirect()->to('/admin/footer')->with('success', 'Footer berhasil diperbarui');
         } else {
             return redirect()->back()->withInput()->with('validation', $validation->getErrors());
         }

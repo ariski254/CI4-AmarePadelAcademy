@@ -21,7 +21,6 @@ class Pages extends BaseController
     protected $heroModel;
     protected $goalsModel;
     protected $programModel;
-
     protected $materialModel;
     protected $certificationModel;
     protected $portfolioModel;
@@ -54,10 +53,23 @@ class Pages extends BaseController
         $heroData = $this->heroModel->getHero();
         $goalsData = $this->goalsModel->getGoals();
 
-        // Fetch program data, categorizing it for different types of programs (Kids, Adults, and Competitions)
-        $kidsProgram = $this->programModel->getProgramByCategory('kids');
-        $adultProgram = $this->programModel->getProgramByCategory('adult');
-        $competitionProgram = $this->programModel->getProgramByCategory('competition');
+        // Fetch program data and categorize it by program type (Kids, Adults, Competition)
+        $programData = $this->programModel->findAll(); // Fetch all programs
+
+        // Categorize programs by type
+        $kidsProgram = [];
+        $adultProgram = [];
+        $competitionProgram = [];
+
+        foreach ($programData as $program) {
+            if ($program['category'] == 'kids') {
+                $kidsProgram[] = $program;
+            } elseif ($program['category'] == 'adult') {
+                $adultProgram[] = $program;
+            } elseif ($program['category'] == 'competition') {
+                $competitionProgram[] = $program;
+            }
+        }
 
         // Fetch other related data
         $materialData = $this->materialModel->findAll();
@@ -68,22 +80,21 @@ class Pages extends BaseController
         $sponsorData = $this->sponsorModel->getAllSponsors();
         $footerData = $this->footerModel->getFooter(); // Footer data
 
-        // Pass the data to the view, including the image
+        // Pass the data to the view
         return view('index', [
             'aboutUsData' => $aboutUsData,
             'heroData' => $heroData,
             'goalsData' => $goalsData,
-            'kidsProgram' => $kidsProgram, // Send Kids Program data
-            'adultProgram' => $adultProgram, // Send Adult Program data
-            'competitionProgram' => $competitionProgram, // Send Competition Program data
+            'kidsProgram' => $kidsProgram, // Pass Kids Program data
+            'adultProgram' => $adultProgram, // Pass Adult Program data
+            'competitionProgram' => $competitionProgram, // Pass Competition Program data
             'materialData' => $materialData,
             'certificationData' => $certificationData,
             'portfolioData' => $portfolioData,
             'coachData' => $coachData,
             'contactData' => $contactData,
             'sponsorData' => $sponsorData,
-            'footer' => $footerData, // Pass footer data correctly
-
+            'footer' => $footerData, // Pass footer data
         ]);
     }
 }

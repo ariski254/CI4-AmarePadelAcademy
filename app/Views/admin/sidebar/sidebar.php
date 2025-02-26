@@ -7,7 +7,7 @@
     <title>Admin Amare Padel Academy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/admin/style.css" />
+    <link rel="stylesheet" href="<?= base_url('assets/admin/style.css'); ?>" />
 </head>
 
 <body>
@@ -33,6 +33,6 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/admin/script.js"></script>
+<script src="<?= base_url('assets/admin/script.js'); ?>"></script>
 
 </html>

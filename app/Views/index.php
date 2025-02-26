@@ -188,38 +188,57 @@
         <section id="program" class="program section">
             <div class="container">
                 <div class="row justify-content-center">
+                    <!-- Title -->
                     <div class="col-lg-12 text-center wow fadeInUp" data-wow-duration="500ms">
                         <h2 class="text-center mb-5">ACADEMY PROGRAM</h2>
                     </div>
                 </div>
 
                 <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
-                    <?php foreach ($programs as $program): ?>
+                    <!-- Program Image -->
                     <div class="col-lg-5">
                         <div class="program-img">
-                            <img src="<?= base_url('uploads/' . $program['image']); ?>" class="img-fluid rounded shadow"
-                                alt="Program Image">
+                            <!-- Dynamically display program image -->
+                            <img src="<?= site_url('/admin/programs/update-image'); ?>" class="img-fluid rounded shadow"
+                                alt="Program Image" />
                         </div>
                     </div>
 
                     <div class="col-lg-7">
-                        <h3><?= $program['title']; ?></h3>
-                        <p><?= $program['description']; ?></p>
-
-                        <ul>
-                            <?php foreach ($program['details'] as $detail): ?>
-                            <?php if ($detail['type'] == 'li'): ?>
-                            <li><strong><?= $detail['content']; ?></strong></li>
-                            <?php elseif ($detail['type'] == 'p'): ?>
-                            <p><?= $detail['content']; ?></p>
-                            <?php endif; ?>
+                        <!-- Tabs Navigation -->
+                        <ul class="nav nav-pills mb-4" id="program-tabs" role="tablist">
+                            <?php foreach ($programs as $index => $program): ?>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link <?= $index === 0 ? 'active' : ''; ?>"
+                                    id="program-tab<?= $program['id']; ?>" data-bs-toggle="pill" role="tab"
+                                    aria-controls="program-tab-content<?= $program['id']; ?>"
+                                    aria-selected="<?= $index === 0 ? 'true' : 'false'; ?>">
+                                    <?= $program['category']; ?>
+                                </a>
+                            </li>
                             <?php endforeach; ?>
                         </ul>
+                        <!-- End Tabs Navigation -->
+
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="program-tab-content">
+                            <?php foreach ($programs as $index => $program): ?>
+                            <div class="tab-pane fade <?= $index === 0 ? 'show active' : ''; ?>"
+                                id="program-tab-content<?= $program['id']; ?>" role="tabpanel"
+                                aria-labelledby="program-tab<?= $program['id']; ?>">
+                                <p class="fst-italic mb-4"><?= $program['description']; ?></p>
+                                <ul>
+                                    <?= $program['details']; ?>
+                                </ul>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <!-- End Tab Content -->
                     </div>
-                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
+
 
 
         <!-- Material -->

@@ -26,8 +26,9 @@ class MaterialModel extends Model
     // Fungsi untuk update data material
     public function updateMaterial($id, $data)
     {
-        return $this->update($id, $data);
+        return $this->update($id, $data); // Menggunakan method 'update' dari CodeIgniter Model untuk memperbarui
     }
+
 
     // Fungsi untuk delete data material
     public function deleteMaterial($id)

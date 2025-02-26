@@ -1,25 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+  <?= $this->extend('admin/sidebar/sidebar') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Sponsor</title>
-</head>
+  <?= $this->section('simple') ?>
 
-<body>
-    <h1>Add New Sponsor</h1>
-    <form action="<?= site_url('admin/sponsor/store'); ?>" method="post" enctype="multipart/form-data">
-        <label for="logo_name">Logo Name</label>
-        <input type="text" name="logo_name" id="logo_name" value="<?= old('logo_name'); ?>">
-        <div><?= session('validation')['logo_name'] ?? ''; ?></div>
+  <div class="content">
+      <!-- Navbar Top with Toggle -->
+      <div class="top-bar">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <i class="bi bi-list fs-3"></i>
+          </button>
+          <h4>Create Sponsor</h4>
+          <div class="d-flex align-items-center">
+              <div class="notification me-3">
+                  <i class="bi bi-bell fs-4"></i>
+                  <span class="badge rounded-circle">2</span>
+              </div>
+              <i class="bi bi-gear fs-4"></i>
+          </div>
+      </div>
+      <div class="create-sponsor">
+          <form action="<?= site_url('admin/sponsor/store'); ?>" method="post" enctype="multipart/form-data">
+              <label for="logo_name">Logo Name</label>
+              <input type="text" name="logo_name" id="logo_name" value="<?= old('logo_name'); ?>">
+              <div><?= session('validation')['logo_name'] ?? ''; ?></div>
 
-        <label for="logo_file">Logo File</label>
-        <input type="file" name="logo_file" id="logo_file">
-        <div><?= session('validation')['logo_file'] ?? ''; ?></div>
+              <label for="logo_file">Logo File</label>
+              <input type="file" name="logo_file" id="logo_file">
+              <div><?= session('validation')['logo_file'] ?? ''; ?></div>
 
-        <button type="submit">Save</button>
-    </form>
-</body>
-
-</html>
+              <button type="submit">Save</button>
+          </form>
+      </div>
+  </div>
+  <?= $this->endSection() ?>
