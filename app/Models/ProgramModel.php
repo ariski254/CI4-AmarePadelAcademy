@@ -6,31 +6,18 @@ use CodeIgniter\Model;
 
 class ProgramModel extends Model
 {
-    protected $table      = 'programs';
+    protected $table = 'programs';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['category', 'name', 'description', 'details'];
+    protected $allowedFields = ['program_type', 'title', 'description', 'image', 'content'];
     protected $useTimestamps = true;
 
-    public function getPrograms($category = null)
+    public function getPrograms()
     {
-        if ($category) {
-            return $this->where('category', $category)->findAll();
-        }
         return $this->findAll();
     }
 
-    public function getProgram($id)
+    public function getProgramById($id)
     {
         return $this->find($id);
-    }
-
-    public function updateProgram($id, $data)
-    {
-        return $this->update($id, $data);
-    }
-
-    public function insertProgram($data)
-    {
-        return $this->insert($data);
     }
 }

@@ -1,101 +1,44 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Models\ProgramModel;
-use App\Models\ProgramItemModel;
-use App\Models\ProgramImageModel;
 
 class Programs extends BaseController
 {
-    protected $programModel;
-    protected $programItemModel;
-    protected $programImageModel;
-
-    public function __construct()
-    {
-        $this->programModel = new ProgramModel();
-        $this->programItemModel = new ProgramItemModel();
-        $this->programImageModel = new ProgramImageModel();
-    }
-
+    // Show the programs for the front-end
     public function index()
     {
-        $data = [
-            'programs' => $this->programModel->findAll(),
-            'program_items' => $this->programItemModel->findAll(),
-            'program_images' => $this->programImageModel->findAll()
-        ];
+        $programModel = new ProgramModel();
+        $programs = $programModel->findAll(); // Get all programs from the database
 
-        return view('index', $data);
+        return view('index', ['programs' => $programs]); // Pass programs to the index view
     }
 
+    // Show the program admin view for editing programs
     public function admin()
     {
-        $data = [
-            'programs' => $this->programModel->findAll(),
-            'program_items' => $this->programItemModel->findAll(),
-            'program_images' => $this->programImageModel->findAll()
-        ];
+        $programModel = new ProgramModel();
+        $programs = $programModel->findAll(); // Get all programs from the database
 
-        return view('admin/programs', $data);
+        return view('admin/programs', ['programs' => $programs]); // Pass programs to the admin view
     }
 
-    public function updateProgram()
+    // Update program data
+    public function update($id)
     {
-        $id = $this->request->getPost('id');
-        $this->programModel->update($id, [
-            'title' => $this->request->getPost('title'),
-            'description' => $this->request->getPost('description'),
-            'category' => $this->request->getPost('category')
+        $programModel = new ProgramModel();
+        $data = $this->request->getPost(); // Get updated data from the form
+
+        // Update program details in the database
+        $programModel->update($id, [
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'content' => $data['content'],
+            'program_type' => $data['program_type'],
         ]);
 
-        return redirect()->to('/admin/programs');
-    }
-
-    public function updateItem()
-    {
-        $id = $this->request->getPost('id');
-        $this->programItemModel->update($id, [
-            'title' => $this->request->getPost('title'),
-            'description' => $this->request->getPost('description')
-        ]);
-
-        return redirect()->to('/admin/programs');
-    }
-
-    public function updateImage()
-    {
-        $id = $this->request->getPost('id');
-        $file = $this->request->getFile('image');
-
-        if ($file->isValid() && !$file->hasMoved()) {
-            $newName = $file->getRandomName();
-            $file->move('uploads/programs/', $newName);
-
-            $this->programImageModel->update($id, [
-                'image_path' => 'uploads/programs/' . $newName
-            ]);
-        }
-
-        return redirect()->to('/admin/programs');
-    }
-
-    public function createItem()
-    {
-        $this->programItemModel->save([
-            'program_id' => $this->request->getPost('program_id'),
-            'title' => $this->request->getPost('title'),
-            'description' => $this->request->getPost('description')
-        ]);
-
-        return redirect()->to('/admin/programs');
-    }
-
-    public function deleteItem($id)
-    {
-        $this->programItemModel->delete($id);
+        // Redirect back to the admin page after update
         return redirect()->to('/admin/programs');
     }
 }

@@ -11,10 +11,6 @@
           </button>
           <h4>Dashboard</h4>
           <div class="d-flex align-items-center">
-              <div class="notification me-3">
-                  <i class="bi bi-bell fs-4"></i>
-                  <span class="badge rounded-circle">2</span>
-              </div>
               <i class="bi bi-gear fs-4"></i>
           </div>
       </div>

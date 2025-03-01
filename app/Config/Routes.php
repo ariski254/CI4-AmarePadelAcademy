@@ -14,16 +14,9 @@ $routes->post('admin/update_about_us', 'AboutUsController::updateAboutUs');  // 
 $routes->get('admin/goals', 'GoalsController::admin');
 $routes->post('goals/update', 'GoalsController::update');
 
-$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
-    $routes->get('programs', 'ProgramController::index');
-    $routes->get('programs/create', 'ProgramController::create');
-    $routes->post('programs/store', 'ProgramController::store');
-    $routes->get('programs/edit/(:num)', 'ProgramController::edit/$1');
-    $routes->post('programs/update/(:num)', 'ProgramController::update/$1');
-    $routes->get('programs/delete/(:num)', 'ProgramController::delete/$1');
-});
-
-
+$routes->get('admin/programs', 'ProgramController::admin');
+$routes->get('program/update/(:num)', 'ProgramController::update/$1');
+$routes->post('program/update/(:num)', 'ProgramController::update/$1');
 
 $routes->get('/admin/materials', 'MaterialController::admin');
 $routes->post('/admin/materials/create', 'MaterialController::create');
