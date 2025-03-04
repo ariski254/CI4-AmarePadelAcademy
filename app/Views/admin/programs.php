@@ -1,56 +1,48 @@
-<!-- admin/programs.php -->
+  <?= $this->extend('admin/sidebar/sidebar') ?>
 
-<h2>Edit Program</h2>
+  <?= $this->section('simple') ?>
 
-<?php foreach ($programs as $program): ?>
-<form action="<?= site_url('program/update/' . $program['id']) ?>" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="PUT">
-    <div>
-        <label for="title">Program Title:</label>
-        <input type="text" name="title" value="<?= $program['title'] ?>">
-    </div>
+  <div class="content">
+      <!-- Navbar Top with Toggle -->
+      <div class="top-bar">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <i class="bi bi-list fs-3"></i>
+          </button>
+          <h4>Page Programs</h4>
+          <div class="d-flex align-items-center">
 
-    <div>
-        <label for="description">Description:</label>
-        <textarea name="description"><?= $program['description'] ?></textarea>
-    </div>
+              <i class="bi bi-gear fs-4"></i>
+          </div>
+      </div>
+      <div class="programs">
+          <?php if (session()->getFlashdata('success')): ?>
+          <div class="alert alert-success">
+              <?= session()->getFlashdata('success') ?>
+          </div>
+          <?php endif; ?>
 
-    <div>
-        <label for="content">Content:</label>
-        <textarea name="content"><?= $program['content'] ?></textarea>
-    </div>
-
-    <div>
-        <label for="image">Upload Image:</label>
-        <input type="file" name="image">
-    </div>
-
-    <div>
-        <label for="program_type">Program Type:</label>
-        <select name="program_type">
-            <option value="Kids" <?= ($program['program_type'] == 'Kids') ? 'selected' : '' ?>>Kids</option>
-            <option value="Adult" <?= ($program['program_type'] == 'Adult') ? 'selected' : '' ?>>Adult</option>
-            <option value="Competition" <?= ($program['program_type'] == 'Competition') ? 'selected' : '' ?>>Competition
-            </option>
-        </select>
-    </div>
-
-    <div>
-        <h3>Program Items</h3>
-        <?php if (isset($program_items[$program['id']])): ?>
-        <?php foreach ($program_items[$program['id']] as $item): ?>
-        <div>
-            <input type="hidden" name="program_items[<?= $item['id'] ?>][id]" value="<?= $item['id'] ?>">
-            <input type="text" name="program_items[<?= $item['id'] ?>][title]" value="<?= $item['title'] ?>"
-                placeholder="Item Title">
-            <textarea name="program_items[<?= $item['id'] ?>][description]"><?= $item['description'] ?></textarea>
-        </div>
-        <?php endforeach; ?>
-        <?php else: ?>
-        <p>No program items available.</p>
-        <?php endif; ?>
-    </div>
-
-    <button type="submit">Save</button>
-</form>
-<?php endforeach; ?>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Icon</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <?php foreach ($programs as $program): ?>
+                  <tr>
+                      <td><?= esc($program['title']); ?></td>
+                      <td><?= esc($program['description']); ?></td>
+                      <td><i class="<?= esc($program['icon']); ?>"></i></td>
+                      <td>
+                          <a href="/admin/programs/update/<?= $program['id']; ?>">Edit</a>
+                      </td>
+                  </tr>
+                  <?php endforeach; ?>
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <?= $this->endSection() ?>

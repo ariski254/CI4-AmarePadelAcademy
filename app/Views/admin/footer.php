@@ -10,10 +10,6 @@
           </button>
           <h4>page Footer</h4>
           <div class="d-flex align-items-center">
-              <div class="notification me-3">
-
-                  <span class="badge rounded-circle">2</span>
-              </div>
               <i class="bi bi-gear fs-4"></i>
           </div>
       </div>

@@ -14,9 +14,8 @@ $routes->post('admin/update_about_us', 'AboutUsController::updateAboutUs');  // 
 $routes->get('admin/goals', 'GoalsController::admin');
 $routes->post('goals/update', 'GoalsController::update');
 
-$routes->get('admin/programs', 'ProgramController::admin');
-$routes->get('program/update/(:num)', 'ProgramController::update/$1');
-$routes->post('program/update/(:num)', 'ProgramController::update/$1');
+$routes->get('/admin/programs', 'ProgramController::admin');
+$routes->match(['get', 'post'], '/admin/programs/update/(:num)', 'ProgramController::update/$1');
 
 $routes->get('/admin/materials', 'MaterialController::admin');
 $routes->post('/admin/materials/create', 'MaterialController::create');
@@ -56,3 +55,11 @@ $routes->post('admin/footer/update', 'FooterController::update');
 
 $routes->get('/', 'Pages::index');
 $routes->get('admin', 'Dash::index');
+
+$routes->get('login', 'Auth::index');
+$routes->post('auth/login', 'Auth::login');
+$routes->get('admin', 'AdminController::index', ['filter' => 'authFilter']);
+$routes->get('auth/logout', 'Auth::logout');
+
+$routes->get('admin/add', 'AdminController::add');
+$routes->post('admin/save', 'AdminController::save');

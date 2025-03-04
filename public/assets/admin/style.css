@@ -93,287 +93,356 @@ body {
   }
 }
 
-/* edit-About*/
-.about-us {
-  width: 90%;
-  max-width: 1200px;
-  margin: 25px auto 0;
-  padding: 50px 30px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Dropdown */
+.dropdown-menu {
+  display: none;
 }
 
-.about-us label {
+.dropdown:hover .dropdown-menu {
   display: block;
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-  font-weight: bold;
 }
 
+/* About*/
+/* About Us container */
+.about-us {
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f7fc;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.about-us form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the form */
+.about-us form:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+.about-us label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #444;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+/* Input and textarea fields styling */
 .about-us input[type="text"],
 .about-us textarea,
 .about-us input[type="file"] {
   width: 100%;
   padding: 12px;
-  margin-bottom: 20px;
+  margin: 12px 0;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
-  background-color: #f8f8f8;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #555;
+  background-color: #f9f9f9;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
+/* Focus effect for inputs and textarea */
 .about-us input[type="text"]:focus,
 .about-us textarea:focus,
 .about-us input[type="file"]:focus {
-  border-color: #007bff;
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
 }
 
-.about-us button {
-  padding: 14px 24px;
-  background-color: #007bff;
-  color: #fff;
+/* Textarea specific styling */
+.about-us textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+/* Button styling */
+.about-us button[type="submit"] {
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.about-us button:hover {
-  background-color: #0056b3;
+/* Button hover effect */
+.about-us button[type="submit"]:hover {
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 1024px) {
-  .about-us {
-    width: 95%;
-  }
+/* Button focus effect */
+.about-us button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .about-us {
-    width: 100%;
-    padding: 30px 20px;
-  }
-
-  .about-us label {
-    font-size: 16px;
+  .about-us form {
+    padding: 20px;
   }
 
   .about-us input[type="text"],
   .about-us textarea,
-  .about-us input[type="file"] {
+  .about-us input[type="file"],
+  .about-us button[type="submit"] {
+    padding: 10px;
     font-size: 14px;
   }
 
-  .about-us button {
-    font-size: 16px;
+  .about-us button[type="submit"] {
+    font-size: 15px;
   }
 }
 
 /* Certificate */
+/* Certification container */
 .certification {
-  width: 90%;
-  max-width: 1200px;
-  margin: 25px auto;
   padding: 40px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.certification .alert {
+/* Flash message styling */
+.alert {
+  font-size: 16px;
+  font-weight: bold;
   padding: 15px;
+  border-radius: 8px;
   margin-bottom: 20px;
-  border-radius: 5px;
-  color: #fff;
+  color: white;
 }
 
-.certification .alert-success {
-  background-color: #28a745;
+.alert-success {
+  background-color: #4caf50;
 }
 
+/* Form styling */
+.certification form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Input fields and textarea styling */
 .certification .form-group {
   margin-bottom: 20px;
 }
 
-.certification label {
+.certification .form-group label {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
   margin-bottom: 8px;
-  display: block;
+  display: inline-block;
+  color: #333;
 }
 
 .certification .form-control {
   width: 100%;
   padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
   font-size: 16px;
-  background-color: #f8f8f8;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
+/* Focus effect for input fields */
 .certification .form-control:focus {
-  border-color: #007bff;
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
 }
 
-.certification button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #007bff;
-  color: #fff;
+/* Button styling */
+.certification .btn-primary {
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 14px 28px;
   font-size: 16px;
-  transition: background-color 0.3s;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.certification button[type="submit"]:hover {
-  background-color: #0056b3;
+/* Button hover effect */
+.certification .btn-primary:hover {
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
 }
 
+/* Button focus effect */
+.certification .btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
+}
+
+/* Responsive Design for small screens */
 @media (max-width: 768px) {
   .certification {
-    width: 100%;
-    padding: 30px 20px;
+    padding: 20px;
   }
 
-  .certification label {
-    font-size: 14px;
+  .certification form {
+    padding: 20px;
   }
 
-  .certification .form-control {
-    font-size: 14px;
-  }
-
-  .certification button[type="submit"] {
+  .certification .form-control,
+  .certification .btn-primary {
+    padding: 10px;
     font-size: 14px;
   }
 }
 
 /* coach */
+/* Coach Management Section */
 .coach {
-  width: 90%;
+  padding: 20px;
   max-width: 1200px;
-  margin: 50px auto;
-  padding: 40px;
-  background-color: #fff;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+
+.alert-success {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.coach h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.coach .alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  color: #fff;
-}
-
-.coach .alert-success {
-  background-color: #28a745;
-}
-
-.coach .btn {
-  padding: 10px 20px;
   font-size: 16px;
-  border-radius: 6px;
-  text-align: center;
 }
 
-.coach .btn-primary {
-  background-color: #007bff;
-  color: #fff;
+.btn-primary {
+  background-color: #4caf50;
+  color: white;
   border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
-.coach .btn-primary:hover {
-  background-color: #0056b3;
+.btn-primary:hover {
+  background-color: #45a049;
 }
 
-.coach .btn-warning {
-  background-color: #ffc107;
-  color: #fff;
-  border: none;
-}
-
-.coach .btn-warning:hover {
-  background-color: #e0a800;
-}
-
-.coach .btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-}
-
-.coach .btn-danger:hover {
-  background-color: #c82333;
-}
-
-.coach .table {
+.table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.coach .table th,
-.coach .table td {
-  padding: 12px;
+.table th,
+.table td {
+  padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
 }
 
-.coach .table th {
-  background-color: #f8f8f8;
+.table th {
+  background-color: #f1f1f1;
   font-weight: bold;
 }
 
-.coach .table td img {
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.coach-image {
+  display: flex;
+  align-items: center;
+}
+
+.coach-image img {
   border-radius: 50%;
+  margin-right: 12px;
+}
+
+.social-icon {
+  font-size: 18px;
   margin-right: 10px;
-}
-
-.coach .table a {
+  color: #555;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
   color: #007bff;
-  font-size: 16px;
 }
 
-.coach .table a:hover {
-  text-decoration: underline;
+.social-icon.twitter:hover {
+  color: #1da1f2;
 }
 
+.social-icon.facebook:hover {
+  color: #3b5998;
+}
+
+.social-icon.instagram:hover {
+  color: #e1306c;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .coach {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .coach h2 {
-    font-size: 20px;
-  }
-
-  .coach .table th,
-  .coach .table td {
-    padding: 8px;
-  }
-
-  .coach .btn {
+  .table {
     font-size: 14px;
+  }
+
+  .social-icon {
+    font-size: 16px;
   }
 }
 
@@ -486,11 +555,11 @@ body {
 }
 
 /* create-coache */
+/* Styling the Create Coach Form */
 .create-coach {
-  width: 90%;
   max-width: 800px;
-  margin: 50px auto;
-  padding: 40px;
+  margin: 0 auto;
+  padding: 30px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -498,75 +567,85 @@ body {
 
 .create-coach h2 {
   font-size: 24px;
-  font-weight: bold;
   color: #333;
   margin-bottom: 20px;
 }
 
-.create-coach .form-group {
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 5px;
   margin-bottom: 20px;
 }
 
-.create-coach label {
+.alert-danger ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.alert-danger li {
+  margin-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
   font-size: 16px;
-  font-weight: bold;
   color: #333;
-  display: block;
-  margin-bottom: 8px;
 }
 
-.create-coach .form-control {
-  width: 100%;
-  padding: 12px;
+.form-control {
+  padding: 10px;
+  font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
-  background-color: #f8f8f8;
-  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
 }
 
-.create-coach .form-control:focus {
-  border-color: #007bff;
+.form-control:focus {
+  border-color: #4caf50;
   outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
 }
 
-.create-coach button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #28a745;
-  color: #fff;
+.btn-success {
+  background-color: #4caf50;
+  color: white;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 12px;
   font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.create-coach button[type="submit"]:hover {
-  background-color: #218838;
+.btn-success:hover {
+  background-color: #45a049;
 }
 
-.create-coach .form-group input[type="file"] {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+.btn-block {
+  width: 100%;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .create-coach {
-    width: 100%;
-    padding: 30px 20px;
+    padding: 20px;
+    margin: 10px;
   }
 
-  .create-coach h2 {
-    font-size: 20px;
-  }
-
-  .create-coach .form-control {
+  .form-group label {
     font-size: 14px;
   }
 
-  .create-coach button[type="submit"] {
+  .form-control {
+    font-size: 14px;
+  }
+
+  .btn-success {
     font-size: 16px;
   }
 }
@@ -840,98 +919,231 @@ body {
   }
 }
 
-/* edit-programs */
-.edit-programs {
-  width: 90%;
-  max-width: 800px;
-  margin: 50px auto;
+/* Programs */
+/* Programs container */
+.programs {
   padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f7f8fc;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Alert box styling for success messages */
+.programs .alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Table styling */
+.programs table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.edit-programs h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 30px;
+/* Table header styling */
+.programs table thead {
+  background-color: #6c63ff;
+  color: #fff;
 }
 
-.edit-programs .form-group {
-  margin-bottom: 20px;
-}
-
-.edit-programs label {
+.programs table th {
+  padding: 15px;
+  text-align: left;
   font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  display: block;
-  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.edit-programs input[type="text"],
-.edit-programs textarea,
-.edit-programs input[type="file"],
-.edit-programs .form-control {
+/* Table body styling */
+.programs table tbody tr {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.programs table td {
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Table row hover effect */
+.programs table tbody tr:hover {
+  background-color: #f7f7f7;
+}
+
+/* Icon styling */
+.programs table td i {
+  font-size: 20px;
+  color: #6c63ff;
+}
+
+/* Actions column styling */
+.programs table td a {
+  text-decoration: none;
+  color: #6c63ff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.programs table td a:hover {
+  color: #4caf50;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .programs {
+    padding: 20px;
+  }
+
+  .programs table th,
+  .programs table td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .programs table {
+    border-radius: 0;
+  }
+
+  .programs .alert {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Update Program container */
+.update-program {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f7f8fc;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Alert box styling for error messages */
+.update-program .alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 8px;
+  border: 1px solid #f5c6cb;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.update-program .alert ul {
+  padding-left: 20px;
+}
+
+.update-program .alert li {
+  list-style-type: circle;
+}
+
+/* Form styling */
+.update-program form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the form */
+.update-program form:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Input and Textarea styling */
+.update-program input[type="text"],
+.update-program textarea {
   width: 100%;
   padding: 12px;
+  margin: 12px 0;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
-  background-color: #f8f8f8;
+  color: #555;
+  background-color: #f9f9f9;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.edit-programs input[type="text"]:focus,
-.edit-programs textarea:focus,
-.edit-programs input[type="file"]:focus {
-  border-color: #007bff;
+/* Focus effect for inputs and textareas */
+.update-program input[type="text"]:focus,
+.update-program textarea:focus {
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
 }
 
-.edit-programs img {
-  margin-top: 10px;
-  border-radius: 6px;
+/* Textarea specific styling */
+.update-program textarea {
+  resize: vertical;
+  height: 150px;
 }
 
-.edit-programs button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #007bff;
-  color: #fff;
+/* Button styling */
+.update-program button[type="submit"] {
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.edit-programs button[type="submit"]:hover {
-  background-color: #0056b3;
+/* Button hover effect */
+.update-program button[type="submit"]:hover {
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
 }
 
+/* Button focus effect */
+.update-program button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .edit-programs {
-    width: 100%;
-    padding: 30px 20px;
+  .update-program {
+    padding: 20px;
   }
 
-  .edit-programs h2 {
-    font-size: 20px;
+  .update-program form {
+    padding: 20px;
   }
 
-  .edit-programs label {
+  .update-program input[type="text"],
+  .update-program textarea,
+  .update-program button[type="submit"] {
+    padding: 10px;
     font-size: 14px;
   }
 
-  .edit-programs input[type="text"],
-  .edit-programs textarea,
-  .edit-programs input[type="file"] {
-    font-size: 14px;
-  }
-
-  .edit-programs button[type="submit"] {
-    font-size: 16px;
+  .update-program button[type="submit"] {
+    font-size: 15px;
   }
 }
 
@@ -1121,409 +1333,543 @@ body {
 }
 
 /* goals */
+/* Goals container */
 .goals {
-  width: 90%;
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 30px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f7f8fc;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Form container */
+.goals form {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.goals h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 30px;
-  text-align: center;
+/* Hover effect for the form */
+.goals form:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Form group styling */
+.goals .form-group {
+  margin-bottom: 20px;
+}
+
+/* Label styling */
 .goals label {
   font-size: 16px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 500;
   margin-bottom: 8px;
+  color: #333;
   display: block;
+  transition: color 0.3s ease;
 }
 
-.goals textarea {
+/* Textarea styling */
+.goals textarea.form-control {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
+  margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
-  background-color: #f8f8f8;
-  margin-bottom: 20px;
+  color: #555;
+  background-color: #f9f9f9;
   box-sizing: border-box;
   resize: vertical;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.goals textarea:focus {
-  border-color: #007bff;
+/* Focus effect for textareas */
+.goals textarea.form-control:focus {
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
 }
 
+/* Button styling */
 .goals button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #007bff;
-  color: #fff;
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
   width: 100%;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+/* Button hover effect */
 .goals button[type="submit"]:hover {
-  background-color: #0056b3;
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
 }
 
+/* Button focus effect */
+.goals button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
+}
+
+/* Responsive adjustments for mobile screens */
 @media (max-width: 768px) {
-  .goals {
-    width: 100%;
-    padding: 30px 20px;
+  .goals form {
+    padding: 20px;
   }
 
-  .goals h2 {
-    font-size: 20px;
-  }
-
-  .goals label {
-    font-size: 14px;
-  }
-
-  .goals textarea {
+  .goals textarea.form-control {
+    padding: 12px;
     font-size: 14px;
   }
 
   .goals button[type="submit"] {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 /* Home */
-/* General page layout */
+/* Home container */
 .home {
-  padding: 20px;
-  max-width: 800px;
+  padding: 30px;
+  max-width: 900px;
   margin: 0 auto;
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f7fc;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Form styling */
+/* Hero form container */
 .hero-form {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the form */
+.hero-form:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Label styling */
 .hero-form__label {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: inline-block;
-  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #444;
+  display: block;
+  transition: color 0.3s ease;
 }
 
 /* Input fields styling */
 .hero-form__input[type="text"],
 .hero-form__input[type="file"] {
   width: 100%;
-  padding: 8px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #555;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Input focus effect */
+.hero-form__input[type="text"]:focus,
+.hero-form__input[type="file"]:focus {
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
+  outline: none;
 }
 
 /* Button styling */
 .hero-form__button[type="submit"] {
-  background-color: #4caf50;
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 /* Button hover effect */
 .hero-form__button[type="submit"]:hover {
-  background-color: #45a049;
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
+}
+
+/* Button focus effect */
+.hero-form__button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
+}
+
+/* Adjust the form for smaller screens */
+@media (max-width: 768px) {
+  .hero-form {
+    padding: 20px;
+  }
+
+  .hero-form__input[type="text"],
+  .hero-form__input[type="file"],
+  .hero-form__button[type="submit"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .hero-form__button[type="submit"] {
+    font-size: 15px;
+  }
 }
 
 /* edit-material */
+/* Edit Material container */
 .edit-material {
-  width: 80%;
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f7f8fc;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.edit-material p {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.edit-material label {
+/* Flash message styling */
+.flash-message {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
-  display: block;
-  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
+.flash-message.success {
+  color: #fff;
+  background-color: #4caf50;
+}
+
+.flash-message.error {
+  color: #fff;
+  background-color: #f44336;
+}
+
+/* Form styling */
+.edit-material form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the form */
+.edit-material form:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Form input styling */
 .edit-material input[type="text"],
 .edit-material input[type="file"] {
   width: 100%;
   padding: 12px;
+  margin: 12px 0;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f8f8f8;
+  border-radius: 8px;
   font-size: 16px;
-  margin-bottom: 20px;
+  color: #555;
+  background-color: #f9f9f9;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
+/* Focus effect for inputs */
 .edit-material input[type="text"]:focus,
 .edit-material input[type="file"]:focus {
-  border-color: #007bff;
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
 }
 
-.edit-material img {
-  display: block;
-  margin-top: 10px;
-  max-width: 100%;
-  height: auto;
-}
-
-.edit-material button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #007bff;
-  color: #fff;
+/* Submit button styling */
+.submit-btn {
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
   width: 100%;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.edit-material button[type="submit"]:hover {
-  background-color: #0056b3;
+/* Button hover effect */
+.submit-btn:hover {
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
 }
 
+/* Button focus effect */
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
+}
+
+/* Styling for the current image */
+.current-image img {
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Current image hover effect */
+.current-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .edit-material {
-    width: 100%;
-    padding: 30px 20px;
+    padding: 20px;
   }
 
-  .edit-material label {
-    font-size: 14px;
+  .edit-material form {
+    padding: 20px;
   }
 
   .edit-material input[type="text"],
-  .edit-material input[type="file"] {
+  .edit-material input[type="file"],
+  .submit-btn {
+    padding: 10px;
     font-size: 14px;
   }
 
-  .edit-material button[type="submit"] {
-    font-size: 16px;
+  .submit-btn {
+    font-size: 15px;
   }
 }
 
 /* material */
+/* Material container */
 .material {
-  width: 80%;
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 30px;
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f7f8fc;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.material form {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.material h3 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #333;
+/* Hover effect for the form */
+.material form:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.material label {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  display: block;
-  margin-bottom: 8px;
-}
-
+/* Input and file styling */
 .material input[type="text"],
 .material input[type="file"] {
   width: 100%;
   padding: 12px;
+  margin: 12px 0;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f8f8f8;
+  border-radius: 8px;
   font-size: 16px;
-  margin-bottom: 20px;
+  color: #555;
+  background-color: #f9f9f9;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
+/* Focus effect for inputs and file inputs */
 .material input[type="text"]:focus,
 .material input[type="file"]:focus {
-  border-color: #007bff;
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
 }
 
+/* Button styling */
 .material button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #28a745;
-  color: #fff;
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 18px;
-  width: 100%;
-  transition: background-color 0.3s;
-}
-
-.material button[type="submit"]:hover {
-  background-color: #218838;
-}
-
-.material hr {
-  border: 0;
-  border-top: 2px solid #ddd;
-  margin: 30px 0;
-}
-
-.material ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.material ul li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.material ul li img {
-  margin-right: 15px;
-  border-radius: 6px;
-}
-
-.material ul li a {
-  margin-left: 10px;
-  color: #007bff;
-  text-decoration: none;
+  padding: 14px 28px;
   font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.material ul li a:hover {
-  text-decoration: underline;
+/* Button hover effect */
+.material button[type="submit"]:hover {
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
 }
 
-.material ul li a:active {
-  color: #0056b3;
+/* Button focus effect */
+.material button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
 }
 
+/* Table styling for materials */
+.material table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Table header styling */
+.material table th {
+  padding: 12px;
+  background-color: #6c63ff;
+  color: white;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Table row styling */
+.material table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+/* Table row hover effect */
+.material table tbody tr:hover {
+  background-color: #f7f7f7;
+}
+
+/* Styling for material image */
+.material table td img {
+  border-radius: 5px;
+}
+
+/* Action links styling */
+.material table td a {
+  text-decoration: none;
+  color: #6c63ff;
+  font-weight: 500;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+/* Action links hover effect */
+.material table td a:hover {
+  color: #45a049;
+}
+
+/* Responsive design adjustments */
 @media (max-width: 768px) {
   .material {
-    width: 100%;
     padding: 20px;
   }
 
-  .material h3 {
-    font-size: 18px;
-  }
-
-  .material label {
-    font-size: 14px;
+  .material form {
+    padding: 20px;
   }
 
   .material input[type="text"],
-  .material input[type="file"] {
+  .material input[type="file"],
+  .material button[type="submit"] {
+    padding: 10px;
     font-size: 14px;
   }
 
   .material button[type="submit"] {
-    font-size: 16px;
+    font-size: 15px;
+  }
+
+  .material table {
+    border-radius: 0;
+  }
+
+  .material table th,
+  .material table td {
+    font-size: 13px;
+    padding: 10px;
   }
 }
 
 /* Edit Portfolio Form Styles */
+/* Portfolio Edit Form Styling */
 .portfolio-edit {
-  width: 80%;
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
 }
 
 .portfolio-edit h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
   text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
   color: #333;
 }
 
-.portfolio-edit label {
+.portfolio-edit-form .form-group {
+  margin-bottom: 20px;
+}
+
+.portfolio-edit-form label {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
-  display: block;
   margin-bottom: 8px;
+  display: block;
+  color: #333;
 }
 
-.portfolio-edit input[type="text"],
-.portfolio-edit textarea,
-.portfolio-edit input[type="file"] {
+.portfolio-edit-form .form-control {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f8f8f8;
   font-size: 16px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.portfolio-edit input[type="text"]:focus,
-.portfolio-edit textarea:focus,
-.portfolio-edit input[type="file"]:focus {
-  border-color: #007bff;
+.portfolio-edit-form .form-control:focus {
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
-}
-
-.portfolio-edit button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 18px;
-  width: 100%;
-  transition: background-color 0.3s;
-}
-
-.portfolio-edit button[type="submit"]:hover {
-  background-color: #0056b3;
 }
 
 .portfolio-edit .current-image {
@@ -1532,190 +1878,181 @@ body {
 }
 
 .portfolio-edit .current-image img {
-  border-radius: 6px;
-  width: 100px;
-  height: auto;
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.portfolio-edit .current-image label {
-  font-size: 14px;
-  font-weight: normal;
-  color: #666;
+.portfolio-edit-form .btn-primary {
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Responsive Styles for Mobile Devices */
+.portfolio-edit-form .btn-primary:hover {
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design for small screens */
 @media (max-width: 768px) {
-  .portfolio-edit {
-    width: 90%;
-    padding: 20px;
-  }
-
-  .portfolio-edit h2 {
-    font-size: 20px;
-  }
-
-  .portfolio-edit label {
+  .portfolio-edit-form .form-control,
+  .portfolio-edit-form .btn-primary {
+    padding: 10px;
     font-size: 14px;
   }
 
-  .portfolio-edit input[type="text"],
-  .portfolio-edit textarea,
-  .portfolio-edit input[type="file"] {
-    font-size: 14px;
-  }
-
-  .portfolio-edit button[type="submit"] {
-    font-size: 16px;
+  .portfolio-edit .current-image img {
+    width: 120px;
+    height: 80px;
   }
 }
 
 /* portfolio */
+/* Portfolio Form Styling */
 .portfolio {
-  width: 80%;
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio h2 {
   font-size: 24px;
+  font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  color: #333;
 }
 
-.portfolio label {
+.portfolio-form .form-group {
+  margin-bottom: 20px;
+}
+
+.portfolio-form label {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
-  display: block;
   margin-bottom: 8px;
+  display: block;
+  color: #333;
 }
 
-.portfolio input[type="text"],
-.portfolio textarea,
-.portfolio input[type="file"] {
+.portfolio-form .form-control {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f8f8f8;
   font-size: 16px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.portfolio input[type="text"]:focus,
-.portfolio textarea:focus,
-.portfolio input[type="file"]:focus {
-  border-color: #007bff;
+.portfolio-form .form-control:focus {
+  border-color: #6c63ff;
+  background-color: #f3f5fd;
   outline: none;
 }
 
-.portfolio button[type="submit"] {
-  padding: 14px 24px;
-  background-color: #007bff;
-  color: #fff;
+.portfolio-form .btn-primary {
+  background: linear-gradient(45deg, #6c63ff, #4caf50);
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
   width: 100%;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.portfolio button[type="submit"]:hover {
-  background-color: #0056b3;
+.portfolio-form .btn-primary:hover {
+  background: linear-gradient(45deg, #5a54e7, #45a049);
+  transform: translateY(-2px);
 }
 
-/* Table Styles */
+/* Portfolio List Styling */
+.portfolio-list {
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
 .portfolio-list table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 30px;
-  font-size: 16px;
-  color: #333;
+  margin-top: 20px;
 }
 
 .portfolio-list th,
 .portfolio-list td {
   padding: 12px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  color: #333;
 }
 
 .portfolio-list th {
-  background-color: #f4f4f4;
+  background-color: #f3f5fd;
   font-weight: bold;
-  color: #555;
 }
 
-.portfolio-list tr:hover {
+.portfolio-list td {
   background-color: #f9f9f9;
 }
 
-.portfolio-list td img {
-  max-width: 100px;
-  border-radius: 4px;
-}
-
-.portfolio-list a {
-  color: #007bff;
+.portfolio-list .btn {
+  padding: 8px 16px;
   text-decoration: none;
-  font-weight: bold;
-}
-
-.portfolio-list a:hover {
-  text-decoration: underline;
-}
-
-.portfolio-list .action-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.portfolio-list .action-buttons a {
+  border-radius: 8px;
   font-size: 14px;
-  padding: 6px 10px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
-.portfolio-list .action-buttons a:hover {
-  background-color: #007bff;
+.portfolio-list .btn-warning {
+  background-color: #ffb600;
   color: white;
 }
 
-.portfolio-list td:nth-child(4) {
-  text-align: center;
+.portfolio-list .btn-warning:hover {
+  background-color: #ff9e00;
 }
 
+.portfolio-list .btn-danger {
+  background-color: #ff4c4c;
+  color: white;
+}
+
+.portfolio-list .btn-danger:hover {
+  background-color: #ff1f1f;
+}
+
+/* Responsive Design for small screens */
 @media (max-width: 768px) {
-  .portfolio {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .portfolio h2 {
-    font-size: 20px;
-  }
-
-  .portfolio label {
+  .portfolio-form .form-control,
+  .portfolio-form .btn-primary {
+    padding: 10px;
     font-size: 14px;
   }
 
-  .portfolio input[type="text"],
-  .portfolio textarea,
-  .portfolio input[type="file"] {
+  .portfolio-list table {
     font-size: 14px;
   }
 
-  .portfolio button[type="submit"] {
-    font-size: 16px;
+  .portfolio-list .btn {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
 

@@ -16,30 +16,48 @@
           </div>
       </div>
       <div class="create-coach">
+          <h2 class="text-center mb-4">Create New Coach</h2>
+
+          <!-- Display any form validation errors -->
+          <?php if (session()->getFlashdata('errors')): ?>
+          <div class="alert alert-danger">
+              <ul>
+                  <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                  <li><?= esc($error); ?></li>
+                  <?php endforeach; ?>
+              </ul>
+          </div>
+          <?php endif; ?>
+
           <form action="/admin/coaches/store" method="POST" enctype="multipart/form-data">
               <?= csrf_field() ?>
 
+              <!-- Coach Name -->
               <div class="form-group">
                   <label for="name">Name</label>
                   <input type="text" name="name" id="name" class="form-control" value="<?= old('name') ?>" required>
               </div>
 
+              <!-- Coach Role -->
               <div class="form-group">
                   <label for="role">Role</label>
                   <input type="text" name="role" id="role" class="form-control" value="<?= old('role') ?>" required>
               </div>
 
+              <!-- Coach Position -->
               <div class="form-group">
                   <label for="position">Position</label>
                   <input type="text" name="position" id="position" class="form-control" value="<?= old('position') ?>"
                       required>
               </div>
 
+              <!-- Coach Image -->
               <div class="form-group">
                   <label for="image">Image</label>
                   <input type="file" name="image" id="image" class="form-control" required>
               </div>
 
+              <!-- Social Media Links -->
               <div class="form-group">
                   <label for="twitter">Twitter URL</label>
                   <input type="text" name="twitter" id="twitter" class="form-control" value="<?= old('twitter') ?>">
@@ -56,9 +74,11 @@
                       value="<?= old('instagram') ?>">
               </div>
 
-              <button type="submit" class="btn btn-success mt-3">Create Coach</button>
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-success mt-3 btn-block">Create Coach</button>
           </form>
       </div>
+
   </div>
 
   <?= $this->endSection() ?>

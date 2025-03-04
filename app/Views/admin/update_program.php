@@ -1,31 +1,47 @@
-<h2>Update Program: <?= $program['program_name'] ?></h2>
-<form action="/program/saveProgram" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?= $program['id'] ?>">
-    <div class="form-group">
-        <label>Program Name</label>
-        <input type="text" name="program_name" class="form-control" value="<?= $program['program_name'] ?>" required>
-    </div>
-    <div class="form-group">
-        <label>Program Type</label>
-        <select name="program_type" class="form-control">
-            <option value="Kids" <?= $program['program_type'] == 'Kids' ? 'selected' : '' ?>>Kids</option>
-            <option value="Adult" <?= $program['program_type'] == 'Adult' ? 'selected' : '' ?>>Adult</option>
-            <option value="Competition" <?= $program['program_type'] == 'Competition' ? 'selected' : '' ?>>Competition
-            </option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label>Program Description</label>
-        <textarea name="program_description" class="form-control"
-            required><?= $program['program_description'] ?></textarea>
-    </div>
-    <div class="form-group">
-        <label>Program Content</label>
-        <textarea name="program_content" class="form-control"><?= $program['program_content'] ?></textarea>
-    </div>
-    <div class="form-group">
-        <label>Upload Image</label>
-        <input type="file" name="image" class="form-control">
-    </div>
-    <button type="submit" class="btn btn-success">Save Changes</button>
-</form>
+  <?= $this->extend('admin/sidebar/sidebar') ?>
+
+  <?= $this->section('simple') ?>
+  <div class="content">
+      <!-- Navbar Top with Toggle -->
+      <div class="top-bar">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <i class="bi bi-list fs-3"></i>
+          </button>
+          <h4>Update Programs</h4>
+          <div class="d-flex align-items-center">
+
+              <i class="bi bi-gear fs-4"></i>
+          </div>
+      </div>
+      <div class="update-program">
+
+          <?php if (session()->getFlashdata('errors')): ?>
+          <div class="alert alert-danger">
+              <ul>
+                  <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                  <li><?= esc($error); ?></li>
+                  <?php endforeach; ?>
+              </ul>
+          </div>
+          <?php endif; ?>
+
+          <form action="/admin/programs/update/<?= $program['id']; ?>" method="post">
+              <?= csrf_field() ?>
+              <div>
+                  <label for="title">Title:</label>
+                  <input type="text" name="title" id="title" value="<?= old('title', $program['title']); ?>" required>
+              </div>
+              <div>
+                  <label for="description">Description:</label>
+                  <textarea name="description" id="description"
+                      required><?= old('description', $program['description']); ?></textarea>
+              </div>
+              <div>
+                  <label for="icon">Icon:</label>
+                  <input type="text" name="icon" id="icon" value="<?= old('icon', $program['icon']); ?>" required>
+              </div>
+              <button type="submit">Update Program</button>
+          </form>
+      </div>
+  </div>
+  <?= $this->endSection() ?>

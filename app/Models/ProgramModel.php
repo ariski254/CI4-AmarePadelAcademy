@@ -6,18 +6,18 @@ use CodeIgniter\Model;
 
 class ProgramModel extends Model
 {
-    protected $table = 'programs';
+    protected $table      = 'programs';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['program_type', 'title', 'description', 'image', 'content'];
+
+    protected $allowedFields = ['title', 'description', 'icon'];
+
+    // Enabling timestamps
     protected $useTimestamps = true;
 
-    public function getPrograms()
-    {
-        return $this->findAll();
-    }
-
-    public function getProgramById($id)
-    {
-        return $this->find($id);
-    }
+    // Validation rules for the Programs table
+    protected $validationRules = [
+        'title'       => 'required|min_length[3]|max_length[255]',
+        'description' => 'required|min_length[10]',
+        'icon'        => 'required',
+    ];
 }

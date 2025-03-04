@@ -38,18 +38,29 @@
 
           <!-- List of Materials -->
           <h3>Existing Materials</h3>
-          <ul>
-              <?php foreach ($materials as $material): ?>
-              <li>
-                  <img src="<?= base_url($material['image_path']) ?>" alt="<?= esc($material['name']) ?>"
-                      width="100"><br>
-                  <?= esc($material['name']) ?>
-                  <a href="/admin/materials/edit/<?= $material['id'] ?>">Edit</a>
-                  <a href="/admin/materials/delete/<?= $material['id'] ?>"
-                      onclick="return confirm('Are you sure?')">Delete</a>
-              </li>
-              <?php endforeach; ?>
-          </ul>
+          <table class="materials-table">
+              <thead>
+                  <tr>
+                      <th>Image</th>
+                      <th>Material Name</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <?php foreach ($materials as $material): ?>
+                  <tr>
+                      <td><img src="<?= base_url($material['image_path']) ?>" alt="<?= esc($material['name']) ?>"
+                              width="100"></td>
+                      <td><?= esc($material['name']) ?></td>
+                      <td>
+                          <a href="/admin/materials/edit/<?= $material['id'] ?>" class="edit-link">Edit</a>
+                          <a href="/admin/materials/delete/<?= $material['id'] ?>" class="delete-link"
+                              onclick="return confirm('Are you sure?')">Delete</a>
+                      </td>
+                  </tr>
+                  <?php endforeach; ?>
+              </tbody>
+          </table>
       </div>
   </div>
   <?= $this->endSection() ?>

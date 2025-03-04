@@ -15,21 +15,27 @@
     </div>
 
     <div class="portfolio">
-        <form action="/portfolio/store" method="post" enctype="multipart/form-data">
+        <form action="/portfolio/store" method="post" enctype="multipart/form-data" class="portfolio-form">
             <?= csrf_field(); ?>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" value="<?= old('title'); ?>" required>
-            <br>
+            <h2>Add New Portfolio Item</h2>
 
-            <label for="description">Description</label>
-            <textarea name="description" id="description" required><?= old('description'); ?></textarea>
-            <br>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<?= old('title'); ?>" required class="form-control">
+            </div>
 
-            <label for="image">Image</label>
-            <input type="file" name="image" id="image" required>
-            <br>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" required
+                    class="form-control"><?= old('description'); ?></textarea>
+            </div>
 
-            <button type="submit">Submit</button>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image" required class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
@@ -48,14 +54,15 @@
                 <?php if (!empty($portfolios)) : ?>
                 <?php foreach ($portfolios as $item) : ?>
                 <tr>
-                    <td><?= esc($item->title) ?></td> <!-- Access title as object property -->
-                    <td><?= esc($item->description) ?></td> <!-- Access description as object property -->
+                    <td><?= esc($item->title) ?></td>
+                    <td><?= esc($item->description) ?></td>
                     <td><img src="<?= base_url('assets/imgs/portfolio/' . esc($item->image)) ?>"
-                            alt="<?= esc($item->title) ?>" width="100"></td> <!-- Access image as object property -->
+                            alt="<?= esc($item->title) ?>" width="100"></td>
                     <td>
-                        <a href="/admin/portfolio/<?= esc($item->id) ?>/edit">Edit</a> |
+                        <a href="/admin/portfolio/<?= esc($item->id) ?>/edit" class="btn btn-warning">Edit</a>
                         <a href="/portfolio/delete/<?= esc($item->id) ?>"
-                            onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
+                            onclick="return confirm('Are you sure you want to delete this item?')"
+                            class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -67,6 +74,7 @@
             </tbody>
         </table>
     </div>
+
 
 </div>
 

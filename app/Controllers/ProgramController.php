@@ -3,77 +3,63 @@
 namespace App\Controllers;
 
 use App\Models\ProgramModel;
-use App\Models\ProgramItemModel;
-use CodeIgniter\Controller;
 
-class ProgramController extends Controller
+class ProgramController extends BaseController
 {
     public function index()
     {
-        $programModel = new ProgramModel();
-        $programItemModel = new ProgramItemModel();
+        $model = new ProgramModel();
 
-        $data['programs'] = $programModel->getPrograms();
+        // Get all programs
+        $data['programs'] = $model->findAll();
 
-        // Fetch items for each program
-        foreach ($data['programs'] as $key => $program) {
-            $data['programs'][$key]['items'] = $programItemModel->getItemsByProgram($program['id']);
-        }
-
+        // Load the view for the front-end
         return view('index', $data);
     }
 
     public function admin()
     {
-        $programModel = new ProgramModel();
-        $programItemModel = new ProgramItemModel();
+        $model = new ProgramModel();
 
-        // Fetch all programs and their items
-        $data['programs'] = $programModel->getPrograms();
-        $data['program_items'] = [];
+        // Get all programs to display for the admin
+        $data['programs'] = $model->findAll();
 
-        foreach ($data['programs'] as $program) {
-            $data['program_items'][$program['id']] = $programItemModel->getItemsByProgram($program['id']);
-        }
-
-        return view('admin/programs', $data);
+        // Load the admin view
+        return view('admin/Programs', $data);
     }
 
     public function update($id)
     {
-        $programModel = new ProgramModel();
-        $programItemModel = new ProgramItemModel();
+        $model = new ProgramModel();
 
+        // Validate the input
         if ($this->request->getMethod() === 'post') {
-            $image = $this->request->getFile('image');
-            $imagePath = '';
-            if ($image->isValid()) {
-                $imagePath = $image->store(); // Save image to a folder
-            }
-
-            $programData = [
-                'program_type' => $this->request->getPost('program_type'),
-                'title' => $this->request->getPost('title'),
-                'description' => $this->request->getPost('description'),
-                'image' => $imagePath,
-                'content' => $this->request->getPost('content'),
+            $rules = [
+                'title'       => 'required|min_length[3]|max_length[255]',
+                'description' => 'required|min_length[10]',
+                'icon'        => 'required',
             ];
 
-            $programModel->update($id, $programData);
+            if ($this->validate($rules)) {
+                $data = [
+                    'title'       => $this->request->getPost('title'),
+                    'description' => $this->request->getPost('description'),
+                    'icon'        => $this->request->getPost('icon'),
+                ];
 
-            // Handle updating program items
-            $itemData = $this->request->getPost('program_items');
-            foreach ($itemData as $item) {
-                $programItemModel->update($item['id'], $item);
+                // Update the program in the database
+                $model->update($id, $data);
+
+                // Redirect back to admin page with a success message
+                return redirect()->to('/admin/programs')->with('success', 'Program updated successfully');
+            } else {
+                // Validation failed, load the update form again with errors
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
             }
-
-            return redirect()->to('/admin/programs');
         }
 
-        // If GET method, fetch data for editing
-        $data['program'] = $programModel->getProgramById($id);
-        $data['program_items'] = $programItemModel->getItemsByProgram($id);
-
-        return view('admin/edit_program', $data);
+        // If no post data, load the update form
+        $data['program'] = $model->find($id);
+        return view('admin/update_program', $data);
     }
 }

@@ -36,7 +36,6 @@ class Pages extends BaseController
         $this->heroModel = new HeroModel();
         $this->goalsModel = new GoalsModel();
         $this->programModel = new ProgramModel();
-
         $this->materialModel = new MaterialModel();
         $this->certificationModel = new CertificationModel();
         $this->portfolioModel = new PortfolioModel();
@@ -52,26 +51,7 @@ class Pages extends BaseController
         $aboutUsData = $this->aboutUsModel->getAboutUs();
         $heroData = $this->heroModel->getHero();
         $goalsData = $this->goalsModel->getGoals();
-
-        // Fetch program data and categorize it by program type (Kids, Adults, Competition)
-        $programData = $this->programModel->findAll(); // Fetch all programs
-
-        // Categorize programs by type
-        $kidsProgram = [];
-        $adultProgram = [];
-        $competitionProgram = [];
-
-        foreach ($programData as $program) {
-            if ($program['category'] == 'kids') {
-                $kidsProgram[] = $program;
-            } elseif ($program['category'] == 'adult') {
-                $adultProgram[] = $program;
-            } elseif ($program['category'] == 'competition') {
-                $competitionProgram[] = $program;
-            }
-        }
-
-        // Fetch other related data
+        $programData = $this->programModel->findAll();
         $materialData = $this->materialModel->findAll();
         $certificationData = $this->certificationModel->getCertification();
         $portfolioData = $this->portfolioModel->findAll();
@@ -85,9 +65,7 @@ class Pages extends BaseController
             'aboutUsData' => $aboutUsData,
             'heroData' => $heroData,
             'goalsData' => $goalsData,
-            'kidsProgram' => $kidsProgram, // Pass Kids Program data
-            'adultProgram' => $adultProgram, // Pass Adult Program data
-            'competitionProgram' => $competitionProgram, // Pass Competition Program data
+            'programs' => $programData, // Pass the programs data with the correct key
             'materialData' => $materialData,
             'certificationData' => $certificationData,
             'portfolioData' => $portfolioData,

@@ -14,31 +14,38 @@
     </div>
 
     <div class="portfolio-edit">
-        <form action="/portfolio/update/<?= $portfolio->id; ?>" method="post" enctype="multipart/form-data">
+        <form action="/portfolio/update/<?= $portfolio->id; ?>" method="post" enctype="multipart/form-data"
+            class="portfolio-edit-form">
             <?= csrf_field(); ?>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" value="<?= old('title', $portfolio->title); ?>" required>
-            <br>
+            <h2>Edit Portfolio Item</h2>
 
-            <label for="description">Description</label>
-            <textarea name="description" id="description"
-                required><?= old('description', $portfolio->description); ?></textarea>
-            <br>
-
-            <label for="image">Image (optional)</label>
-            <input type="file" name="image" id="image">
-            <br>
-
-            <!-- Display current image -->
-            <div class="current-image mb-3">
-                <label>Current Image</label>
-                <img src="<?= base_url('assets/imgs/portfolio/' . $portfolio->image); ?>"
-                    alt="<?= esc($portfolio->title); ?>">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<?= old('title', $portfolio->title); ?>" required
+                    class="form-control">
             </div>
 
-            <button type="submit">Update</button>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" required
+                    class="form-control"><?= old('description', $portfolio->description); ?></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image (optional)</label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+
+            <div class="current-image">
+                <label>Current Image</label>
+                <img src="<?= base_url('assets/imgs/portfolio/' . $portfolio->image); ?>"
+                    alt="<?= esc($portfolio->title); ?>" class="current-image-img">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Portfolio</button>
         </form>
     </div>
+
 </div>
 
 <?= $this->endSection() ?>

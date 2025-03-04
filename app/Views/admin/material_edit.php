@@ -16,29 +16,36 @@
       </div>
       <div class="edit-material">
           <?php if (session()->getFlashdata('success')): ?>
-          <p style="color: green;"><?= session()->getFlashdata('success') ?></p>
+          <p class="flash-message success"><?= session()->getFlashdata('success') ?></p>
           <?php endif; ?>
 
           <?php if (session()->getFlashdata('error')): ?>
-          <p style="color: red;"><?= session()->getFlashdata('error') ?></p>
+          <p class="flash-message error"><?= session()->getFlashdata('error') ?></p>
           <?php endif; ?>
 
           <form action="/admin/materials/update/<?= $material['id'] ?>" method="POST" enctype="multipart/form-data">
               <?= csrf_field() ?>
 
-              <label for="name">Material Name:</label>
-              <input type="text" name="name" id="name" value="<?= old('name', $material['name']) ?>" required><br><br>
+              <div class="form-group">
+                  <label for="name">Material Name:</label>
+                  <input type="text" name="name" id="name" value="<?= old('name', $material['name']) ?>" required>
+              </div>
 
-              <label for="image">Material Image (Optional):</label>
-              <input type="file" name="image" id="image"><br><br>
+              <div class="form-group">
+                  <label for="image">Material Image (Optional):</label>
+                  <input type="file" name="image" id="image">
+              </div>
 
-              <label>Current Image:</label>
-              <!-- Menampilkan gambar lama -->
-              <img src="<?= base_url($material['image_path']) ?>" alt="Material Image" width="100"><br><br>
+              <div class="form-group">
+                  <label>Current Image:</label>
+                  <div class="current-image">
+                      <img src="<?= base_url($material['image_path']) ?>" alt="Material Image" width="100">
+                  </div>
+              </div>
 
-              <button type="submit">Update Material</button>
+              <button type="submit" class="submit-btn">Update Material</button>
           </form>
-
       </div>
+
   </div>
   <?= $this->endSection() ?>

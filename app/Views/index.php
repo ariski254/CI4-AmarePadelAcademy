@@ -89,9 +89,6 @@
                             <a class="nav-link" href="#goals">Goals</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#program">Programs</a>
-                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#portfolio">Portfolio</a>
@@ -185,56 +182,32 @@
 
 
         <!-- Programs -->
-        <section id="program" class="program section">
+        <section id="programs" class="custom-programs section">
+            <!-- Section Title -->
+            <div class="container custom-section-title" data-aos="fade-up">
+                <h2 class="custom-section-heading">Programs</h2>
+                <p class="custom-section-description">Our expertly designed programs to suit every level.</p>
+            </div>
+            <!-- End Section Title -->
+
             <div class="container">
-                <div class="row justify-content-center">
-                    <!-- Title -->
-                    <div class="col-lg-12 text-center wow fadeInUp" data-wow-duration="500ms">
-                        <h2 class="text-center mb-5">ACADEMY PROGRAM</h2>
-                    </div>
-                </div>
-
-                <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
-                    <!-- Program Image -->
-                    <div class="col-lg-5">
-                        <div class="program-img">
-                            <!-- Dynamically display program image -->
-                            <img src="<?= site_url('/admin/programs/update-image'); ?>" class="img-fluid rounded shadow"
-                                alt="Program Image" />
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7">
-                        <!-- Tabs Navigation -->
-                        <ul class="nav nav-pills mb-4" id="program-tabs" role="tablist">
-                            <?php foreach ($programs as $index => $program): ?>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link <?= $index === 0 ? 'active' : ''; ?>"
-                                    id="program-tab<?= $program['id']; ?>" data-bs-toggle="pill" role="tab"
-                                    aria-controls="program-tab-content<?= $program['id']; ?>"
-                                    aria-selected="<?= $index === 0 ? 'true' : 'false'; ?>">
-                                    <?= $program['category']; ?>
-                                </a>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <!-- End Tabs Navigation -->
-
-                        <!-- Tab Content -->
-                        <div class="tab-content" id="program-tab-content">
-                            <?php foreach ($programs as $index => $program): ?>
-                            <div class="tab-pane fade <?= $index === 0 ? 'show active' : ''; ?>"
-                                id="program-tab-content<?= $program['id']; ?>" role="tabpanel"
-                                aria-labelledby="program-tab<?= $program['id']; ?>">
-                                <p class="fst-italic mb-4"><?= $program['description']; ?></p>
-                                <ul>
-                                    <?= $program['details']; ?>
-                                </ul>
+                <div class="row gy-4">
+                    <?php foreach ($programs as $program): ?>
+                    <div class="col-lg-4 col-md-6 custom-program-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="custom-program-card">
+                            <div class="custom-program-icon">
+                                <i class="bi <?= esc($program['icon']); ?>"></i>
                             </div>
-                            <?php endforeach; ?>
+                            <a href="#" class="custom-program-link">
+                                <h3 class="custom-program-title"><?= esc($program['title']); ?></h3>
+                            </a>
+                            <p class="custom-program-description">
+                                <?= esc($program['description']); ?>
+                            </p>
                         </div>
-                        <!-- End Tab Content -->
                     </div>
+                    <!-- End program Item -->
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
@@ -308,19 +281,19 @@
                     <?php foreach ($portfolioData as $portfolio): ?>
                     <div class="filtr-item col-lg-4 col-md-6">
                         <div class="portfolio-block">
-                            <img src="<?= base_url('assets/imgs/portfolio/' . $portfolio['image']); ?>"
-                                alt="<?= esc($portfolio['title']); ?>" />
+                            <img src="<?= base_url('assets/imgs/portfolio/' . $portfolio->image); ?>"
+                                alt="<?= esc($portfolio->title); ?>" />
                             <div class="caption">
                                 <!-- Image Popup -->
                                 <a class="search-icon image-popup" data-effect="mfp-with-zoom"
-                                    href="<?= base_url('assets/imgs/portfolio/' . $portfolio['image']); ?>"
-                                    data-lightbox="image-<?= $portfolio['id']; ?>">
+                                    href="<?= base_url('assets/imgs/portfolio/' . $portfolio->image); ?>"
+                                    data-lightbox="image-<?= $portfolio->id; ?>">
                                     <i class="bi bi-search"></i>
                                 </a>
                                 <!-- Portfolio Title -->
-                                <h4><a href=""><?= esc($portfolio['title']); ?></a></h4>
+                                <h4><a href=""><?= esc($portfolio->title); ?></a></h4>
                                 <!-- Portfolio Description -->
-                                <p class="mb-0"><?= esc($portfolio['description']); ?></p>
+                                <p class="mb-0"><?= esc($portfolio->description); ?></p>
                             </div>
                         </div>
                     </div>
@@ -329,6 +302,7 @@
                 <!-- /Portfolio Items -->
             </div>
         </section>
+
 
 
 
@@ -473,6 +447,7 @@
             <?php endforeach; ?>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer id="footer-section" class="bg-one">
