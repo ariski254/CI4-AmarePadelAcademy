@@ -445,9 +445,12 @@
             <?php foreach ($sponsorData as $sponsor): ?>
             <img src="<?= base_url($sponsor['logo_path']); ?>" alt="<?= esc($sponsor['logo_name']); ?>" />
             <?php endforeach; ?>
+            <?php foreach ($sponsorData as $sponsor): ?>
+            <!-- Duplicate logos for seamless looping -->
+            <img src="<?= base_url($sponsor['logo_path']); ?>" alt="<?= esc($sponsor['logo_name']); ?>" />
+            <?php endforeach; ?>
         </div>
     </div>
-
 
 
     <!-- Footer -->

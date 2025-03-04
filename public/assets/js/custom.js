@@ -120,10 +120,6 @@
 // Sponsor
 document.addEventListener("DOMContentLoaded", function () {
   const logosSlide = document.querySelector(".logos-slide");
-  const logos = logosSlide.children;
-
-  // Clone logos to create an infinite loop
-  for (let i = 0; i < logos.length; i++) {
-    logosSlide.appendChild(logos[i].cloneNode(true));
-  }
+  const logos = logosSlide.innerHTML; // Get all logos
+  logosSlide.innerHTML += logos; // Duplicate logos for infinite effect
 });
