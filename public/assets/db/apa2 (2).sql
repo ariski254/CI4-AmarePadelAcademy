@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Mar 2025 pada 02.05
+-- Waktu pembuatan: 04 Mar 2025 pada 07.44
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.3.10
 
@@ -40,7 +40,27 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`id`, `title`, `subtitle`, `description`, `image`) VALUES
-(1, 'qqqqqq', 'Kami Membantu Anda Sukses', 'Kami adalah perusahaan yang berdedikasi dalam memberikan layanan terbaik kepada pelanggan. Dengan tim profesional dan berpengalaman, kami berusaha untuk memberikan solusi terbaik dalam bidang kami.', NULL);
+(1, 'qqqqqq', 'Kami Membantu Anda Sukses', 'Kami adalah perusahaan yang berdedikasi dalam memberikan layanan terbaik kepada pelanggan. Dengan tim profesional dan berpengalaman, kami berusaha untuk memberikan solusi terbaik dalam bidang kami.', 'uploads/about_us/1741058976_b7024879250ea6b179bd.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(2, 'admin', '$2y$10$2RLpLhSfcZjcbB/j8YIHEervFrbFdmDwIHtXAAbZJKnEZbd9XjLMW'),
+(3, 'admin1', '$2y$10$34V/2iEODY9i.JqFb7SVC.74Xu2vZ.LD0LylOFIh.lp5r59zvC4Ba');
 
 -- --------------------------------------------------------
 
@@ -114,7 +134,7 @@ CREATE TABLE `footer` (
 --
 
 INSERT INTO `footer` (`id`, `logo_path`, `facebook_link`, `twitter_link`, `youtube_link`, `instagram_link`, `linkedin_link`, `updated_at`) VALUES
-(1, 'assets/imgs/1740632446_3845a9fa01be9bad4cef.jpg', 'aaaaaaaaa', 'https://twitter.com/example', 'https://www.youtube.com/example', 'https://www.instagram.com/example', 'https://www.linkedin.com/company/example', '2025-02-26 22:00:46');
+(1, 'assets/imgs/1741059059_8e600ef21a4074b1a604.png', 'aaaaaaaaa', 'https://twitter.com/example', 'https://www.youtube.com/example', 'https://www.instagram.com/example', 'https://www.linkedin.com/company/example', '2025-03-03 20:30:59');
 
 -- --------------------------------------------------------
 
@@ -158,7 +178,7 @@ CREATE TABLE `hero` (
 --
 
 INSERT INTO `hero` (`id`, `welcome_text`, `main_title`, `sub_title`, `video_file`, `poster_image`, `updated_at`) VALUES
-(1, 'qqqqqqqq', 'AMARE PADEL ACADEMY', 'member of AMARE SPORT GROUP', NULL, NULL, '2025-02-25 20:04:19');
+(1, 'qqqqqqqq', 'AMARE PADEL ACADEMY', 'member of AMARE SPORT GROUP', 'uploads/1741058953_17d14e0e8945ca98a049.mp4', NULL, '2025-03-03 20:29:13');
 
 -- --------------------------------------------------------
 
@@ -179,9 +199,10 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`id`, `name`, `image_path`, `created_at`, `updated_at`) VALUES
-(1, 'aaaaaa', 'uploads/materials/1740539097_f5c29798ae7ab205ddd7.png', '2025-02-17 20:17:32', '2025-02-25 21:33:42'),
+(1, 'pppppp', 'uploads/materials/1740539097_f5c29798ae7ab205ddd7.png', '2025-02-17 20:17:32', '2025-03-03 21:15:04'),
 (2, 'Agility', 'uploads/materials/1739848867_dff1425bce73d7352f7f.png', '2025-02-17 20:21:07', '2025-02-17 20:21:07'),
-(4, 'xxxxxx', 'uploads/materials/1740543167_b8645996506d4340f6f0.png', '2025-02-17 20:23:13', '2025-02-25 21:28:48');
+(4, 'xxxxxx', 'uploads/materials/1740543167_b8645996506d4340f6f0.png', '2025-02-17 20:23:13', '2025-02-25 21:28:48'),
+(5, 'agility', 'uploads/materials/1741061569_e91201efc285c97a64fe.png', '2025-03-03 21:12:49', '2025-03-03 21:12:49');
 
 -- --------------------------------------------------------
 
@@ -201,7 +222,7 @@ CREATE TABLE `padel_certifications` (
 --
 
 INSERT INTO `padel_certifications` (`id`, `title`, `description`, `updated_at`) VALUES
-(1, 'qqqqqq', 'Sertifikasi untuk pelatih pemula yang mencakup dasar-dasar permainan padel, teknik dasar, dan aturan pertandingan.', '2025-02-25 20:05:06');
+(1, 'ssssss', 'lorem ipsum test', '2025-03-03 21:18:47');
 
 -- --------------------------------------------------------
 
@@ -226,7 +247,6 @@ INSERT INTO `portfolio` (`id`, `image`, `title`, `description`, `created_at`, `u
 (3, '1740538998_ca4f35d8aa518bbf603d.png', 'ssssss', 'aaaaa', '2025-02-18 00:11:44', '2025-02-25 21:33:54'),
 (4, '1740538984_767323e932f6d161a2f5.png', 'aaaaa', 'qqqqq', '2025-02-18 00:11:50', '2025-02-25 20:03:04'),
 (5, '1739862717_29e01e73fc83b5362b39.jpg', 'rsgsrg', 'rgsgsg', '2025-02-18 00:11:57', '2025-02-18 00:11:57'),
-(6, '1739863013_14e55b9d7224fbba774d.jpg', 'dssdf', 'sdfsdf', '2025-02-18 00:16:53', '2025-02-18 00:16:53'),
 (7, '1740466332_dd97bdab8c26a11d9254.jpg', 'wheofhoiweiofh', 'wefhwefhweof', '2025-02-24 23:52:12', '2025-02-24 23:52:12'),
 (9, '1740538165_677a6c911dfb18aa360a.jpg', ' vfs f', 'sdsdfg', '2025-02-25 19:49:25', '2025-02-25 19:49:25');
 
@@ -238,11 +258,9 @@ INSERT INTO `portfolio` (`id`, `image`, `title`, `description`, `created_at`, `u
 
 CREATE TABLE `programs` (
   `id` int(11) NOT NULL,
-  `program_type` enum('Kids','Adult','Competition') NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `content` text NOT NULL,
+  `icon` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -251,40 +269,10 @@ CREATE TABLE `programs` (
 -- Dumping data untuk tabel `programs`
 --
 
-INSERT INTO `programs` (`id`, `program_type`, `title`, `description`, `image`, `content`, `created_at`, `updated_at`) VALUES
-(1, 'Kids', 'Kids Padel Program', 'Program khusus anak-anak untuk belajar dasar-dasar padel.', 'kids_padel.jpg', 'Program ini bertujuan untuk mengajarkan dasar-dasar olahraga padel kepada anak-anak dengan metode yang menyenangkan.', '2025-02-27 08:04:20', '2025-02-27 08:04:20'),
-(2, 'Adult', 'Adult Padel Program', 'Program dewasa dari pemula hingga tingkat lanjut.', 'adult_padel.jpg', 'Kami menawarkan kelas dari tingkat pemula hingga tingkat lanjut untuk membantu peserta meningkatkan keterampilan padel mereka.', '2025-02-27 08:04:20', '2025-02-27 08:04:20'),
-(3, 'Competition', 'Competition Training Program', 'Latihan kompetitif bagi pemain tingkat lanjut.', 'competition_padel.jpg', 'Program ini dirancang untuk pemain yang ingin meningkatkan kemampuan teknis dan strategi mereka dalam pertandingan padel.', '2025-02-27 08:04:20', '2025-02-27 08:04:20');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `program_items`
---
-
-CREATE TABLE `program_items` (
-  `id` int(11) NOT NULL,
-  `program_id` int(11) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `program_items`
---
-
-INSERT INTO `program_items` (`id`, `program_id`, `title`, `description`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Mini-Padel (4-6 years)', 'Anak-anak belajar padel dengan permainan yang menyenangkan menggunakan bola lunak dan raket mini.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(2, 1, 'Kids Padel (7-10 years)', 'Fokus pada keterampilan teknis dengan pendekatan yang menyenangkan dan penuh motivasi.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(3, 1, 'Kids Padel (11-14 years)', 'Menyempurnakan teknik dan menerapkan strategi dasar dalam pertandingan nyata.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(4, 2, 'Beginners', 'Ideal untuk pemula. Fokus pada dasar-dasar memegang raket dan teknik dasar.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(5, 2, 'Bronze', 'Mengembangkan teknik dasar dan mengenalkan permainan taktis.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(6, 2, 'Silver', 'Meningkatkan keterampilan dengan teknik dan strategi lanjutan.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(7, 3, 'Physical Preparation', 'Latihan fisik 3 hingga 5 kali seminggu tergantung usia.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(8, 3, 'Match Analysis', 'Menganalisis pertandingan untuk meningkatkan pemahaman taktis.', '2025-02-27 08:04:31', '2025-02-27 08:04:31'),
-(9, 3, 'Nutrition', 'Pola makan khusus untuk mendukung kinerja atlet mulai dari usia 4 tahun.', '2025-02-27 08:04:31', '2025-02-27 08:04:31');
+INSERT INTO `programs` (`id`, `title`, `description`, `icon`, `created_at`, `updated_at`) VALUES
+(1, 'Kids Programs', 'We offer three levels designed to foster a love of padel from an early age.', 'bi-person-lines-fill', '2025-03-04 03:21:56', '2025-03-04 03:21:56'),
+(2, 'Adult Programs', 'Our four levels cater to both beginners and advanced players.', 'bi-person-circle', '2025-03-04 03:21:56', '2025-03-04 03:21:56'),
+(3, 'Competition Programs', 'Tailored training that emphasizes technical, tactical, and physical development.', 'bi-trophy', '2025-03-04 03:21:56', '2025-03-04 03:21:56');
 
 -- --------------------------------------------------------
 
@@ -310,8 +298,7 @@ INSERT INTO `sponsors` (`id`, `logo_name`, `logo_path`, `created_at`, `updated_a
 (4, 'w', 'assets/logos/buzzfeed.png', '2025-02-19 20:08:17', '2025-02-19 20:08:17'),
 (5, 'r', 'assets/logos/forbes.png', '2025-02-19 20:08:26', '2025-02-19 20:08:26'),
 (6, 't', 'assets/logos/macys.png', '2025-02-19 20:08:37', '2025-02-19 20:08:37'),
-(7, 'y', 'assets/logos/menshealth.png', '2025-02-19 20:08:44', '2025-02-19 20:08:44'),
-(10, 'eeeeee', 'assets/logos/elastis.png', '2025-02-25 21:23:14', '2025-02-25 21:24:20');
+(7, 'y', 'assets/logos/menshealth.png', '2025-02-19 20:08:44', '2025-02-19 20:08:44');
 
 --
 -- Indexes for dumped tables
@@ -321,6 +308,12 @@ INSERT INTO `sponsors` (`id`, `logo_name`, `logo_path`, `created_at`, `updated_a
 -- Indeks untuk tabel `about_us`
 --
 ALTER TABLE `about_us`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `admin`
+--
+ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -378,13 +371,6 @@ ALTER TABLE `programs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `program_items`
---
-ALTER TABLE `program_items`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `program_id` (`program_id`);
-
---
 -- Indeks untuk tabel `sponsors`
 --
 ALTER TABLE `sponsors`
@@ -399,6 +385,12 @@ ALTER TABLE `sponsors`
 --
 ALTER TABLE `about_us`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `coaches`
@@ -434,7 +426,7 @@ ALTER TABLE `hero`
 -- AUTO_INCREMENT untuk tabel `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `padel_certifications`
@@ -455,26 +447,10 @@ ALTER TABLE `programs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `program_items`
---
-ALTER TABLE `program_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT untuk tabel `sponsors`
 --
 ALTER TABLE `sponsors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `program_items`
---
-ALTER TABLE `program_items`
-  ADD CONSTRAINT `program_items_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `programs` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
