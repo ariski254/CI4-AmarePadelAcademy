@@ -9,14 +9,18 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
               <i class="bi bi-list fs-3"></i>
           </button>
-          <h4>Create Coach</h4>
-          <div class="d-flex align-items-center">
-
-              <i class="bi bi-gear fs-4"></i>
+          <h4>Create New Coach</h4>
+          <div class="d-flex align-items-center dropdown">
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                  <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+              </ul>
           </div>
       </div>
       <div class="create-coach">
-          <h2 class="text-center mb-4">Create New Coach</h2>
+
 
           <!-- Display any form validation errors -->
           <?php if (session()->getFlashdata('errors')): ?>
@@ -29,55 +33,55 @@
           </div>
           <?php endif; ?>
 
-          <form action="/admin/coaches/store" method="POST" enctype="multipart/form-data">
+          <form action="/admin/coaches/store" method="POST" enctype="multipart/form-data" class="coach-form">
               <?= csrf_field() ?>
 
               <!-- Coach Name -->
               <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control" value="<?= old('name') ?>" required>
+                  <input type="text" name="name" id="name" class="form-input" value="<?= old('name') ?>" required>
               </div>
 
               <!-- Coach Role -->
               <div class="form-group">
                   <label for="role">Role</label>
-                  <input type="text" name="role" id="role" class="form-control" value="<?= old('role') ?>" required>
+                  <input type="text" name="role" id="role" class="form-input" value="<?= old('role') ?>" required>
               </div>
 
               <!-- Coach Position -->
               <div class="form-group">
                   <label for="position">Position</label>
-                  <input type="text" name="position" id="position" class="form-control" value="<?= old('position') ?>"
+                  <input type="text" name="position" id="position" class="form-input" value="<?= old('position') ?>"
                       required>
               </div>
 
               <!-- Coach Image -->
               <div class="form-group">
                   <label for="image">Image</label>
-                  <input type="file" name="image" id="image" class="form-control" required>
+                  <input type="file" name="image" id="image" class="form-input" required>
               </div>
 
               <!-- Social Media Links -->
               <div class="form-group">
                   <label for="twitter">Twitter URL</label>
-                  <input type="text" name="twitter" id="twitter" class="form-control" value="<?= old('twitter') ?>">
+                  <input type="text" name="twitter" id="twitter" class="form-input" value="<?= old('twitter') ?>">
               </div>
 
               <div class="form-group">
                   <label for="facebook">Facebook URL</label>
-                  <input type="text" name="facebook" id="facebook" class="form-control" value="<?= old('facebook') ?>">
+                  <input type="text" name="facebook" id="facebook" class="form-input" value="<?= old('facebook') ?>">
               </div>
 
               <div class="form-group">
                   <label for="instagram">Instagram URL</label>
-                  <input type="text" name="instagram" id="instagram" class="form-control"
-                      value="<?= old('instagram') ?>">
+                  <input type="text" name="instagram" id="instagram" class="form-input" value="<?= old('instagram') ?>">
               </div>
 
               <!-- Submit Button -->
               <button type="submit" class="btn btn-success mt-3 btn-block">Create Coach</button>
           </form>
       </div>
+
 
   </div>
 

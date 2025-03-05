@@ -9,8 +9,13 @@
               <i class="bi bi-list fs-3"></i>
           </button>
           <h4>Page Sponsor</h4>
-          <div class="d-flex align-items-center">
-              <i class="bi bi-gear fs-4"></i>
+          <div class="d-flex align-items-center dropdown">
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                  <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+              </ul>
           </div>
       </div>
       <div class="sponsor">
@@ -26,13 +31,14 @@
               <tbody>
                   <?php foreach ($sponsors as $sponsor): ?>
                   <tr class="sponsor-row">
-                      <td class="sponsor-logo-name"><?= $sponsor['logo_name']; ?></td>
+                      <td class="sponsor-logo-name"><?= esc($sponsor['logo_name']); ?></td>
                       <td class="sponsor-logo-image">
                           <img src="<?= base_url($sponsor['logo_path']); ?>" width="100" class="sponsor-logo" />
                       </td>
                       <td class="sponsor-actions">
-                          <a href="<?= site_url('admin/sponsor/edit/' . $sponsor['id']); ?>" class="edit-link">Edit</a>
-                          <a href="<?= site_url('admin/sponsor/delete/' . $sponsor['id']); ?>" class="delete-link"
+                          <a href="<?= site_url('admin/sponsor/edit/' . $sponsor['id']); ?>"
+                              class="btn btn-edit">Edit</a>
+                          <a href="<?= site_url('admin/sponsor/delete/' . $sponsor['id']); ?>" class="btn btn-delete"
                               onclick="return confirm('Are you sure?')">Delete</a>
                       </td>
                   </tr>
@@ -40,6 +46,8 @@
               </tbody>
           </table>
       </div>
+
+
 
   </div>
   <?= $this->endSection() ?>

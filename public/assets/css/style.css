@@ -1649,43 +1649,52 @@ strong {
 /*---------------------------------------
 sponsor
 -----------------------------------------*/
-/* General styling for the slider */
+/* Basic Styles for the logo container */
 .logos {
-  overflow: hidden; /* Hide overflow to create the slider effect */
-  width: 100%; /* Full width */
-  position: relative;
+  width: 100%;
+  overflow: hidden; /* Hide anything outside the container */
 }
 
+/* Slider styles */
 .logos-slide {
-  display: flex; /* Arrange logos in a row */
-  gap: 20px; /* Add spacing between logos */
-  animation: slide 20s linear infinite; /* Infinite sliding animation */
+  display: flex;
+  animation: slide 20s linear infinite; /* Adjust duration for speed */
 }
 
+/* Each logo image style */
 .logos-slide img {
-  max-width: 100px; /* Adjust logo size */
-  height: auto; /* Maintain aspect ratio */
-  flex-shrink: 0; /* Prevent shrinking */
+  max-width: 25%; /* Make images responsive */
+  height: auto;
+  padding: 10px; /* Space between logos */
+  object-fit: contain;
 }
 
-/* Keyframes for infinite sliding */
+/* Responsive: Make sure the container doesn't stretch on smaller screens */
+@media (max-width: 768px) {
+  .logos-slide {
+    animation-duration: 15s; /* Adjust speed for mobile if necessary */
+  }
+}
+
+@media (max-width: 480px) {
+  .logos-slide {
+    animation-duration: 12s; /* Adjust speed for very small screens */
+  }
+}
+
+/* Infinite scroll animation */
 @keyframes slide {
   0% {
     transform: translateX(0);
   }
+  50% {
+    transform: translateX(-50%); /* Shift the logos to the left */
+  }
   100% {
-    transform: translateX(
-      -50%
-    ); /* Move by half the width (since we duplicated the logos) */
+    transform: translateX(-100%); /* Loop back to the start */
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .logos-slide img {
-    max-width: 80px; /* Smaller logos for smaller screens */
-  }
-}
 /*---------------------------------------
 Footer               
 -----------------------------------------*/

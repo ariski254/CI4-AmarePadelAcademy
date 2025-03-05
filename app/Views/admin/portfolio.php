@@ -9,11 +9,15 @@
             <i class="bi bi-list fs-3"></i>
         </button>
         <h4>Page Portfolio</h4>
-        <div class="d-flex align-items-center">
-            <i class="bi bi-gear fs-4"></i>
+        <div class="d-flex align-items-center dropdown">
+            <i class="bi bi-gear fs-4" id="settings-icon"></i>
+            <!-- Dropdown menu -->
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+            </ul>
         </div>
     </div>
-
     <div class="portfolio">
         <form action="/portfolio/store" method="post" enctype="multipart/form-data" class="portfolio-form">
             <?= csrf_field(); ?>
@@ -37,42 +41,42 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </div>
 
-    <div class="portfolio-list mt-5">
         <h4>Existing Portfolio Items</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($portfolios)) : ?>
-                <?php foreach ($portfolios as $item) : ?>
-                <tr>
-                    <td><?= esc($item->title) ?></td>
-                    <td><?= esc($item->description) ?></td>
-                    <td><img src="<?= base_url('assets/imgs/portfolio/' . esc($item->image)) ?>"
-                            alt="<?= esc($item->title) ?>" width="100"></td>
-                    <td>
-                        <a href="/admin/portfolio/<?= esc($item->id) ?>/edit" class="btn btn-warning">Edit</a>
-                        <a href="/portfolio/delete/<?= esc($item->id) ?>"
-                            onclick="return confirm('Are you sure you want to delete this item?')"
-                            class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-                <?php else : ?>
-                <tr>
-                    <td colspan="4">No portfolio items found.</td>
-                </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+        <div class="portfolio-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($portfolios)) : ?>
+                    <?php foreach ($portfolios as $item) : ?>
+                    <tr>
+                        <td><?= esc($item->title) ?></td>
+                        <td><?= esc($item->description) ?></td>
+                        <td><img src="<?= base_url('assets/imgs/portfolio/' . esc($item->image)) ?>"
+                                alt="<?= esc($item->title) ?>" width="100"></td>
+                        <td>
+                            <a href="/admin/portfolio/<?= esc($item->id) ?>/edit" class="btn btn-warning">Edit</a>
+                            <a href="/portfolio/delete/<?= esc($item->id) ?>"
+                                onclick="return confirm('Are you sure you want to delete this item?')"
+                                class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <?php else : ?>
+                    <tr>
+                        <td colspan="4">No portfolio items found.</td>
+                    </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 

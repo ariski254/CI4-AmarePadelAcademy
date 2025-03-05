@@ -120,6 +120,12 @@
 // Sponsor
 document.addEventListener("DOMContentLoaded", function () {
   const logosSlide = document.querySelector(".logos-slide");
-  const logos = logosSlide.innerHTML; // Get all logos
-  logosSlide.innerHTML += logos; // Duplicate logos for infinite effect
+  const totalWidth = logosSlide.scrollWidth;
+  const logoContainerWidth = logosSlide.parentElement.offsetWidth;
+
+  // Adjust the animation based on the number of logos and screen width
+  const logosCount = logosSlide.children.length;
+  const speed = totalWidth / (logosCount / 2); // Divide by 2 for smooth looping
+
+  logosSlide.style.animationDuration = `${speed}s`; // Adjust speed dynamically
 });

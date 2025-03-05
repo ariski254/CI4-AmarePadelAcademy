@@ -1,48 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+  <?= $this->extend('admin/sidebar/sidebar') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+  <?= $this->section('simple') ?>
 
-<body>
 
-    <div class="container mt-5">
-        <h2 class="text-center">Add New Admin</h2>
 
-        <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success">
-            <?= session()->getFlashdata('success') ?>
-        </div>
-        <?php endif; ?>
+  <div class="content">
+      <!-- Navbar Top with Toggle -->
+      <div class="top-bar">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <i class="bi bi-list fs-3"></i>
+          </button>
+          <h4>Add Admin</h4>
+          <div class="d-flex align-items-center dropdown">
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                  <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+              </ul>
+          </div>
+      </div>
 
-        <?php if (session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger">
-            <?= session()->getFlashdata('error') ?>
-        </div>
-        <?php endif; ?>
+      <div class="add-admin">
+          <h2 class="text-center add-admin-title">Add New Admin</h2>
 
-        <form action="<?= site_url('admin/save') ?>" method="post">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-            </div>
+          <?php if (session()->getFlashdata('success')): ?>
+          <div class="alert alert-success add-admin-alert">
+              <?= session()->getFlashdata('success') ?>
+          </div>
+          <?php endif; ?>
 
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
+          <?php if (session()->getFlashdata('error')): ?>
+          <div class="alert alert-danger add-admin-alert">
+              <?= session()->getFlashdata('error') ?>
+          </div>
+          <?php endif; ?>
 
-            <button type="submit" class="btn btn-primary">Add Admin</button>
-        </form>
+          <form action="<?= site_url('admin/save') ?>" method="post" class="add-admin-form">
+              <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" required>
+              </div>
 
-        <a href="<?= site_url('admin') ?>" class="btn btn-secondary mt-3">Back to Dashboard</a>
-    </div>
+              <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+              </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+              <button type="submit" class="btn btn-primary add-admin-btn">Add Admin</button>
+          </form>
+      </div>
 
-</html>
+  </div>
+
+
+  <?= $this->endSection() ?>

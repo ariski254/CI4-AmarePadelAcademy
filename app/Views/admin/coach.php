@@ -10,20 +10,26 @@
               <i class="bi bi-list fs-3"></i>
           </button>
           <h4>Page Coach</h4>
-          <div class="d-flex align-items-center">
-
-              <i class="bi bi-gear fs-4"></i>
+          <div class="d-flex align-items-center dropdown">
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                  <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+              </ul>
           </div>
       </div>
       <div class="coach">
           <?php if (session()->getFlashdata('message')): ?>
-          <div class="alert alert-success"><?= session()->getFlashdata('message') ?></div>
+          <div class="alert alert-success coach-alert">
+              <?= session()->getFlashdata('message') ?>
+          </div>
           <?php endif; ?>
 
-          <a href="/admin/coaches/create" class="btn btn-primary mb-3 mt-3">Add New Coach</a>
+          <a href="/admin/coaches/create" class="btn btn-primary coach-add-btn mb-3 mt-3">Add New Coach</a>
 
           <div class="table-responsive">
-              <table class="table table-striped">
+              <table class="table table-striped coach-table">
                   <thead>
                       <tr>
                           <th>Name</th>
@@ -64,6 +70,7 @@
               </table>
           </div>
       </div>
+
 
   </div>
 

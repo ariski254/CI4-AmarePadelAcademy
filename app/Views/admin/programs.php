@@ -9,9 +9,13 @@
               <i class="bi bi-list fs-3"></i>
           </button>
           <h4>Page Programs</h4>
-          <div class="d-flex align-items-center">
-
-              <i class="bi bi-gear fs-4"></i>
+          <div class="d-flex align-items-center dropdown">
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                  <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+              </ul>
           </div>
       </div>
       <div class="programs">
@@ -21,7 +25,9 @@
           </div>
           <?php endif; ?>
 
-          <table>
+
+
+          <table class="programs-table">
               <thead>
                   <tr>
                       <th>Title</th>
@@ -37,12 +43,13 @@
                       <td><?= esc($program['description']); ?></td>
                       <td><i class="<?= esc($program['icon']); ?>"></i></td>
                       <td>
-                          <a href="/admin/programs/update/<?= $program['id']; ?>">Edit</a>
+                          <a href="/admin/programs/update/<?= $program['id']; ?>" class="btn btn-warning">Edit</a>
                       </td>
                   </tr>
                   <?php endforeach; ?>
               </tbody>
           </table>
       </div>
+
   </div>
   <?= $this->endSection() ?>

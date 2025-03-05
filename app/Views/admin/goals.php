@@ -17,41 +17,53 @@
               <i class="bi bi-list fs-3"></i>
           </button>
           <h4>Page Goals</h4>
-          <div class="d-flex align-items-center">
-
-              <i class="bi bi-gear fs-4"></i>
+          <div class="d-flex align-items-center dropdown">
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                  <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+              </ul>
           </div>
       </div>
-      <div class="goals">
-          <form method="POST" action="/goals/update">
+      <div class="goals-container">
+          <h2 class="goals-title">Update Goals</h2>
+          <form method="POST" action="/goals/update" class="goals-form">
               <?= csrf_field(); ?>
 
-              <div class="form-group">
-                  <label for="vision">Our Vision</label>
-                  <textarea id="vision" name="vision" class="form-control"><?= $goalsData['vision'] ?? ''; ?></textarea>
+              <!-- Vision Section -->
+              <div class="form-group goals-form-group">
+                  <label for="vision" class="goals-label">Our Vision</label>
+                  <textarea id="vision" name="vision"
+                      class="goals-textarea"><?= $goalsData['vision'] ?? ''; ?></textarea>
               </div>
 
-              <div class="form-group">
-                  <label for="mission">Our Mission</label>
+              <!-- Mission Section -->
+              <div class="form-group goals-form-group">
+                  <label for="mission" class="goals-label">Our Mission</label>
                   <textarea id="mission" name="mission"
-                      class="form-control"><?= $goalsData['mission'] ?? ''; ?></textarea>
+                      class="goals-textarea"><?= $goalsData['mission'] ?? ''; ?></textarea>
               </div>
 
-              <div class="form-group">
-                  <label for="key_success_factor">Key Success Factor</label>
+              <!-- Key Success Factor Section -->
+              <div class="form-group goals-form-group">
+                  <label for="key_success_factor" class="goals-label">Key Success Factor</label>
                   <textarea id="key_success_factor" name="key_success_factor"
-                      class="form-control"><?= $goalsData['key_success_factor'] ?? ''; ?></textarea>
+                      class="goals-textarea"><?= $goalsData['key_success_factor'] ?? ''; ?></textarea>
               </div>
 
-              <div class="form-group">
-                  <label for="services">Our Services</label>
+              <!-- Services Section -->
+              <div class="form-group goals-form-group">
+                  <label for="services" class="goals-label">Our Services</label>
                   <textarea id="services" name="services"
-                      class="form-control"><?= $goalsData['services'] ?? ''; ?></textarea>
+                      class="goals-textarea"><?= $goalsData['services'] ?? ''; ?></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary">Update Goals</button>
+              <!-- Submit Button -->
+              <button type="submit" class="btn goals-submit-btn">Update Goals</button>
           </form>
       </div>
+
   </div>
 
   <?= $this->endSection() ?>

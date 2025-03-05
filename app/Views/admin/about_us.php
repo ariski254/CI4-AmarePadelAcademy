@@ -24,21 +24,25 @@
               <!-- Hidden ID to identify the record being updated -->
               <input type="hidden" name="id" value="<?= $aboutUsData['id']; ?>" />
 
-              <label for="title">Title:</label>
-              <input type="text" name="title" value="<?= $aboutUsData['title']; ?>" required />
+              <label for="title" class="about-us-label">Title:</label>
+              <input type="text" name="title" value="<?= $aboutUsData['title']; ?>" class="about-us-input" required />
 
-              <label for="subtitle">Subtitle:</label>
-              <input type="text" name="subtitle" value="<?= $aboutUsData['subtitle']; ?>" required />
+              <label for="subtitle" class="about-us-label">Subtitle:</label>
+              <input type="text" name="subtitle" value="<?= $aboutUsData['subtitle']; ?>" class="about-us-input"
+                  required />
 
-              <label for="description">Description:</label>
-              <textarea name="description" required><?= $aboutUsData['description']; ?></textarea>
+              <label for="description" class="about-us-label">Description:</label>
+              <textarea name="description" class="about-us-textarea"
+                  required><?= $aboutUsData['description']; ?></textarea>
 
-              <label for="image">Image:</label>
-              <input type="file" name="image" />
+              <label for="image" class="about-us-label">Image:</label>
+              <input type="file" name="image" class="about-us-input-file" />
 
-              <button type="submit">Update About Us</button>
+              <button type="submit" class="about-us-submit">Update About Us</button>
           </form>
       </div>
+
+
   </div>
 
 

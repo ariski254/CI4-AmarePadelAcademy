@@ -9,27 +9,38 @@
               <i class="bi bi-list fs-3"></i>
           </button>
           <h4>Page Material</h4>
-          <div class="d-flex align-items-center">
-              <i class="bi bi-gear fs-4"></i>
+          <div class="d-flex align-items-center dropdown">
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
+                  <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
+              </ul>
           </div>
       </div>
       <?php if (session()->getFlashdata('success')): ?>
-      <p style="color: green;"><?= session()->getFlashdata('success') ?></p>
+      <p class="flash-message success"><?= session()->getFlashdata('success') ?></p>
       <?php endif; ?>
 
       <?php if (session()->getFlashdata('error')): ?>
-      <p style="color: red;"><?= session()->getFlashdata('error') ?></p>
+      <p class="flash-message error"><?= session()->getFlashdata('error') ?></p>
       <?php endif; ?>
 
       <!-- Form Add Material -->
       <div class="material">
           <form action="/admin/materials/create" method="POST" enctype="multipart/form-data">
               <?= csrf_field() ?>
-              <label for="name">Material Name:</label>
-              <input type="text" name="name" id="name" required><br><br>
+              <h3>Add New Material</h3>
 
-              <label for="image">Material Image:</label>
-              <input type="file" name="image" id="image" required><br><br>
+              <div class="form-group">
+                  <label for="name">Material Name:</label>
+                  <input type="text" name="name" id="name" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="image">Material Image:</label>
+                  <input type="file" name="image" id="image" required>
+              </div>
 
               <button type="submit">Add Material</button>
           </form>
@@ -50,7 +61,7 @@
                   <?php foreach ($materials as $material): ?>
                   <tr>
                       <td><img src="<?= base_url($material['image_path']) ?>" alt="<?= esc($material['name']) ?>"
-                              width="100"></td>
+                              width="120"></td>
                       <td><?= esc($material['name']) ?></td>
                       <td>
                           <a href="/admin/materials/edit/<?= $material['id'] ?>" class="edit-link">Edit</a>
@@ -62,5 +73,7 @@
               </tbody>
           </table>
       </div>
+
+
   </div>
   <?= $this->endSection() ?>
