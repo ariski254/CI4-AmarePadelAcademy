@@ -2890,3 +2890,114 @@ button[type="submit"]:active {
     padding: 12px 24px; /* Slightly reduced padding for smaller buttons */
   }
 }
+
+/* Admin */
+/* General Body Styling */
+.admin-page body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Admin Container */
+.admin-page .admin {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+/* Header Styling */
+.admin-page .admin h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #4a90e2;
+  margin-bottom: 20px;
+}
+
+/* Error Alert */
+.admin-page .alert {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+/* Form Group */
+.admin-page .form-group label {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Input Fields */
+.admin-page .form-control {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.admin-page .form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* Button Styling */
+.admin-page .btn-primary {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px;
+  background-color: #4a90e2;
+  border-color: #4a90e2;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.admin-page .btn-primary:hover {
+  background-color: #357abd;
+  border-color: #357abd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-page .admin {
+    padding: 15px;
+    margin: 20px;
+  }
+
+  .admin-page .admin h2 {
+    font-size: 22px;
+  }
+
+  .admin-page .form-control {
+    font-size: 14px;
+  }
+
+  .admin-page .btn-primary {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-page .admin {
+    max-width: 90%;
+    margin: 15px auto;
+  }
+
+  .admin-page .admin h2 {
+    font-size: 20px;
+  }
+
+  .admin-page .btn-primary {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
