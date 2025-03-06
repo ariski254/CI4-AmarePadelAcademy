@@ -63,3 +63,5 @@ $routes->get('auth/logout', 'Auth::logout');
 
 $routes->get('admin/add', 'AdminController::add');
 $routes->post('admin/save', 'AdminController::save');
+
+$routes->get('/(:any)', 'ErrorsController::show404/$1');
