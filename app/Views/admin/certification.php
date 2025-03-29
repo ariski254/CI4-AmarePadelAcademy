@@ -20,27 +20,36 @@
           </div>
       </div>
       <div class="certification">
+          <!-- Display validation errors -->
           <?= \Config\Services::validation()->listErrors(); ?>
 
+          <!-- Display success message if present -->
           <?php if (session()->getFlashdata('success')): ?>
           <div class="alert alert-success certification-alert">
               <?= session()->getFlashdata('success') ?>
           </div>
           <?php endif; ?>
 
+          <h2 class="certification-title">Update Certification</h2>
+
+          <!-- Certification Update Form -->
           <form action="<?= site_url('admin/certification/update'); ?>" method="POST" class="certification-form">
+
+              <!-- Title Input -->
               <div class="form-group">
                   <label for="title" class="form-label">Certification Title</label>
                   <input type="text" id="title" name="title" class="form-input"
                       value="<?= esc($certification['title']); ?>" required>
               </div>
 
+              <!-- Description Input -->
               <div class="form-group">
                   <label for="description" class="form-label">Certification Description</label>
                   <textarea id="description" name="description" class="form-input"
                       required><?= esc($certification['description']); ?></textarea>
               </div>
 
+              <!-- Update Button -->
               <button type="submit" class="form-button">Update Certification</button>
           </form>
       </div>

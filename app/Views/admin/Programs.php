@@ -25,8 +25,6 @@
           </div>
           <?php endif; ?>
 
-
-
           <table class="programs-table">
               <thead>
                   <tr>
@@ -50,6 +48,8 @@
               </tbody>
           </table>
       </div>
+
+
 
   </div>
   <?= $this->endSection() ?>

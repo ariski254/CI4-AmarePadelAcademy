@@ -18,7 +18,7 @@
         <a href="/admin/about_us"><i class="bi bi-info-circle me-2"></i> About Settings</a>
         <a href="/admin/goals"><i class="bi bi-trophy me-2"></i> Goals Settings</a>
         <a href="/admin/programs"><i class="bi bi-building me-2"></i> Academy Settings</a>
-        <a href="/admin/materials"><i class="bi bi-box me-2"></i> Material Settings</a>
+        <!-- <a href="/admin/materials"><i class="bi bi-box me-2"></i> Material Settings</a> -->
         <a href="/admin/certification"><i class="bi bi-award me-2"></i> Certification Settings</a>
         <a href="/admin/portfolio"><i class="bi bi-briefcase me-2"></i> Portfolio Settings</a>
         <a href="/admin/coach"><i class="bi bi-person me-2"></i> Coach Settings</a>

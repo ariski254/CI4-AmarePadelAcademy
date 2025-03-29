@@ -1,14 +1,14 @@
 :root {
   --white-color: #ffffff;
-  --primary-color: #0d6efd;
+  --primary-color: #007bff;
   --section-bg-color: #f9f9f9;
   --dark-color: #000000;
   --grey-color: #fcfeff;
   --text-secondary-white-color: rgba(255, 255, 255, 0.98);
   --title-color: #565758;
-  --p-color: #717275;
+  --p-color: #333333;
 
-  --body-font-family: "Noto Sans JP", sans-serif;
+  --body-font-family: "Monument Extended", "Poppins", sans-serif;
 
   --h1-font-size: 72px;
   --h2-font-size: 42px;
@@ -33,8 +33,17 @@ html {
 
 body {
   background: var(--white-color);
-  font-family: var(--body-font-family);
+  font-family: "Monument Extended", "Poppins", sans-serif; /* Default body font */
   position: relative;
+}
+
+p {
+  font-family: "Poppins", sans-serif; /* Apply Poppins to paragraphs */
+}
+
+code,
+pre {
+  font-family: "Monument Extended", "Poppins", monospace; /* Monospace fonts for code */
 }
 
 /*---------------------------------------
@@ -55,7 +64,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.header,
+.title {
+  font-family: "Monument Extended", "Poppins", sans-serif; /* Headings use Monument Extended */
   font-weight: var(--font-weight-bold);
 }
 
@@ -405,103 +417,105 @@ strong {
 /*---------------------------------------
   ABOUT & TEAM MEMBERS               
 -----------------------------------------*/
+/* About Us Section */
 .about-us {
-  padding: 60px 0;
+  background-color: #ffffff; /* Putih sebagai background utama */
+  padding: 100px 0; /* Memberikan ruang yang lebih besar */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Shadow lembut untuk efek modern */
+  opacity: 0;
+  animation: fadeIn 1s forwards; /* Animasi fade-in ketika section muncul */
 }
 
+/* Menyusun konten agar responsif dan berjarak */
 .about-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
-  padding: 40px;
-  background: #fff;
-  border: 1px solid #ddd; /* Add border around the section */
-  border-radius: 10px; /* Rounded corners for paper look */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow to make it pop */
-  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
-  opacity: 0; /* Start hidden for fade-in animation */
-  animation: fadeIn 1.2s forwards; /* Fade-in animation */
+  align-items: stretch; /* Membuat konten dalam kolom memiliki tinggi yang sama */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px; /* Menambahkan jarak antar elemen */
+  opacity: 0;
+  animation: fadeIn 1s 0.5s forwards; /* Efek fade-in dengan sedikit delay */
 }
 
-/* Hover effect to give a slight lift, like paper */
-.about-content:hover {
-  transform: translateY(-5px); /* Lift effect */
-}
-
-/* Animation for fading in */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px); /* Start from below */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* End in normal position */
-  }
-}
-
-/* Image styling */
 .image-container {
   flex: 1;
-  max-width: 500px;
-  opacity: 0; /* Start hidden for fade-in animation */
-  animation: fadeIn 1.5s ease-in-out forwards 0.3s; /* Delay for a staggered effect */
+  display: flex;
+  align-items: center; /* Menjaga gambar tetap vertikal di tengah */
+  justify-content: center;
+  height: 100%; /* Menyesuaikan dengan tinggi kontainer */
+  overflow: hidden; /* Agar gambar tidak meluber keluar border */
+  border-radius: 15px;
+  opacity: 0;
+  animation: fadeIn 1s 1s forwards; /* Animasi fade-in dengan delay */
 }
 
 .about-image {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: auto; /* Gambar memiliki tinggi otomatis sesuai kontainer */
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efek transisi halus */
+  border-radius: 15px;
 }
 
-/* Text styling */
+.about-image:hover {
+  transform: scale(1.05); /* Efek zoom in saat hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Efek bayangan yang lebih kuat saat hover */
+}
+
 .text-container {
-  flex: 1;
-  max-width: 600px;
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Menyebarkan teks di sepanjang kontainer */
+  height: 100%;
+  opacity: 0;
+  animation: fadeIn 1s 1.5s forwards; /* Animasi fade-in untuk teks dengan delay */
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 15px;
-  opacity: 0;
-  animation: slideIn 0.8s ease-out forwards 0.5s; /* Slide-in effect for title */
+  font-size: 36px; /* Ukuran font yang lebih besar untuk judul */
+  font-weight: bold;
+  color: #000000; /* Teks Utama: Hitam */
+  margin-bottom: 20px;
+  line-height: 1.3;
+  letter-spacing: 1px; /* Jarak antar huruf untuk tampilan modern */
+  text-transform: uppercase; /* Menambah kesan tegas pada judul */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan halus pada judul */
 }
 
 .subtitle {
-  font-size: 1.25rem;
-  color: #777;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: slideIn 0.8s ease-out forwards 0.7s; /* Staggered slide-in effect for subtitle */
+  font-size: 22px;
+  font-weight: 500;
+  color: #007bff; /* Biru Laut untuk subtitle */
+  margin-bottom: 25px;
+  letter-spacing: 0.5px; /* Memberi jarak antar huruf */
+  text-transform: capitalize; /* Huruf pertama setiap kata kapital */
 }
 
 .description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
+  font-size: 18px;
+  color: #333333; /* Teks deskripsi lebih gelap */
+  line-height: 1.8;
   letter-spacing: 0.5px;
-  opacity: 0;
-  animation: slideIn 0.8s ease-out forwards 0.9s; /* Staggered slide-in effect for description */
+  max-width: 700px;
+  margin-bottom: 30px;
+  transition: color 0.3s ease; /* Transisi halus untuk perubahan warna */
 }
 
-/* Animation for sliding in text */
-@keyframes slideIn {
+/* Animasi Fade In */
+@keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translateX(-20px); /* Start from left */
+    transform: translateY(20px); /* Mulai dari posisi agak lebih rendah */
   }
   100% {
     opacity: 1;
-    transform: translateX(0); /* End in normal position */
+    transform: translateY(0); /* Efek naik ke posisi normal */
   }
 }
 
-/* Responsive styles */
+/* Responsif untuk tampilan mobile */
 @media (max-width: 768px) {
   .about-content {
     flex-direction: column;
@@ -509,275 +523,166 @@ strong {
   }
 
   .image-container {
+    margin-bottom: 30px;
+    border-radius: 20px; /* Membulatkan gambar di perangkat kecil */
+  }
+
+  .text-container {
     max-width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .about-image {
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 30px;
+    margin-bottom: 15px;
   }
 
   .subtitle {
-    font-size: 1.125rem;
+    font-size: 18px;
+    margin-bottom: 15px;
   }
 
   .description {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 1.75rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .description {
-    font-size: 0.9rem;
+    font-size: 16px;
   }
 }
 
 /*---------------------------------------
   Goals
 -----------------------------------------*/
-.ftco-section {
-  padding: 60px 0;
-  animation: fadeIn 1s ease-out;
+#goals {
+  background-color: #f4f7fb;
 }
 
-/* General Styling for Resume Section */
-#resume-section {
-  display: flex;
-  flex-direction: column; /* Ensure child elements are stacked vertically */
-  align-items: center; /* Center the child elements horizontally */
-  padding: 60px 20px; /* Adjust padding for smaller screens */
-  background-color: #f8f9fa;
-  border: 2px solid #e0e0e0; /* Border for the section */
-  border-radius: 8px; /* Uniform border radius */
-  box-sizing: border-box;
-  opacity: 0; /* Initial state for fade-in effect */
-  animation: fadeInUp 1s ease-out forwards; /* Animation to fade and slide in */
-}
-
-/* Heading Styling */
-#resume-section .heading-section {
-  margin-bottom: 50px;
-  text-align: center; /* Ensure heading is centered */
-}
-
-#resume-section h2 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-  opacity: 0; /* Initial state for fade-in effect */
-  animation: fadeInUp 1s ease-out 0.3s forwards; /* Delayed fade-in for the title */
-}
-
-/* Paragraph Styling */
-#resume-section p {
-  font-size: 18px;
-  color: #777;
-  line-height: 1.6;
-  max-width: 800px;
+#goals .container {
+  max-width: 1200px;
   margin: 0 auto;
-  opacity: 0; /* Initial state for fade-in effect */
-  animation: fadeInUp 1s ease-out 0.6s forwards; /* Delayed fade-in for paragraph */
 }
 
-/* Resume Wrap Styling */
-.resume-wrap {
-  background: #ffffff;
-  padding: 30px;
-  margin-bottom: 30px; /* Space between resume-wrap sections */
-  border: 2px solid #e0e0e0; /* Border for resume-wrap */
-  border-radius: 8px; /* Uniform border radius */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+#goals h2 {
+  color: #000000;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+#goals .resume-wrap {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
-  box-sizing: border-box;
-  opacity: 0; /* Initial state for fade-in effect */
-  transform: translateY(20px); /* Initial position off-screen */
-  animation: fadeInUp 1s ease-out forwards; /* Animation to fade and slide up */
 }
 
-/* Hover and Touch Effect for Resume Wrap */
-.resume-wrap:hover,
-.resume-wrap:focus-within {
-  transform: translateY(-8px) scale(1.05); /* Slightly grow and move up */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+#goals .resume-wrap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Touch animation: Scale down when pressed (for touch devices or mouse clicks) */
-.resume-wrap:active {
-  transform: translateY(4px) scale(0.98); /* Shrink the card when clicked/tapped */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Reduced shadow to simulate press */
+#goals .resume-wrap h3 {
+  font-size: 22px;
+  color: #444444; /* Tombol warna merah terang */
+  margin-bottom: 15px;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px); /* Slide in from below */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* End position */
-  }
+#goals .resume-wrap p,
+#goals .resume-wrap ul {
+  font-size: 16px;
+  color: #333333;
 }
 
-/* Media Queries for Responsiveness */
-
-/* For tablets and smaller screens */
-@media (max-width: 1024px) {
-  #resume-section {
-    padding: 50px 20px; /* Reduce padding for better fit */
-  }
-
-  #resume-section h2 {
-    font-size: 30px; /* Slightly smaller font for headings */
-  }
-
-  #resume-section p {
-    font-size: 16px; /* Adjust paragraph font size */
-  }
-
-  .resume-wrap {
-    padding: 25px; /* Adjust padding for smaller screens */
-  }
-
-  .resume-wrap h2 {
-    font-size: 22px; /* Slightly smaller headings for resume-wrap */
-  }
-
-  .resume-wrap p {
-    font-size: 14px; /* Adjust text size in resume-wrap */
-  }
+#goals .resume-wrap ul {
+  list-style-type: none;
+  padding-left: 0;
 }
 
-/* For mobile phones and smaller devices */
+#goals .resume-wrap ul li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#goals .resume-wrap ul li:before {
+  content: "•";
+  color: #444444; /* Menggunakan warna merah terang untuk bullet point */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 18px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  #resume-section {
-    padding: 40px 20px; /* Reduced padding for smaller screens */
+  #goals h2 {
+    font-size: 28px;
   }
 
-  #resume-section h2 {
-    font-size: 26px; /* Make the title smaller for mobile */
-  }
-
-  #resume-section p {
-    font-size: 16px; /* Adjust paragraph font size */
-  }
-
-  .resume-wrap {
-    padding: 20px; /* Reduced padding for mobile */
-  }
-
-  .resume-wrap h3 {
-    font-size: 20px; /* Adjust heading size inside resume-wrap */
-  }
-
-  .resume-wrap p {
-    font-size: 14px; /* Smaller text inside resume-wrap */
-  }
-}
-
-/* For very small mobile devices */
-@media (max-width: 480px) {
-  #resume-section {
-    padding: 30px 15px; /* Further reduce padding */
-  }
-
-  #resume-section h2 {
-    font-size: 22px; /* Make the heading even smaller for very small screens */
-  }
-
-  #resume-section p {
-    font-size: 14px; /* Adjust font size for small screens */
-  }
-
-  .resume-wrap {
-    padding: 15px; /* Adjust padding to fit small screens */
-  }
-
-  .resume-wrap h3 {
-    font-size: 18px; /* Smaller headings for very small screens */
-  }
-
-  .resume-wrap p {
-    font-size: 12px; /* Further reduce text size */
+  #goals .col-md-6 {
+    margin-bottom: 20px;
   }
 }
 
 /*---------------------------------------
-  Proram
+  Program
 -----------------------------------------*/
-/* Section Styles */
-.custom-programs {
-  padding: 60px 0;
-}
-
 .custom-section-title {
   text-align: center;
   margin-bottom: 40px;
 }
 
 .custom-section-heading {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 10px;
 }
 
 .custom-section-description {
-  font-size: 1.1rem;
-  color: #666;
-  max-width: 800px;
-  margin: 0 auto;
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 40px;
 }
 
-/* Program Item Styles */
+/* Program Cards */
+.custom-programs {
+  background-color: #ffffff;
+}
+
 .custom-program-item {
-  text-align: center;
-  transition: transform 0.3s ease; /* Smooth transition for scale */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px;
 }
 
 .custom-program-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
   padding: 20px;
+  text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
-  height: 100%;
+  transition: all 0.3s ease-in-out;
+  max-width: 100%;
+  height: auto; /* Menyesuaikan tinggi agar sesuai dengan konten */
+  min-height: 300px; /* Tinggi minimum agar tetap proporsional */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  width: 100%; /* Agar kartu tetap responsif */
+  max-width: 350px; /* Membatasi lebar kartu agar tidak terlalu lebar */
+  margin: 0 auto; /* Menjaga kartu agar terpusat di layar */
 }
 
 .custom-program-card:hover {
-  transform: translateY(-5px) scale(1.05); /* Scale up with slight lift */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  background-color: #f8f9fa; /* Slight background color change on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .custom-program-icon {
   font-size: 40px;
-  color: #2c3e50;
+  color: #007bff; /* Merah terang untuk ikon */
   margin-bottom: 20px;
-  transition: color 0.3s ease; /* Smooth color transition */
-}
-
-.custom-program-card:hover .custom-program-icon {
-  color: #3498db; /* Change color of the icon when hovering */
 }
 
 .custom-program-link {
@@ -785,261 +690,284 @@ strong {
 }
 
 .custom-program-title {
-  font-size: 1.6rem;
-  color: #2c3e50;
-  margin-bottom: 10px;
-  font-weight: 500;
-  transition: color 0.3s ease; /* Smooth color transition */
-}
-
-.custom-program-card:hover .custom-program-title {
-  color: #3498db; /* Change color of title when hovering */
+  font-size: 22px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15px;
 }
 
 .custom-program-description {
-  color: #7f8c8d;
-  font-size: 1rem;
-  margin-bottom: 0;
-  transition: color 0.3s ease; /* Smooth color transition */
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.5;
+  flex-grow: 1; /* Memastikan deskripsi mengisi ruang kosong pada kartu */
+  margin-bottom: 15px;
 }
 
-.custom-program-card:hover .custom-program-description {
-  color: #2c3e50; /* Darken description color on hover */
+/* Hover Effect on Program Link */
+.custom-program-link:hover .custom-program-title {
+  color: #007bff; /* Warna orange terang saat hover */
 }
 
-/* Responsive Styles */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .custom-programs {
-    padding: 40px 0;
-  }
-
   .custom-section-heading {
-    font-size: 2.2rem; /* Consistent heading size */
+    font-size: 28px;
   }
 
-  .custom-program-title {
-    font-size: 1.5rem; /* Consistent program title size */
+  .custom-section-description {
+    font-size: 16px;
   }
 
-  .custom-program-description {
-    font-size: 1rem; /* Consistent description font size */
-  }
-}
-
-@media (max-width: 576px) {
-  .custom-section-heading {
-    font-size: 1.8rem; /* Smaller heading size */
+  .custom-program-item {
+    margin-bottom: 30px;
   }
 
-  .custom-program-title {
-    font-size: 1.4rem; /* Consistent smaller title size */
-  }
-
-  .custom-program-description {
-    font-size: 1rem; /* Consistent description font size */
+  /* Memastikan lebar kartu tetap responsif pada layar kecil */
+  .custom-program-card {
+    max-width: 100%; /* Menyesuaikan lebar kartu pada layar kecil */
+    min-height: 280px; /* Tinggi minimum yang sedikit lebih kecil untuk perangkat mobile */
   }
 }
 
 /*---------------------------------------
   Material               
 -----------------------------------------*/
-/* Material wrapper with flex layout */
+/* Section material */
+.material {
+  background-color: #ffffff; /* White background */
+  padding: 60px 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+}
+
 .material-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px; /* Space between items */
+  gap: 30px;
   justify-content: center;
 }
 
+/* Each material item */
 .material-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 30%; /* Make each item take 1/3 of the width (3 per row) */
-  margin-bottom: 30px; /* Space between rows */
-  transition: transform 0.5s ease;
-  border: 2px solid #ddd; /* Border around each item */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  padding: 20px;
-  background-color: #fff; /* White background for items */
+  background-color: #f9f9f9; /* Soft white background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Show cursor to indicate interactivity */
 }
 
 /* Hover effect for material item */
 .material-item:hover {
-  transform: translateY(-5px); /* Lift the item on hover */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  transform: translateY(-15px); /* Slightly lift effect */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
-/* Material item layout */
+/* Material content */
 .material-content {
   display: flex;
-  flex-direction: column; /* Image and text stacked vertically */
   align-items: center;
-  justify-content: center;
-  gap: 10px; /* Space between image and text */
+  justify-content: space-between;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Image section */
+.material-image {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Circle image */
+  overflow: hidden;
+  position: relative;
 }
 
 .material-icon {
-  width: 100px; /* Set a fixed width for the image */
-  height: auto;
-  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text section */
+.material-text {
+  flex-grow: 1;
+  padding-left: 20px;
+  text-align: left;
 }
 
 .material-text h3 {
-  font-size: 1.2rem;
+  color: #000000; /* Black text */
+  font-size: 20px; /* Slightly larger font for modern look */
   font-weight: 600;
   margin: 0;
-  color: #333;
+  transition: color 0.3s ease; /* Transition effect for text */
 }
 
-/* Animations */
-.material-item {
-  opacity: 0;
-  animation: fadeInUp 1s forwards;
+/* Hover effect for text */
+.material-item:hover .material-text h3 {
+  color: #007bff; /* Change text color to blue on hover */
 }
 
-.material-item[data-aos="fade-up"] {
-  animation-delay: 0.3s; /* Add delay to each item */
+/* Title */
+.material .title {
+  color: #000000; /* Black for title text */
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.material .title h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 40px; /* Space below the title */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .material-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
 
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-
-/* Responsive Design for smaller screens */
-@media (max-width: 991px) {
   .material-item {
-    width: 45%; /* Adjust to 2 items per row on medium screens */
-  }
-}
-
-@media (max-width: 767px) {
-  .material-item {
-    width: 100%; /* Adjust to 1 item per row on small screens */
+    width: 90%;
+    margin-bottom: 20px;
   }
 
   .material-content {
-    flex-direction: column; /* Stack image and text vertically */
+    flex-direction: column;
     align-items: center;
-    text-align: center;
   }
 
-  .material-icon {
-    width: 80px; /* Smaller image size on mobile */
+  .material-image {
+    margin-bottom: 15px;
+  }
+
+  .material-text {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .title h2 {
+    font-size: 28px; /* Adjust title font size on smaller screens */
   }
 
   .material-text h3 {
-    font-size: 1rem; /* Smaller text on mobile */
+    font-size: 18px; /* Smaller text size for better readability */
   }
 }
 
 /*---------------------------------------
   Coach Sertifikat               
 -----------------------------------------*/
-/* General Styles for Call-to-Action Section */
+/* Call to Action Section */
 .call-to-action {
-  padding: 80px 20px; /* Increased padding for spacious layout */
   background: linear-gradient(
     135deg,
-    #0061f2,
-    #00c6ff
-  ); /* Modern gradient background */
-  border-radius: 12px; /* Softer rounded corners for elegance */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Larger, softer shadow for depth */
-  margin-top: 60px;
+    #0066cc,
+    #007bff
+  ); /* Gradient background */
+  color: #ffffff; /* White text */
+  padding: 100px 0;
+  font-family: "Poppins", sans-serif; /* Modern font */
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* Title styling */
+/* Content within CTA */
+.cta-content {
+  position: relative;
+  z-index: 1;
+}
+
 .cta-title {
-  font-size: 3rem; /* Larger title for impact */
-  font-weight: 700; /* Bold text for emphasis */
-  color: #fff; /* White color for readability */
-  text-transform: uppercase; /* Uppercase for modern feel */
-  letter-spacing: 1.5px; /* Increase spacing for added elegance */
-  margin-bottom: 30px;
+  font-size: 48px; /* Larger font size for a bold impression */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-transform: uppercase; /* All caps for emphasis */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
-/* Description styling */
+.cta-title:hover {
+  color: #f4f7fb; /* Change color on hover */
+}
+
 .cta-description {
-  font-size: 1.15rem; /* Slightly larger font for readability */
-  line-height: 1.8; /* More space between lines for better legibility */
-  color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Semi-transparent white for a softer look */
-  margin-bottom: 25px;
-  max-width: 900px; /* Max width to prevent text stretching */
+  font-size: 18px;
+  color: #f4f7fb; /* Light grayish text for description */
+  margin-bottom: 40px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.7;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
-/* Button Styling */
+.cta-description:hover {
+  opacity: 1; /* Full opacity on hover for emphasis */
+}
+
+/* Button styling */
 .cta-button {
-  padding: 18px 35px; /* Adequate padding for a clickable button */
-  background-color: #fff; /* White background to make it pop */
-  color: #0061f2; /* Matching blue text */
-  border: none; /* Remove default border */
-  border-radius: 30px; /* Rounded button edges */
-  font-size: 1.25rem; /* Larger text for the button */
-  font-weight: 600; /* Bold text */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: all 0.3s ease; /* Smooth transition for hover effect */
-  text-decoration: none; /* Remove underline */
+  background-color: #f4f7fb; /* Light background for button */
+  color: #007bff; /* Blue text color */
+  padding: 18px 36px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50px; /* Rounded corners for a modern look */
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  margin-top: 30px;
 }
 
-/* Button hover effect */
 .cta-button:hover {
-  background-color: #00c6ff; /* Light blue background on hover */
-  color: #fff; /* White text when hovered */
-  transform: translateY(-3px); /* Slight lift effect */
+  background-color: #007bff; /* Change background to blue on hover */
+  color: #ffffff; /* White text on hover */
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-/* Responsive Adjustments */
-@media (max-width: 991px) {
+/* Optional focus styling */
+.cta-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4); /* Add blue focus ring */
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
   .cta-title {
-    font-size: 2.5rem; /* Slightly smaller title for tablets */
+    font-size: 32px; /* Adjust font size for mobile */
   }
 
   .cta-description {
-    font-size: 1rem; /* Smaller font size for text on tablets */
+    font-size: 16px; /* Slightly smaller text for better readability */
   }
 
   .cta-button {
-    padding: 15px 30px; /* Adjust padding for medium screens */
-    font-size: 1.15rem; /* Slightly smaller button text */
+    padding: 15px 30px; /* Adjust button padding */
+    font-size: 18px; /* Adjust font size for button */
   }
 }
 
-@media (max-width: 767px) {
-  .call-to-action {
-    padding: 60px 15px; /* Reduced padding on small screens */
-  }
-
+@media (max-width: 576px) {
   .cta-title {
-    font-size: 2rem; /* Smaller title on mobile */
-    margin-bottom: 20px; /* Adjust margin for mobile */
+    font-size: 28px; /* Smaller font for mobile */
   }
 
   .cta-description {
-    font-size: 0.95rem; /* Adjust text size for mobile */
-    margin-bottom: 20px; /* Adjust space below text */
+    font-size: 14px; /* Adjust description text size */
   }
 
   .cta-button {
-    padding: 12px 25px; /* Adjust button padding for mobile */
-    font-size: 1rem; /* Smaller button text */
+    padding: 12px 25px; /* Smaller padding on mobile */
+    font-size: 16px; /* Adjust font size of button */
   }
 }
 
@@ -1058,36 +986,34 @@ strong {
   background: transparent;
   display: inline-block;
   font-size: 16px;
-  padding: 6px 20px;
-  font-weight: 700;
+  padding: 8px 24px;
+  font-weight: 600;
   color: #0061f2;
   transition: all 0.3s ease;
   margin: 5px;
   cursor: pointer;
+  border-radius: 50px; /* Rounded edges for buttons */
 }
 
 .portfolio-filter button.active {
   border-color: #0061f2;
-  color: #0061f2;
+  color: #fff;
+  background-color: #0061f2; /* Active button style */
 }
 
 .portfolio-filter button:hover {
-  background-color: #333;
-  color: #0061f2;
+  background-color: #0061f2;
+  color: #fff;
   border-color: #0061f2;
 }
 
 /* Portfolio Items */
-.portfolio-items-wrapper .mix {
-  padding: 5px;
-}
-
 .portfolio-block {
   position: relative;
   overflow: hidden;
   margin-top: 30px;
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1107,11 +1033,11 @@ strong {
 .portfolio-block:before {
   content: "";
   position: absolute;
-  top: 20px;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  background-color: rgba(255, 255, 255, 0.7);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3); /* Lighter overlay */
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   z-index: 1;
@@ -1140,14 +1066,17 @@ strong {
 }
 
 .portfolio-block .caption h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
   margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase; /* Modern typography */
+  pointer-events: none; /* Disable clicking on the title */
 }
 
 .portfolio-block .caption h4 a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -1158,10 +1087,10 @@ strong {
 
 .portfolio-block .caption .search-icon {
   background: #0061f2;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   display: inline-block;
-  font-size: 20px;
+  font-size: 22px;
   color: #fff;
   border-radius: 50%;
   margin-bottom: 20px;
@@ -1169,11 +1098,11 @@ strong {
 }
 
 .portfolio-block .caption .search-icon:hover {
-  background: #0061f2; /* Hover effect on icon */
+  background: #0033b3; /* Darker shade on hover */
 }
 
 .portfolio-block .caption .search-icon i {
-  line-height: 45px;
+  line-height: 50px;
 }
 
 /* Responsive Styles */
@@ -1185,8 +1114,8 @@ strong {
 
 @media (max-width: 992px) {
   .portfolio-block .caption h4 {
-    font-size: 14px;
-    color: #333;
+    font-size: 16px;
+    color: #fff;
   }
 
   .portfolio-filter button {
@@ -1207,7 +1136,7 @@ strong {
 
   .portfolio-block .caption h4 {
     font-size: 14px;
-    color: #333;
+    color: #fff;
   }
 
   .portfolio-items-wrapper .mix {
@@ -1217,6 +1146,14 @@ strong {
   .portfolio-block .caption {
     top: 50%;
     width: 90%;
+  }
+
+  .filtr-item {
+    width: 100% !important; /* Make items full-width on small screens */
+  }
+
+  .portfolio-block {
+    margin-bottom: 15px; /* Ensure spacing between items */
   }
 }
 
@@ -1232,7 +1169,7 @@ strong {
 
   .portfolio-block .caption h4 {
     font-size: 14px;
-    color: #333;
+    color: #fff;
   }
 
   .portfolio-items-wrapper .mix {
@@ -1250,40 +1187,39 @@ strong {
 /* Team Section Styling */
 .team {
   padding: 80px 0;
-  overflow: hidden;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fff;
-  width: 100%;
+  overflow: hidden;
 }
 
 .section-title {
   text-align: center;
   margin-bottom: 60px;
+  transition: transform 0.3s ease-out;
 }
 
 .section-title h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #222;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .section-title p {
-  font-size: 1.2rem;
-  color: #555;
-  max-width: 600px;
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 700px;
   margin: 0 auto;
 }
 
-/* Swiper Styles */
 .swiper-container {
   width: 100%;
   padding-bottom: 50px;
   position: relative;
-  overflow: hidden; /* Ensure no cards are cut off */
 }
 
 .swiper-slide {
@@ -1291,27 +1227,28 @@ strong {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  flex-shrink: 0; /* Prevent slides from shrinking */
+  flex-shrink: 0;
 }
 
 .team-member {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 15px;
   text-align: center;
-  padding: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 260px;
+  max-width: 280px;
   width: 100%;
   margin: 0 auto;
+  transform: scale(1);
 }
 
 .team-member:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .member-img {
@@ -1328,69 +1265,76 @@ strong {
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
 .team-member:hover .member-img img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .social {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   transition: opacity 0.4s ease;
   border-radius: 12px;
+  width: 100%;
+  height: 100%;
 }
 
 .team-member:hover .social {
   opacity: 1;
 }
 
-.social a {
+.social-icon {
   color: #fff;
-  font-size: 20px;
+  font-size: 22px;
   margin: 0 10px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.social a:hover {
+.social-icon:hover {
   transform: scale(1.2);
-  color: #4f46e5;
+  color: #007bff;
 }
 
 .member-info {
   text-align: center;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 .member-info h4 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #222;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .member-info span {
   display: block;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #666;
 }
 
 /* Swiper Pagination & Navigation */
 .swiper-pagination-bullet {
-  background: #444 !important;
+  background: #007bff !important;
+  transition: transform 0.3s ease;
+}
+
+.swiper-pagination-bullet:hover {
+  transform: scale(1.2);
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #222 !important;
+  color: #007bff !important;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -1403,31 +1347,30 @@ strong {
 }
 
 .swiper-button-next {
-  right: 15px;
+  right: 20px;
 }
 
 .swiper-button-prev {
-  left: 15px;
+  left: 20px;
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
-/* Media Queries to Adjust Button Sizes and Position */
+/* Media Queries */
 @media (max-width: 1024px) {
   .team {
     padding: 60px 0;
   }
   .team-member {
-    max-width: 260px;
+    max-width: 280px;
   }
   .swiper-button-next,
   .swiper-button-prev {
     width: 45px;
     height: 45px;
-    top: 50%;
   }
 }
 
@@ -1441,12 +1384,6 @@ strong {
   .team-member {
     max-width: 240px;
   }
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 50px;
-    height: 50px;
-    top: 50%;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1458,9 +1395,8 @@ strong {
   }
   .swiper-button-next,
   .swiper-button-prev {
-    width: 55px;
-    height: 55px;
-    top: 50%;
+    width: 45px;
+    height: 45px;
   }
 }
 
@@ -1491,7 +1427,7 @@ strong {
 }
 
 #contact-us .title span.color {
-  color: #0061f2; /* Modern orange for accent */
+  color: #0061f2; /* Modern accent color */
 }
 
 #contact-us .title p {
@@ -1502,9 +1438,14 @@ strong {
 .contact-info {
   background-color: #ffffff;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px; /* Same border-radius for uniformity */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for modern feel */
   margin-bottom: 30px;
+  transition: box-shadow 0.3s ease; /* Add smooth transition for hover effect */
+}
+
+.contact-info:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
 }
 
 .contact-info h3 {
@@ -1536,71 +1477,27 @@ strong {
   font-size: 1.1rem;
 }
 
-.contact-form .form-group {
-  margin-bottom: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #0061f2;
-  box-shadow: 0 0 5px rgba(255, 127, 80, 0.5);
-  outline: none;
-}
-
-.contact-form #cf-submit {
-  text-align: center;
-}
-
-.contact-form .btn-transparent {
-  background-color: #0061f2;
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  font-size: 1.2rem;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.contact-form .btn-transparent:hover {
-  background-color: #0061f2;
-}
-
 .google-map iframe {
   width: 100%;
-  height: 400px;
+  height: 100%;
   border: 0;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px; /* Same border-radius for consistency */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow to match contact info */
 }
 
 /* Responsive styling */
 @media (max-width: 992px) {
   .contact-info,
-  .contact-form {
+  .google-map {
     margin-bottom: 30px;
   }
 }
 
 @media (max-width: 768px) {
   .contact-info,
-  .contact-form {
+  .google-map {
     width: 100%;
     margin: 0;
-  }
-
-  .contact-info {
-    margin-bottom: 30px;
   }
 
   #contact-us .title h2 {
@@ -1614,11 +1511,15 @@ strong {
   .contact-details .con-info {
     font-size: 1rem;
   }
+
+  .google-map iframe {
+    height: 300px;
+  }
 }
 
 @media (max-width: 480px) {
   .contact-info,
-  .contact-form {
+  .google-map {
     padding: 20px;
     margin: 0 10px;
   }
@@ -1635,14 +1536,8 @@ strong {
     font-size: 0.9rem;
   }
 
-  .contact-form .form-group input,
-  .contact-form .form-group textarea {
-    font-size: 0.9rem;
-  }
-
-  .contact-form .btn-transparent {
-    font-size: 1rem;
-    padding: 10px 15px;
+  .google-map iframe {
+    height: 250px;
   }
 }
 
@@ -1698,116 +1593,79 @@ sponsor
 /*---------------------------------------
 Footer               
 -----------------------------------------*/
-/* Footer Background */
+/* General Footer Styling */
 #footer-section {
-  background-color: #2c3e50;
+  background-color: #f8f8f8; /* Light ivory background */
   padding: 40px 0;
-  color: #fff;
-  text-align: center;
-  position: relative;
+  font-family: "Arial", sans-serif;
+  color: #333333; /* Dark text for contrast */
 }
 
-/* Social Icon Style */
-.footer-social-icon {
+#footer-section .footer-social-icon ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
   margin-bottom: 30px;
 }
 
-.footer-social-icon ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+#footer-section .footer-social-icon ul li {
+  margin: 0 15px;
 }
 
-.footer-social-icon ul li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-.footer-social-icon ul li a {
-  color: #fff;
-  font-size: 2rem;
+#footer-section .footer-social-icon ul li a {
+  color: #333333;
+  font-size: 24px;
   transition: color 0.3s ease-in-out;
 }
 
-.footer-social-icon ul li a:hover {
-  color: #0061f2; /* Color on hover */
+#footer-section .footer-social-icon ul li a:hover {
+  color: #0061f2; /* Mint green on hover */
 }
 
-.footer-logo {
-  width: 150px;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease-in-out;
+/* Footer Logo Styling */
+#footer-section .footer-logo {
+  max-width: 150px;
+  margin-bottom: 15px;
 }
 
-.footer-logo:hover {
-  transform: scale(1.1);
+/* Footer Copyright Styling */
+#footer-section .footer-copyright {
+  text-align: center;
+  color: #444444; /* Slightly lighter text for readability */
 }
 
-/* Copyright */
-.footer-copyright p {
+#footer-section .footer-copyright p {
   font-size: 1rem;
-  color: #bbb;
-  line-height: 1.6;
+  color: #444444; /* Soft dark text */
 }
 
-.footer-copyright a {
-  color: #0061f2;
-  font-weight: bold;
+#footer-section .footer-copyright p a {
+  color: #333333; /* Light pink for the link */
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
 }
 
-.footer-copyright a:hover {
-  color: #0061f2;
+#footer-section .footer-copyright p a:hover {
+  color: #0061f2; /* Light mint hover effect */
 }
 
-/* Responsive styling */
-@media (max-width: 992px) {
-  .footer-logo {
-    width: 120px;
-  }
-
-  .footer-social-icon ul li a {
-    font-size: 1.5rem;
-  }
-}
-
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .footer-social-icon ul li {
-    margin: 0 8px;
+  #footer-section .footer-social-icon ul li {
+    margin: 0 10px;
   }
-
-  .footer-social-icon ul li a {
-    font-size: 1.3rem;
-  }
-
-  .footer-logo {
-    width: 100px;
-  }
-
-  .footer-copyright p {
+  #footer-section .footer-copyright p {
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  #footer-section {
-    padding: 20px 0;
+  #footer-section .footer-logo {
+    max-width: 120px;
   }
-
-  .footer-logo {
-    width: 80px;
-    margin-bottom: 10px;
-  }
-
-  .footer-social-icon ul li {
-    margin: 0 5px;
-  }
-
-  .footer-social-icon ul li a {
-    font-size: 1.2rem;
-  }
-
-  .footer-copyright p {
+  #footer-section .footer-copyright p {
     font-size: 0.8rem;
   }
 }

@@ -17,8 +17,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/bootstrap-icons.css" rel="stylesheet" />
@@ -114,6 +113,8 @@
             </div>
         </nav>
 
+
+        <!-- about -->
         <section class="about-us" id="about-us">
             <div class="container">
                 <div class="about-content">
@@ -140,7 +141,7 @@
                 <div class="row justify-content-center">
                     <!-- Title -->
                     <div class="col-lg-12 text-center wow fadeInUp" data-wow-duration="500ms">
-                        <h2 class="text-center mb-5 mt-3">Our Goals</h2>
+                        <h2 class="text-center mb-5 mt-5">Our Goals</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -181,11 +182,12 @@
 
 
 
+
         <!-- Programs -->
         <section id="programs" class="custom-programs section">
             <!-- Section Title -->
             <div class="container custom-section-title" data-aos="fade-up">
-                <h2 class="custom-section-heading">Programs</h2>
+                <h2 class="custom-section-heading mb-5 mt-5">Programs</h2>
                 <p class="custom-section-description">Our expertly designed programs to suit every level.</p>
             </div>
             <!-- End Section Title -->
@@ -213,34 +215,6 @@
         </section>
 
 
-
-        <!-- Material -->
-        <section id="material" class="material section">
-            <div class="container">
-                <div class="col-lg-12">
-                    <div class="title text-center wow fadeInUp" data-wow-duration="500ms">
-                        <h2 class="title mb-5 mt-3">MATERIAL FOR CLASSES</h2>
-                    </div>
-                </div>
-                <div class="material-wrapper">
-                    <!-- Loop through materials from the database -->
-                    <?php foreach ($materialData as $material): ?>
-                    <div class="material-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="material-content">
-                            <!-- Display image of the material -->
-                            <img src="<?= base_url($material['image_path']) ?>" alt="<?= esc($material['name']) ?>"
-                                class="material-icon" />
-                            <div class="material-text">
-                                <h3><?= esc($material['name']) ?></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </section>
-
-
         <!-- Coach Seritikat -->
         <section id="call-to-action" class="call-to-action section accent-background">
             <div class="container">
@@ -252,11 +226,14 @@
                             <p class="cta-description">
                                 <?= esc($certificationData['description']); ?>
                             </p>
+                            <!-- Optional button for action -->
+                            <a href="#team" class="cta-button">Get Started</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
 
 
@@ -267,10 +244,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- Section Title -->
-                        <div class="col-lg-12">
-                            <div class="title text-center wow fadeInUp" data-wow-duration="500ms">
-                                <h2 class="title mb-5 mt-5">Portfolio</h2>
-                            </div>
+                        <div class="title text-center wow fadeInUp" data-wow-duration="500ms">
+                            <h2 class="title mb-5 mt-5">Portfolio</h2>
                         </div>
                         <!-- /Section Title -->
                     </div>
@@ -291,7 +266,8 @@
                                     <i class="bi bi-search"></i>
                                 </a>
                                 <!-- Portfolio Title -->
-                                <h4><a href=""><?= esc($portfolio->title); ?></a></h4>
+                                <h4><?= esc($portfolio->title); ?></h4>
+                                <!-- Removed the <a> tag to make the text non-clickable -->
                                 <!-- Portfolio Description -->
                                 <p class="mb-0"><?= esc($portfolio->description); ?></p>
                             </div>
@@ -327,9 +303,12 @@
                                     <img src="<?= base_url('assets/imgs/coach/' . $coach['image']); ?>"
                                         class="img-fluid" alt="<?= esc($coach['name']); ?>" />
                                     <div class="social">
-                                        <a href="<?= esc($coach['twitter']); ?>"><i class="bi bi-twitter"></i></a>
-                                        <a href="<?= esc($coach['facebook']); ?>"><i class="bi bi-facebook"></i></a>
-                                        <a href="<?= esc($coach['instagram']); ?>"><i class="bi bi-instagram"></i></a>
+                                        <a href="<?= esc($coach['twitter']); ?>" class="social-icon"><i
+                                                class="bi bi-twitter"></i></a>
+                                        <a href="<?= esc($coach['facebook']); ?>" class="social-icon"><i
+                                                class="bi bi-facebook"></i></a>
+                                        <a href="<?= esc($coach['instagram']); ?>" class="social-icon"><i
+                                                class="bi bi-instagram"></i></a>
                                     </div>
                                 </div>
                                 <div class="member-info">
@@ -345,11 +324,10 @@
 
                     <!-- Swiper Pagination and Navigation buttons -->
                     <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
+
 
         <!-- Contact -->
         <section id="contact-us" class="contact-us section-bg">
@@ -357,7 +335,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="title text-center wow fadeIn" data-wow-duration="500ms">
-                            <h2 class="title mb-5">
+                            <h2 class="title mb-5 mt-3">
                                 Get In <span class="color">Touch</span>
                             </h2>
                         </div>
@@ -371,43 +349,41 @@
                         </p>
                         <div class="contact-details">
                             <div class="con-info clearfix">
-                                <!-- Using Bootstrap Icon for Location -->
                                 <i class="bi bi-geo-alt"></i>
                                 <span>Address:
-                                    <?= !empty($contactData['contact_address']) ? esc($contactData['contact_address']) : 'Address not available'; ?></span>
+                                    <?= !empty($contactData['contact_address']) ? esc($contactData['contact_address']) : 'Address not available'; ?>
+                                </span>
                             </div>
 
                             <div class="con-info clearfix">
-                                <!-- Using Bootstrap Icon for Phone -->
                                 <i class="bi bi-phone"></i>
                                 <span>Phone:
-                                    <?= !empty($contactData['contact_phone']) ? esc($contactData['contact_phone']) : 'Phone not available'; ?></span>
+                                    <?= !empty($contactData['contact_phone']) ? esc($contactData['contact_phone']) : 'Phone not available'; ?>
+                                </span>
                             </div>
 
                             <div class="con-info clearfix">
-                                <!-- Using Bootstrap Icon for Email -->
                                 <i class="bi bi-envelope"></i>
                                 <span>Email:
-                                    <?= !empty($contactData['contact_email']) ? esc($contactData['contact_email']) : 'Email not available'; ?></span>
+                                    <?= !empty($contactData['contact_email']) ? esc($contactData['contact_email']) : 'Email not available'; ?>
+                                </span>
                             </div>
                         </div>
                     </div>
 
-
-                    <!-- Contact Form -->
-                    <div class="google-map mt-5">
+                    <!-- Google Map moved to the right -->
+                    <div class="google-map col-lg-6 mt-5 mt-lg-0 wow fadeInUp" data-wow-duration="500ms">
                         <iframe
                             src="<?= !empty($contactData['contact_map_url']) ? esc($contactData['contact_map_url']) : ''; ?>"
                             width="100%" height="100%" style="border: 0; border-radius: 15px" allowfullscreen=""
                             loading="lazy"></iframe>
                     </div>
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
 
-            <!-- Google Map -->
+                </div>
+            </div>
         </section>
+
+
 
 
     </main>
@@ -428,7 +404,7 @@
 
 
     <!-- Footer -->
-    <footer id="footer-section" class="bg-one">
+    <footer id="footer-section" class="bg-footer">
         <div class="container">
             <div class="row wow fadeInUp" data-wow-duration="500ms">
                 <div class="col-lg-12">
@@ -475,6 +451,7 @@
             </div>
         </div>
     </footer>
+
 
 
     <!-- JAVASCRIPT FILES -->

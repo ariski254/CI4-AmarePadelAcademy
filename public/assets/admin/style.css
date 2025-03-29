@@ -1,68 +1,90 @@
+/* General Body Styling */
 body {
   display: flex;
-  background-color: #f8f9fa;
+  background-color: #f4f7fa;
   min-height: 100vh;
   margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #333;
 }
+
 .sidebar {
-  width: 260px;
-  background: #1f2937;
-  color: white;
+  width: 250px;
+  background: #2d3748;
+  color: #fff;
   min-height: 100vh;
   padding: 20px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: fixed;
   z-index: 1000;
   height: 100vh;
   overflow-y: auto;
+  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
 }
+
 .sidebar a {
-  color: white;
+  color: #fff;
   text-decoration: none;
   display: flex;
   align-items: center;
   padding: 12px;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
+
 .sidebar a:hover,
 .sidebar .active {
-  background: #374151;
+  background: #4a5568;
 }
+
 .sidebar-collapsed {
   transform: translateX(-100%);
 }
+
 .content {
   flex: 1;
   padding: 30px;
-  margin-left: 260px;
+  margin-left: 250px;
   transition: margin-left 0.3s ease;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
 }
+
 .card {
   border: none;
-  background: #eef3f7;
+  background: #f7fafc;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
 }
 
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  background: #fff;
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 8px;
 }
+
 .notification {
   position: relative;
 }
+
 .notification .badge {
   position: absolute;
   top: 5px;
   right: 5px;
   font-size: 12px;
-  background: red;
+  background: #e53e3e;
   color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
 }
+
 .navbar-toggler {
   display: none;
 }
@@ -72,17 +94,21 @@ body {
   .sidebar {
     transform: translateX(-100%);
   }
+
   .content {
     margin-left: 0;
     transition: margin-left 0.3s ease;
   }
+
   .navbar-toggler {
     display: block;
   }
+
   /* Saat sidebar terbuka, konten bergeser */
   .content.sidebar-open {
-    margin-left: 260px;
+    margin-left: 250px;
   }
+
   .sidebar.show {
     transform: translateX(0);
   }
@@ -91,30 +117,68 @@ body {
 /* Dropdown */
 .dropdown-menu {
   display: none;
+  position: absolute;
+  top: 100%; /* Dropdown akan muncul tepat di bawah elemen pemicu */
+  right: 0; /* Dropdown muncul di sebelah kiri elemen pemicu */
+  background: #f7fafc;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  min-width: 100%; /* Menyesuaikan dengan lebar elemen pemicu */
+  z-index: 999; /* Pastikan dropdown berada di atas elemen lainnya */
+  padding: 10px;
 }
 
-.dropdown:hover .dropdown-menu {
+/* Menampilkan dropdown saat hover atau fokus */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
   display: block;
 }
 
-/* About*/
-/* Base Styles */
+/* Styling tambahan untuk memastikan dropdown tetap berada di dalam kontainer */
+.dropdown {
+  position: relative;
+}
+
+/* Responsif untuk perangkat dengan lebar layar di bawah 768px */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    min-width: 200px; /* Menyesuaikan lebar dropdown pada perangkat kecil */
+    width: auto; /* Dropdown menyesuaikan lebar dengan kontennya */
+    right: auto; /* Atur posisi dropdown untuk menyesuaikan dengan elemen pemicu */
+    left: 0; /* Dropdown akan muncul dari sisi kiri elemen pemicu */
+  }
+}
+
+/* Responsif untuk perangkat dengan lebar layar lebih kecil (mobile view) */
+@media (max-width: 576px) {
+  .dropdown-menu {
+    min-width: 100%; /* Dropdown akan memiliki lebar 100% pada perangkat dengan lebar sangat kecil */
+    left: 0; /* Dropdown akan muncul dari kiri */
+  }
+}
+
+/* About Us - Modern Styles */
 .about-us {
-  max-width: 960px; /* Increase the form width for more space */
-  margin: 30px auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  max-width: 960px; /* Limit the max-width for larger screens */
+  margin: 40px auto; /* Adds spacing around the section */
+  padding: 40px;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #f0f4f8
+  ); /* Soft gradient background */
+  border-radius: 16px; /* Slightly more subtle rounded corners */
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.15); /* Larger, softer shadow for a more elegant look */
+  font-family: "Inter", sans-serif; /* Modern sans-serif font */
+  color: #333; /* Darker text for better readability */
+  transition: all 0.4s ease-in-out; /* Smooth transition effects */
 }
 
 .about-us-label {
-  font-weight: bold;
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 8px;
+  font-weight: 600; /* Slightly bolder font-weight for a modern feel */
+  font-size: 18px; /* Larger font size for readability */
+  color: #555; /* A bit darker for better contrast */
+  margin-bottom: 10px;
   display: block;
 }
 
@@ -122,22 +186,25 @@ body {
 .about-us-textarea,
 .about-us-input-file {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 20px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px; /* Space between fields */
+  border: 2px solid #e0e4e8; /* Softer border with light gray */
+  border-radius: 12px; /* Softer, modern rounded corners */
   font-size: 16px;
   color: #333;
-  background-color: #fafafa;
+  background-color: #f7f9fc; /* Light background for input fields */
   box-sizing: border-box;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .about-us-input:focus,
 .about-us-textarea:focus,
 .about-us-input-file:focus {
-  border-color: #007bff;
+  border-color: #7f56d9; /* Smooth, elegant purple */
+  box-shadow: 0 0 12px rgba(127, 86, 217, 0.3); /* Soft purple glow */
   outline: none;
+  background-color: #ffffff; /* Lighter background on focus */
 }
 
 .about-us-textarea {
@@ -147,29 +214,35 @@ body {
 
 .about-us-submit {
   width: 100%;
-  padding: 15px;
-  background-color: #007bff;
+  padding: 18px;
+  background-color: #7f56d9; /* Vibrant purple for a modern touch */
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px; /* Rounded corners */
   font-size: 18px;
+  font-weight: 600; /* Stronger weight for a button */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .about-us-submit:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px); /* Slight lift on hover */
+  background-color: #6b47c1; /* Darker shade for hover effect */
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Larger shadow for the hover effect */
+  opacity: 0.9; /* Subtle transparency */
 }
 
 .about-us-submit:active {
-  transform: translateY(0); /* Reset the hover effect on click */
+  transform: translateY(1px); /* Minimal movement when clicked */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
+  opacity: 1; /* Full opacity on click */
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .about-us {
-    padding: 25px;
+    padding: 32px;
     max-width: 90%;
   }
 
@@ -178,13 +251,29 @@ body {
   .about-us-input-file,
   .about-us-submit {
     font-size: 16px;
+    padding: 14px;
   }
 }
 
 @media (max-width: 768px) {
   .about-us {
-    padding: 20px;
+    padding: 28px;
     max-width: 95%;
+  }
+
+  .about-us-input,
+  .about-us-textarea,
+  .about-us-input-file,
+  .about-us-submit {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us {
+    padding: 20px;
+    max-width: 100%;
   }
 
   .about-us-input,
@@ -194,52 +283,43 @@ body {
     font-size: 14px;
     padding: 12px;
   }
-}
-
-@media (max-width: 480px) {
-  .about-us {
-    padding: 15px;
-    max-width: 100%;
-  }
-
-  .about-us-input,
-  .about-us-textarea,
-  .about-us-input-file,
-  .about-us-submit {
-    font-size: 14px;
-    padding: 10px;
-  }
 
   .about-us-label {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
-/* add-admin */
-/* Base Styles */
+/* Add Admin - Modern Styles */
 .add-admin {
-  max-width: 1200px; /* Increased the width for a more spacious layout */
-  margin: 30px auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  max-width: 1200px; /* Spacious layout for larger screens */
+  margin: 40px auto; /* Added top margin for spacing */
+  padding: 40px;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #f0f4f8
+  ); /* Soft gradient background */
+  border-radius: 16px; /* Subtle rounded corners */
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.15); /* Larger, softer shadow */
+  font-family: "Inter", sans-serif; /* Modern font */
+  color: #333; /* Darker text color for readability */
+  transition: all 0.4s ease-in-out; /* Smooth transition effects */
 }
 
 .add-admin-title {
-  font-size: 32px; /* Larger font size for title */
-  font-weight: bold;
+  font-size: 32px; /* Larger font size for the title */
+  font-weight: 600; /* Slightly bolder weight for the title */
   color: #333;
-  margin-bottom: 30px; /* Increased margin for better spacing */
+  margin-bottom: 30px;
+  text-align: center; /* Center-align the title */
 }
 
 .add-admin-alert {
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 18px;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
 }
 
 .add-admin-alert.success {
@@ -258,52 +338,63 @@ body {
 
 .add-admin-form .form-label {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500; /* Slightly bolder label for emphasis */
   color: #444;
+  margin-bottom: 8px; /* Space between label and input */
 }
 
 .add-admin-form .form-control {
   width: 100%;
-  padding: 14px;
+  padding: 16px;
   margin-bottom: 20px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  border: 2px solid #e0e4e8; /* Softer border */
+  border-radius: 12px; /* Rounded corners for inputs */
   font-size: 16px;
   color: #333;
-  background-color: #fafafa;
-  transition: border-color 0.3s ease-in-out;
+  background-color: #f7f9fc; /* Light background for input fields */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .add-admin-form .form-control:focus {
-  border-color: #007bff;
+  border-color: #7f56d9; /* Elegant purple on focus */
+  box-shadow: 0 0 12px rgba(127, 86, 217, 0.3); /* Soft purple glow */
   outline: none;
+  background-color: #ffffff; /* Lighter background on focus */
 }
 
 .add-admin-btn {
   width: 100%;
-  padding: 15px;
-  background-color: #007bff;
+  padding: 18px;
+  background-color: #7f56d9; /* Vibrant purple for the button */
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px; /* Rounded corners for the button */
   font-size: 18px;
+  font-weight: 600; /* Stronger weight for the button */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .add-admin-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #6b47c1; /* Darker shade of purple on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Larger shadow on hover */
+  opacity: 0.9; /* Slight transparency effect */
 }
 
 .add-admin-btn:active {
-  transform: translateY(0);
+  transform: translateY(1px); /* Minimal movement when clicked */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
+  opacity: 1; /* Full opacity when clicked */
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .add-admin {
-    padding: 25px;
+    padding: 32px;
     max-width: 90%;
   }
 
@@ -319,7 +410,7 @@ body {
 
 @media (max-width: 768px) {
   .add-admin {
-    padding: 20px;
+    padding: 28px;
     max-width: 95%;
   }
 
@@ -335,7 +426,7 @@ body {
 
 @media (max-width: 480px) {
   .add-admin {
-    padding: 15px;
+    padding: 20px;
     max-width: 100%;
   }
 
@@ -349,29 +440,47 @@ body {
   }
 }
 
-/* Certificate */
 /* Base Styles */
 .certification {
   max-width: 1000px;
-  margin: 30px auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  margin: 40px auto; /* Center the form with top spacing */
+  padding: 40px;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #f1f5f9
+  ); /* Subtle gradient for modern feel */
+  border-radius: 16px; /* Rounded corners for soft look */
+  box-shadow: 0 12px 60px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+  font-family: "Poppins", sans-serif; /* Clean, modern font */
+  color: #444; /* Softer text color */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.certification-title {
+  font-size: 32px; /* Larger title for emphasis */
+  font-weight: 600;
+  color: #333; /* Darker text for the title */
+  margin-bottom: 30px;
+  text-align: center; /* Center align the title */
 }
 
 .certification-alert {
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 18px;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
 }
 
 .certification-alert.success {
   background-color: #d4edda;
   color: #155724;
+}
+
+.certification-alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 .certification-form {
@@ -384,165 +493,210 @@ body {
 
 .certification-form .form-label {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600; /* Slightly bolder label */
   color: #444;
-  margin-bottom: 8px;
+  margin-bottom: 8px; /* Space between label and input */
 }
 
 .certification-form .form-input {
   width: 100%;
-  padding: 14px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 16px;
+  border: 2px solid #e1e1e1; /* Softer border for modern look */
+  border-radius: 12px; /* More rounded corners for inputs */
   font-size: 16px;
   color: #333;
-  background-color: #fafafa;
-  transition: border-color 0.3s ease-in-out;
+  background-color: #ffffff; /* Light grey background for input fields */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .certification-form .form-input:focus {
-  border-color: #007bff;
+  border-color: #6c63ff; /* Purple focus border */
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.3); /* Soft purple glow */
   outline: none;
+  background-color: #ffffff; /* Lighter background on focus */
+}
+
+/* Specific Styling for the Description (textarea) */
+.certification-form .form-input#description {
+  height: 250px; /* Increased height for description input */
+  resize: vertical; /* Allow the user to resize vertically if they wish */
 }
 
 .certification-form .form-button {
   width: 100%;
-  padding: 15px;
-  background-color: #007bff;
+  padding: 18px;
+  background-color: #6c63ff; /* Purple background for the button */
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px; /* Rounded corners for button */
   font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .certification-form .form-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #5a4de8; /* Darker purple on hover */
+  transform: translateY(-6px); /* Lift effect on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
 }
 
 .certification-form .form-button:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Reset the lift effect on click */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Softer shadow on click */
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .certification {
-    padding: 25px;
+    padding: 30px;
     max-width: 90%;
   }
 
-  .certification-alert {
-    font-size: 14px;
+  .certification-title {
+    font-size: 28px;
   }
 
   .certification-form .form-input {
-    font-size: 14px;
-    padding: 12px;
+    font-size: 16px;
+    padding: 14px;
   }
 
   .certification-form .form-button {
     font-size: 16px;
-    padding: 14px;
+    padding: 16px;
+  }
+
+  /* Adjust description height for tablets */
+  .certification-form .form-input#description {
+    height: 220px; /* Slightly smaller height for tablets */
   }
 }
 
 @media (max-width: 768px) {
   .certification {
-    padding: 20px;
+    padding: 24px;
     max-width: 95%;
   }
 
-  .certification-alert {
-    font-size: 14px;
+  .certification-title {
+    font-size: 24px;
   }
 
   .certification-form .form-input {
     font-size: 14px;
-    padding: 12px;
+    padding: 14px;
   }
 
   .certification-form .form-button {
     font-size: 14px;
-    padding: 12px;
+    padding: 14px;
+  }
+
+  /* Adjust description height for mobile */
+  .certification-form .form-input#description {
+    height: 180px; /* Smaller height on mobile */
   }
 }
 
 @media (max-width: 480px) {
   .certification {
-    padding: 15px;
+    padding: 20px;
     max-width: 100%;
   }
 
-  .certification-alert {
-    font-size: 12px;
+  .certification-title {
+    font-size: 18px;
   }
 
   .certification-form .form-input {
     font-size: 14px;
-    padding: 10px;
+    padding: 12px;
   }
 
   .certification-form .form-button {
     font-size: 14px;
-    padding: 12px;
+    padding: 14px;
+  }
+
+  /* Further adjust description size on very small screens */
+  .certification-form .form-input#description {
+    height: 150px;
   }
 }
 
-/* coach */
 /* Base Styles */
 .coach {
   max-width: 1200px;
   margin: 30px auto;
   padding: 30px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  background-color: #ffffff; /* Clean white background for clarity */
+  border-radius: 16px; /* More rounded corners for modern look */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Softer, deeper shadow */
+  font-family: "Poppins", sans-serif; /* Clean modern font */
+  color: #444; /* Softer text color */
+  transition: all 0.3s ease-in-out; /* Smooth transitions for hover effects */
 }
 
 .coach-alert {
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 18px;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
+}
+
+.coach-alert.success {
   background-color: #d4edda;
   color: #155724;
 }
 
+.coach-alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
 .coach-add-btn {
   font-size: 16px;
-  padding: 10px 20px;
-  background-color: #007bff;
+  padding: 12px 24px;
+  background-color: #6c63ff; /* Modern purple background */
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px; /* Rounded corners for a cleaner look */
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
 .coach-add-btn:hover {
-  background-color: #0056b3;
+  background-color: #5a4de8; /* Darker purple on hover */
+  transform: translateY(-4px); /* Slight lift effect */
+}
+
+.coach-add-btn:active {
+  transform: translateY(0); /* Reset lift effect on click */
 }
 
 .coach-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20px;
 }
 
 .coach-table th,
 .coach-table td {
-  padding: 15px;
+  padding: 18px;
   text-align: left;
   font-size: 16px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e1e1e1; /* Soft border for table rows */
 }
 
 .coach-table th {
   background-color: #f8f9fa;
   font-weight: bold;
+  color: #333;
 }
 
 .coach-table tr:hover {
@@ -551,25 +705,25 @@ body {
 
 .coach-image img {
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 12px; /* Added space for better alignment */
 }
 
 .social-icon {
   font-size: 18px;
-  margin-right: 10px;
+  margin-right: 12px;
   color: #333;
   transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: #007bff;
+  color: #6c63ff; /* Purple color on hover */
 }
 
 .coach-table .btn {
   font-size: 14px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin: 2px;
+  padding: 6px 12px;
+  border-radius: 8px; /* Rounded corners for buttons */
+  margin: 4px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -592,7 +746,7 @@ body {
 }
 
 .coach-table .btn:active {
-  transform: translateY(2px);
+  transform: translateY(2px); /* Slight click effect */
 }
 
 /* Responsive Design */
@@ -605,12 +759,12 @@ body {
   .coach-table th,
   .coach-table td {
     font-size: 14px;
-    padding: 12px;
+    padding: 14px;
   }
 
   .coach-add-btn {
     font-size: 14px;
-    padding: 8px 18px;
+    padding: 10px 22px;
   }
 }
 
@@ -623,12 +777,12 @@ body {
   .coach-table th,
   .coach-table td {
     font-size: 12px;
-    padding: 10px;
+    padding: 12px;
   }
 
   .coach-add-btn {
     font-size: 14px;
-    padding: 8px 16px;
+    padding: 10px 20px;
   }
 }
 
@@ -641,12 +795,12 @@ body {
   .coach-table th,
   .coach-table td {
     font-size: 12px;
-    padding: 8px;
+    padding: 10px;
   }
 
   .coach-add-btn {
     font-size: 12px;
-    padding: 6px 14px;
+    padding: 8px 16px;
   }
 
   .social-icon {
@@ -654,24 +808,25 @@ body {
   }
 }
 
-/* contact */
 /* Base Styles */
 .contact {
-  max-width: 1200px; /* Increased max-width for a wider layout */
+  max-width: 1200px; /* Ensures a spacious layout for larger screens */
   margin: 30px auto;
   padding: 30px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  background-color: #ffffff; /* Clean white background for clarity */
+  border-radius: 16px; /* Rounded corners for a modern look */
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+  font-family: "Poppins", sans-serif; /* Consistent modern font family */
+  color: #444; /* Soft text color */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
 
 .alert {
-  padding: 15px;
+  padding: 18px;
   margin-bottom: 20px;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
 }
 
 .alert-success {
@@ -695,46 +850,51 @@ body {
 
 .contact-form .form-label {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600; /* Slightly bolder label */
   color: #444;
   margin-bottom: 8px;
 }
 
 .contact-form .form-input {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 16px;
+  border: 2px solid #e1e1e1; /* Soft border for input fields */
+  border-radius: 12px; /* More rounded corners */
   font-size: 16px;
   color: #333;
-  background-color: #fafafa;
-  transition: border-color 0.3s ease-in-out;
+  background-color: #ffffff; /* Light grey background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form .form-input:focus {
-  border-color: #007bff;
+  border-color: #6c63ff; /* Purple border on focus */
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.4); /* Soft focus effect */
   outline: none;
 }
 
 .contact-form .form-button {
   width: 100%;
-  padding: 15px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 18px;
+  background-color: #6c63ff; /* Purple background for button */
+  color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px; /* Rounded corners */
   font-size: 18px;
+  font-weight: 600; /* Slightly bolder text */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .contact-form .form-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #5a4de8; /* Darker purple on hover */
+  transform: translateY(-4px); /* Lift effect on hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Larger shadow on hover */
 }
 
 .contact-form .form-button:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Reset lift effect on click */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Softer active shadow */
 }
 
 /* Responsive Design */
@@ -757,12 +917,12 @@ body {
 
   .contact-form .form-input {
     font-size: 14px;
-    padding: 12px;
+    padding: 14px;
   }
 
   .contact-form .form-button {
     font-size: 16px;
-    padding: 14px;
+    padding: 16px;
   }
 }
 
@@ -778,7 +938,7 @@ body {
 
   .contact-form .form-input {
     font-size: 14px;
-    padding: 12px;
+    padding: 14px;
   }
 
   .contact-form .form-button {
@@ -799,39 +959,41 @@ body {
 
   .contact-form .form-input {
     font-size: 14px;
-    padding: 10px;
+    padding: 12px;
   }
 
   .contact-form .form-button {
     font-size: 14px;
-    padding: 12px;
+    padding: 14px;
   }
 }
 
-/* create-coache */
 /* General Styles */
 .create-coach {
-  max-width: 1200px; /* Increased max-width for a wider layout */
+  max-width: 1200px; /* Wider layout for spacious design */
   margin: 40px auto;
   padding: 40px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  background-color: #ffffff; /* Clean white background for clarity */
+  border-radius: 16px; /* Rounded corners for modern design */
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+  font-family: "Poppins", sans-serif; /* Consistent modern font family */
+  color: #444; /* Soft text color */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
 
 h2 {
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 600; /* Slightly bolder font for headings */
   color: #333;
+  margin-bottom: 25px; /* Space between the heading and content */
 }
 
 .alert {
-  padding: 15px;
+  padding: 18px;
   margin-bottom: 20px;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
 }
 
 .alert-danger {
@@ -850,45 +1012,50 @@ h2 {
 
 .form-input {
   width: 100%;
-  padding: 15px; /* Increased padding for a more spacious feel */
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 16px; /* Spacious padding for inputs */
+  border: 2px solid #ddd; /* Light border color for inputs */
+  border-radius: 12px; /* Rounded corners for input fields */
   font-size: 16px;
   color: #333;
-  background-color: #fafafa;
-  transition: border-color 0.3s ease-in-out;
+  background-color: #fafafa; /* Light grey background for inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-input:focus {
-  border-color: #007bff;
+  border-color: #6c63ff; /* Purple border color when focused */
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.3); /* Subtle focus shadow */
   outline: none;
 }
 
 button[type="submit"] {
   width: 100%;
   padding: 18px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #6c63ff; /* Purple background for submit button */
+  color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px; /* Rounded button corners */
   font-size: 20px;
+  font-weight: 600; /* Bolder font for buttons */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #5a4de8; /* Darker purple on hover */
+  transform: translateY(-4px); /* Lift effect on hover */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
 
 button[type="submit"]:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Reset lift effect on click */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Active shadow effect */
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
   .create-coach {
-    max-width: 90%; /* Slightly narrower on large screens but still wide */
+    max-width: 90%;
     padding: 35px;
   }
 
@@ -970,31 +1137,32 @@ button[type="submit"]:active {
   }
 }
 
-/* create-portfolio */
 /* General Styles */
 .create-portfolio-form {
   max-width: 1200px; /* Increased max-width for a wider layout */
   margin: 40px auto;
   padding: 40px;
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
-  color: #333;
+  border-radius: 16px; /* Slightly rounded corners for a more modern feel */
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); /* Deeper shadow for a clean design */
+  font-family: "Poppins", sans-serif; /* Consistent modern font */
+  color: #444; /* Slightly darker text for readability */
+  transition: all 0.3s ease-in-out; /* Smooth transition effect */
 }
 
 .create-portfolio-title {
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 600; /* Slightly bolder font for titles */
   color: #333;
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Margin for spacing */
 }
 
 .create-portfolio-alert {
-  padding: 15px;
+  padding: 18px;
   margin-bottom: 20px;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
 }
 
 .create-portfolio-alert ul {
@@ -1014,15 +1182,15 @@ button[type="submit"]:active {
 .create-portfolio-label {
   display: block;
   margin-bottom: 8px;
-  font-weight: bold;
+  font-weight: 600; /* Bolder labels for better emphasis */
   font-size: 16px;
 }
 
 .create-portfolio-input {
   width: 100%;
-  padding: 15px;
+  padding: 16px; /* Slightly increased padding for a spacious feel */
   border: 2px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px; /* Rounded corners for modern inputs */
   font-size: 16px;
   color: #333;
   background-color: #fafafa;
@@ -1030,29 +1198,33 @@ button[type="submit"]:active {
 }
 
 .create-portfolio-input:focus {
-  border-color: #007bff;
+  border-color: #6c63ff; /* Consistent purple accent */
   outline: none;
 }
 
 .create-portfolio-submit-btn {
   width: 100%;
   padding: 18px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #6c63ff; /* Purple submit button */
+  color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px; /* Rounded button corners */
   font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .create-portfolio-submit-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #5a4de8; /* Darker purple on hover */
+  transform: translateY(-4px); /* Slight lift effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
 
 .create-portfolio-submit-btn:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Reset active state */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .create-portfolio-back-btn {
@@ -1065,16 +1237,17 @@ button[type="submit"]:active {
   border-radius: 8px;
   text-align: center;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .create-portfolio-back-btn:hover {
-  background-color: #5a6268;
+  background-color: #5a6268; /* Darker grey on hover */
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
   .create-portfolio-form {
-    max-width: 90%; /* Slightly narrower on large screens */
+    max-width: 90%;
     padding: 35px;
   }
 
@@ -1156,31 +1329,32 @@ button[type="submit"]:active {
   }
 }
 
-/* create-sponsor */
 /* General Styles */
 .create-sponsor-form {
-  max-width: 1200px; /* Increase the width for a more spacious layout */
+  max-width: 1200px; /* Increased max-width for a more spacious layout */
   margin: 40px auto;
   padding: 40px;
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
+  border-radius: 16px; /* Slightly rounded corners for a modern feel */
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+  font-family: "Poppins", sans-serif; /* Use a clean, modern font */
   color: #333;
+  transition: all 0.3s ease-in-out; /* Smooth transition for interactivity */
 }
 
 .create-sponsor-title {
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 600; /* Slightly bolder for better emphasis */
   color: #333;
   margin-bottom: 30px;
 }
 
 .create-sponsor-alert {
-  padding: 15px;
+  padding: 18px;
   margin-bottom: 20px;
   border-radius: 8px;
   font-size: 16px;
+  text-align: center;
 }
 
 .create-sponsor-alert ul {
@@ -1200,15 +1374,15 @@ button[type="submit"]:active {
 .create-sponsor-label {
   display: block;
   margin-bottom: 8px;
-  font-weight: bold;
+  font-weight: 600; /* Bolder labels */
   font-size: 16px;
 }
 
 .create-sponsor-input {
   width: 100%;
-  padding: 15px;
+  padding: 16px; /* More spacious padding */
   border: 2px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px; /* Rounded corners for inputs */
   font-size: 16px;
   color: #333;
   background-color: #fafafa;
@@ -1216,7 +1390,7 @@ button[type="submit"]:active {
 }
 
 .create-sponsor-input:focus {
-  border-color: #007bff;
+  border-color: #6c63ff; /* Purple color on focus */
   outline: none;
 }
 
@@ -1229,22 +1403,43 @@ button[type="submit"]:active {
 .create-sponsor-submit-btn {
   width: 100%;
   padding: 18px;
-  background-color: #007bff;
+  background-color: #6c63ff; /* Purple background for the button */
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px; /* Rounded button corners */
   font-size: 20px;
+  font-weight: 600; /* Bold text for button */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .create-sponsor-submit-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #5a4de8; /* Darker purple on hover */
+  transform: translateY(-4px); /* Button lift effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
 
 .create-sponsor-submit-btn:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Reset active state */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.create-sponsor-back-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.create-sponsor-back-btn:hover {
+  background-color: #5a6268; /* Darker grey on hover */
 }
 
 /* Responsive Design */
@@ -1332,22 +1527,22 @@ button[type="submit"]:active {
   }
 }
 
-/* edit-coach */
 /* General Styles for the Edit Coach Form */
 .edit-coach-container {
   max-width: 1200px; /* More spacious form container */
   margin: 40px auto;
   padding: 40px;
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto", sans-serif;
+  border-radius: 16px; /* Slightly more rounded corners */
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); /* Subtle, larger shadow */
+  font-family: "Poppins", sans-serif; /* Clean, modern font */
   color: #333;
+  transition: all 0.3s ease-in-out; /* Smooth transition for interactivity */
 }
 
 .edit-coach-title {
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 600; /* Bolder title for emphasis */
   color: #333;
   text-align: center;
   margin-bottom: 30px;
@@ -1364,16 +1559,16 @@ button[type="submit"]:active {
 .edit-coach-label {
   display: block;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600; /* Bolder label for clarity */
   color: #333;
   margin-bottom: 8px;
 }
 
 .edit-coach-input {
   width: 100%;
-  padding: 15px;
+  padding: 16px; /* Slightly increased padding for comfort */
   border: 2px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px; /* More rounded input corners */
   font-size: 16px;
   color: #333;
   background-color: #fafafa;
@@ -1381,7 +1576,7 @@ button[type="submit"]:active {
 }
 
 .edit-coach-input:focus {
-  border-color: #007bff;
+  border-color: #6c63ff; /* A more distinct color on focus */
   outline: none;
 }
 
@@ -1393,22 +1588,26 @@ button[type="submit"]:active {
 .edit-coach-submit-btn {
   width: 100%;
   padding: 18px;
-  background-color: #007bff;
+  background-color: #6c63ff; /* Purple background for consistency */
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px; /* Rounded button corners */
   font-size: 20px;
+  font-weight: 600; /* Bold text on the button */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .edit-coach-submit-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #5a4de8; /* Darker purple on hover */
+  transform: translateY(-4px); /* Button lift effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Shadow on hover */
 }
 
 .edit-coach-submit-btn:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Reset active state */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive Design */
@@ -1480,31 +1679,32 @@ button[type="submit"]:active {
   }
 }
 
-/* Programs */
 /* Programs Section */
 .programs {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 12px; /* More rounded corners for smoother appearance */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .programs-title {
   text-align: center;
-  font-size: 28px;
+  font-size: 32px; /* Larger title for more emphasis */
   color: #333;
   margin-bottom: 30px;
+  font-weight: 600; /* Bold for stronger emphasis */
 }
 
 /* Flash Message */
 .alert {
-  padding: 15px;
+  padding: 18px; /* Slightly larger padding for better spacing */
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 8px; /* Rounded corners for alert */
   font-size: 16px;
+  font-weight: 500;
 }
 
 .alert-success {
@@ -1522,7 +1722,7 @@ button[type="submit"]:active {
 
 .programs-table th,
 .programs-table td {
-  padding: 12px;
+  padding: 15px; /* Increased padding for more comfortable spacing */
   text-align: center;
   font-size: 16px;
   border: 1px solid #ddd;
@@ -1531,7 +1731,7 @@ button[type="submit"]:active {
 .programs-table th {
   background-color: #f1f1f1;
   color: #333;
-  font-weight: bold;
+  font-weight: 600; /* Bold header for better visibility */
 }
 
 .programs-table td {
@@ -1549,22 +1749,48 @@ button[type="submit"]:active {
   background-color: #ffc107;
   color: white;
   border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-weight: 600; /* Bold for stronger emphasis */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .programs-table td a:hover {
   background-color: #e0a800;
+  transform: translateY(-2px); /* Slight lifting effect */
+}
+
+.programs-table td a:active {
+  transform: translateY(0); /* Reset on click */
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .programs {
-    padding: 20px;
+    padding: 30px;
   }
 
   .programs-title {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .programs-table th,
+  .programs-table td {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .programs-table td a {
+    font-size: 15px;
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .programs {
+    padding: 25px;
+  }
+
+  .programs-title {
+    font-size: 26px;
   }
 
   .programs-table th,
@@ -1579,7 +1805,48 @@ button[type="submit"]:active {
   }
 }
 
-/* edit-sponsor */
+@media (max-width: 768px) {
+  .programs {
+    padding: 20px;
+  }
+
+  .programs-title {
+    font-size: 24px;
+  }
+
+  .programs-table th,
+  .programs-table td {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .programs-table td a {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs {
+    padding: 15px;
+  }
+
+  .programs-title {
+    font-size: 22px;
+  }
+
+  .programs-table th,
+  .programs-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .programs-table td a {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
 /* General Styles for Edit Sponsor Form */
 .edit-sponsor-container {
   max-width: 1200px; /* Spacious container */
@@ -1646,16 +1913,20 @@ button[type="submit"]:active {
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .edit-sponsor-submit-btn:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Add shadow for hover effect */
 }
 
 .edit-sponsor-submit-btn:active {
   transform: translateY(0);
+  background-color: #004085; /* Darken color for active state */
+  box-shadow: none; /* Remove shadow on active */
 }
 
 /* Responsive Design */
@@ -1778,6 +2049,7 @@ button[type="submit"]:active {
 .footer-input:focus {
   border-color: #007bff;
   outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add subtle shadow on focus */
 }
 
 .footer-logo-preview {
@@ -1797,16 +2069,20 @@ button[type="submit"]:active {
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .footer-submit-btn:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Add shadow on hover */
 }
 
 .footer-submit-btn:active {
   transform: translateY(0);
+  background-color: #004085; /* Darken color on active state */
+  box-shadow: none; /* Remove shadow on active */
 }
 
 /* Responsive Design */
@@ -1878,7 +2154,7 @@ button[type="submit"]:active {
   }
 }
 
-/* goals */
+/* Goals */
 /* General Styles for Goals Form */
 .goals-container {
   max-width: 1200px; /* Spacious container */
@@ -1923,12 +2199,13 @@ button[type="submit"]:active {
   font-size: 16px;
   color: #333;
   background-color: #fafafa;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   height: 150px; /* Ensure ample space for textarea */
 }
 
 .goals-textarea:focus {
   border-color: #007bff;
+  background-color: #e7f3ff; /* Slight background color change on focus */
   outline: none;
 }
 
@@ -1941,16 +2218,20 @@ button[type="submit"]:active {
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .goals-submit-btn:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
 }
 
 .goals-submit-btn:active {
   transform: translateY(0);
+  background-color: #004085; /* Darken color on active state */
+  box-shadow: none; /* Remove shadow on active */
 }
 
 /* Responsive Design */
@@ -2051,12 +2332,13 @@ button[type="submit"]:active {
   color: #333;
   background-color: #fafafa;
   margin-bottom: 20px;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .hero-form__input:focus {
   border-color: #007bff;
   outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Subtle box-shadow on focus */
 }
 
 .hero-form__button {
@@ -2068,16 +2350,20 @@ button[type="submit"]:active {
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hero-form__button:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow on hover */
 }
 
 .hero-form__button:active {
   transform: translateY(0);
+  background-color: #004085; /* Darken color on active state */
+  box-shadow: none; /* Remove shadow on active */
 }
 
 /* Add responsive styles for smaller screens */
@@ -2181,13 +2467,14 @@ button[type="submit"]:active {
   font-size: 16px;
   color: #333;
   background-color: #fafafa;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .edit-material .form-group input[type="text"]:focus,
 .edit-material .form-group input[type="file"]:focus {
   border-color: #007bff;
   outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Added subtle box-shadow on focus */
 }
 
 .edit-material .submit-btn {
@@ -2199,16 +2486,20 @@ button[type="submit"]:active {
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .edit-material .submit-btn:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Added subtle shadow on hover */
 }
 
 .edit-material .submit-btn:active {
   transform: translateY(0);
+  background-color: #004085; /* Darken color on active state */
+  box-shadow: none; /* Remove shadow on active */
 }
 
 /* Styling for the current image section */
@@ -2284,7 +2575,7 @@ button[type="submit"]:active {
 
 /* Flash messages styling */
 .material p {
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
   font-size: 16px;
   text-align: center;
@@ -2310,7 +2601,7 @@ button[type="submit"]:active {
   margin: 40px auto;
   padding: 40px; /* Increased padding */
   border-radius: 10px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -2342,6 +2633,13 @@ button[type="submit"]:active {
   border-radius: 8px;
   color: #333;
   box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.material form input:focus,
+.material form textarea:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 /* Button Styling */
@@ -2354,11 +2652,16 @@ button[type="submit"]:active {
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .material form button:hover {
   background-color: #0056b3;
+}
+
+.material form button:active {
+  background-color: #004085; /* Darker shade when button is clicked */
+  transform: translateY(2px); /* Small press effect */
 }
 
 /* Materials Table Styling */
@@ -2376,6 +2679,7 @@ button[type="submit"]:active {
   text-align: center;
   border: 1px solid #ddd;
   font-size: 16px;
+  word-wrap: break-word; /* Prevent overflow for long words in table */
 }
 
 .materials-table th {
@@ -2442,6 +2746,66 @@ button[type="submit"]:active {
   }
 }
 
+@media (max-width: 768px) {
+  .material {
+    padding: 20px;
+  }
+
+  .material h3 {
+    font-size: 22px;
+  }
+
+  .material form input,
+  .material form textarea {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .material form button {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  .materials-table th,
+  .materials-table td {
+    font-size: 13px;
+  }
+
+  .materials-table td img {
+    max-width: 90px; /* Adjust image size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .material {
+    padding: 15px;
+  }
+
+  .material h3 {
+    font-size: 20px;
+  }
+
+  .material form input,
+  .material form textarea {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .material form button {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .materials-table th,
+  .materials-table td {
+    font-size: 12px;
+  }
+
+  .materials-table td img {
+    max-width: 80px; /* Further adjust image size for very small screens */
+  }
+}
+
 /* Edit Portfolio Form Styles */
 /* Portfolio Edit Styling */
 .portfolio-edit-container {
@@ -2476,16 +2840,23 @@ button[type="submit"]:active {
 
 .portfolio-edit-form__input {
   width: 100%;
-  padding: 12px; /* Add padding for input fields */
+  padding: 14px; /* Increase padding for better touch targets */
   font-size: 16px; /* Increase font size */
   border: 1px solid #ddd;
   border-radius: 8px; /* Increase border radius for smoother corners */
   color: #333;
   box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
 }
 
 .portfolio-edit-form__input[type="file"] {
   padding: 8px; /* Add padding to the file input */
+}
+
+/* Focus State */
+.portfolio-edit-form__input:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 /* Current Image Section */
@@ -2517,11 +2888,16 @@ button[type="submit"]:active {
   border-radius: 8px;
   cursor: pointer;
   width: 100%; /* Make the button full width */
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .portfolio-edit-form__button:hover {
   background-color: #0056b3;
+}
+
+.portfolio-edit-form__button:active {
+  background-color: #004085; /* Darker shade when button is clicked */
+  transform: translateY(2px); /* Small press effect */
 }
 
 .portfolio-edit-form__button:focus {
@@ -2548,6 +2924,25 @@ button[type="submit"]:active {
   }
 }
 
+@media (max-width: 480px) {
+  .portfolio-edit-container {
+    padding: 15px;
+  }
+
+  .portfolio-edit-container h2 {
+    font-size: 20px;
+  }
+
+  .portfolio-edit-form__input {
+    font-size: 12px;
+  }
+
+  .portfolio-edit-form__button {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+}
+
 /* portfolio */
 /* Portfolio Form Styling */
 .portfolio .portfolio-form {
@@ -2556,7 +2951,7 @@ button[type="submit"]:active {
   margin: 40px auto;
   padding: 40px;
   border-radius: 10px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -2587,6 +2982,13 @@ button[type="submit"]:active {
   border-radius: 8px;
   color: #333;
   box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.portfolio .portfolio-form input:focus,
+.portfolio .portfolio-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 .portfolio .portfolio-form button {
@@ -2598,11 +3000,16 @@ button[type="submit"]:active {
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .portfolio .portfolio-form button:hover {
   background-color: #0056b3;
+}
+
+.portfolio .portfolio-form button:active {
+  background-color: #004085; /* Darker shade when button is clicked */
+  transform: translateY(2px); /* Subtle press effect */
 }
 
 /* Portfolio Table Styling */
@@ -2686,11 +3093,40 @@ button[type="submit"]:active {
   }
 }
 
+@media (max-width: 480px) {
+  .portfolio .portfolio-form {
+    padding: 20px; /* Adjust padding for even smaller screens */
+  }
+
+  .portfolio .portfolio-form h2 {
+    font-size: 20px;
+  }
+
+  .portfolio .portfolio-form input,
+  .portfolio .portfolio-form textarea {
+    font-size: 12px;
+  }
+
+  .portfolio .portfolio-form button {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  .portfolio .portfolio-list table th,
+  .portfolio .portfolio-list table td {
+    font-size: 12px;
+  }
+
+  .portfolio .portfolio-list table td img {
+    max-width: 60px; /* Adjust image size for mobile screens */
+  }
+}
+
 /* sponsor */
 /* Main Container */
 .sponsor {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -2704,6 +3140,7 @@ button[type="submit"]:active {
   font-size: 16px;
   border-radius: 5px;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease;
 }
 
 .add-new-sponsor:hover {
@@ -2733,11 +3170,12 @@ button[type="submit"]:active {
 }
 
 .sponsor-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 
 .sponsor-table tbody tr:hover {
   background-color: #f1f1f1;
+  cursor: pointer; /* Adding a pointer cursor for better UX */
 }
 
 /* Sponsor Logo */
@@ -2748,7 +3186,10 @@ button[type="submit"]:active {
 }
 
 .sponsor-logo-image img {
+  max-width: 100px; /* Adjust the image size */
+  height: auto;
   border-radius: 5px;
+  margin: 5px;
 }
 
 /* Button Styling */
@@ -2760,6 +3201,7 @@ button[type="submit"]:active {
   color: white;
   display: inline-block;
   margin: 0 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-edit {
@@ -2768,6 +3210,7 @@ button[type="submit"]:active {
 
 .btn-edit:hover {
   background-color: #e0a800;
+  transform: translateY(-2px);
 }
 
 .btn-delete {
@@ -2776,17 +3219,43 @@ button[type="submit"]:active {
 
 .btn-delete:hover {
   background-color: #c82333;
+  transform: translateY(-2px);
 }
 
 /* Responsive Table */
 @media (max-width: 768px) {
   .sponsor-table {
     font-size: 14px;
+    overflow-x: auto; /* Make the table horizontally scrollable on smaller screens */
   }
 
   .sponsor-table th,
   .sponsor-table td {
     padding: 10px;
+  }
+
+  .sponsor-actions .btn {
+    font-size: 12px;
+    padding: 6px 12px;
+    width: 100%; /* Make buttons full width on smaller screens */
+    margin: 5px 0;
+  }
+
+  .sponsor-logo-image img {
+    max-width: 80px; /* Adjust the image size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsor-table th,
+  .sponsor-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .sponsor-actions .btn {
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }
 
@@ -2816,6 +3285,7 @@ button[type="submit"]:active {
   color: #721c24;
   border-radius: 5px;
   border: 1px solid #f5c6cb;
+  font-size: 16px; /* Slightly increased font size for alert text */
 }
 
 .update-program .alert ul {
@@ -2838,6 +3308,7 @@ button[type="submit"]:active {
 .update-program .form-group {
   display: flex;
   flex-direction: column;
+  gap: 8px; /* Added gap between label and input fields */
 }
 
 .update-program .form-group label {
@@ -2869,6 +3340,7 @@ button[type="submit"]:active {
   font-size: 18px; /* Increased button font size */
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%; /* Make button full width */
 }
 
 .update-program button:hover {
@@ -2879,6 +3351,11 @@ button[type="submit"]:active {
 @media (max-width: 768px) {
   .update-program {
     padding: 30px; /* Slightly reduced padding on smaller screens */
+    max-width: 90%; /* Adjust container width for mobile */
+  }
+
+  .update-program h2 {
+    font-size: 24px; /* Slightly smaller font size on mobile */
   }
 
   .update-program .form-control {
@@ -2888,6 +3365,22 @@ button[type="submit"]:active {
   .update-program button {
     font-size: 16px; /* Slightly smaller button font size */
     padding: 12px 24px; /* Slightly reduced padding for smaller buttons */
+  }
+
+  .update-program .form-group {
+    gap: 12px; /* Adjust gap between label and input fields */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further optimize for smaller devices like phones */
+  .update-program h2 {
+    font-size: 20px; /* Smaller title font size on very small screens */
+  }
+
+  .update-program button {
+    font-size: 14px; /* Decrease font size of button */
+    padding: 10px 20px; /* Adjust button padding for small screens */
   }
 }
 
@@ -2922,12 +3415,29 @@ button[type="submit"]:active {
 /* Error Alert */
 .admin-page .alert {
   font-size: 14px;
-  padding: 10px;
+  padding: 12px;
   border-radius: 5px;
   margin-top: 15px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.admin-page .alert ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-page .alert li {
+  margin-bottom: 5px;
 }
 
 /* Form Group */
+.admin-page .form-group {
+  margin-bottom: 20px; /* Add more space between form elements */
+}
+
 .admin-page .form-group label {
   font-size: 14px;
   color: #555;
@@ -2984,6 +3494,10 @@ button[type="submit"]:active {
     font-size: 14px;
     padding: 10px;
   }
+
+  .admin-page .form-group {
+    margin-bottom: 15px; /* Adjust form group margin */
+  }
 }
 
 @media (max-width: 576px) {
@@ -2999,5 +3513,43 @@ button[type="submit"]:active {
   .admin-page .btn-primary {
     font-size: 14px;
     padding: 10px;
+  }
+
+  .admin-page .form-group label {
+    font-size: 12px; /* Smaller label font size */
+  }
+
+  .admin-page .form-control {
+    font-size: 14px; /* Smaller input field font size */
+  }
+
+  .admin-page .alert {
+    font-size: 12px; /* Smaller font size for alerts on mobile */
+    padding: 10px;
+  }
+}
+
+/* Ultra Small Screens (Below 375px) */
+@media (max-width: 375px) {
+  .admin-page .admin {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .admin-page .admin h2 {
+    font-size: 18px; /* Further reduce font size on very small screens */
+  }
+
+  .admin-page .btn-primary {
+    font-size: 12px; /* Even smaller button font size */
+    padding: 8px;
+  }
+
+  .admin-page .form-group label {
+    font-size: 12px; /* Even smaller label font size */
+  }
+
+  .admin-page .form-control {
+    font-size: 12px; /* Adjust input fields to fit better */
   }
 }

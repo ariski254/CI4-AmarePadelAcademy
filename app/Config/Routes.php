@@ -26,14 +26,9 @@ $routes->post('admin/update_about_us', 'AboutUsController::updateAboutUs', ['fil
 $routes->get('admin/goals', 'GoalsController::admin', ['filter' => 'authFilter']);
 $routes->post('goals/update', 'GoalsController::update', ['filter' => 'authFilter']);
 
-$routes->get('/admin/programs', 'ProgramController::admin', ['filter' => 'authFilter']);
-$routes->match(['get', 'post'], '/admin/programs/update/(:num)', 'ProgramController::update/$1', ['filter' => 'authFilter']);
-
-$routes->get('/admin/materials', 'MaterialController::admin', ['filter' => 'authFilter']);
-$routes->post('/admin/materials/create', 'MaterialController::create', ['filter' => 'authFilter']);
-$routes->get('/admin/materials/edit/(:num)', 'MaterialController::edit/$1', ['filter' => 'authFilter']);
-$routes->post('/admin/materials/update/(:num)', 'MaterialController::update/$1', ['filter' => 'authFilter']);
-$routes->get('/admin/materials/delete/(:num)', 'MaterialController::delete/$1', ['filter' => 'authFilter']);
+$routes->get('admin/programs', 'ProgramController::index', ['filter' => 'authFilter']);
+$routes->get('admin/programs/update/(:num)', 'ProgramController::update/$1', ['filter' => 'authFilter']);
+$routes->post('admin/programs/update/(:num)', 'ProgramController::updateProgram/$1', ['filter' => 'authFilter']);
 
 $routes->get('admin/certification', 'CertificationController::admin', ['filter' => 'authFilter']);
 $routes->post('admin/certification/update', 'CertificationController::update', ['filter' => 'authFilter']);

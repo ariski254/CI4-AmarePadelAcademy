@@ -18,41 +18,55 @@
           </div>
       </div>
       <div class="update-program">
-          <?php if (session()->getFlashdata('errors')): ?>
-          <div class="alert alert-danger">
-              <ul>
-                  <?php foreach (session()->getFlashdata('errors') as $error): ?>
-                  <li><?= esc($error); ?></li>
-                  <?php endforeach; ?>
-              </ul>
+          <?php if (session()->getFlashdata('success')): ?>
+          <div class="alert alert-success">
+              <?= session()->getFlashdata('success') ?>
           </div>
           <?php endif; ?>
 
-          <form action="/admin/programs/update/<?= $program['id']; ?>" method="post" class="program-form">
+          <?php if (session()->getFlashdata('error')): ?>
+          <div class="alert alert-danger">
+              <?= session()->getFlashdata('error') ?>
+          </div>
+          <?php endif; ?>
+
+          <h2>Update Program</h2>
+          <form action="/admin/programs/update/<?= $program['id']; ?>" method="post">
               <?= csrf_field() ?>
-              <h2>Update Program</h2>
 
               <div class="form-group">
-                  <label for="title">Title:</label>
-                  <input type="text" name="title" id="title" value="<?= old('title', $program['title']); ?>" required
-                      class="form-control">
+                  <label for="title">Title</label>
+                  <input type="text" name="title" id="title" class="form-control"
+                      value="<?= old('title', $program['title']); ?>" required>
+                  <?php if (isset($errors['title'])): ?>
+                  <div class="text-danger"><?= $errors['title'] ?></div>
+                  <?php endif; ?>
               </div>
 
               <div class="form-group">
-                  <label for="description">Description:</label>
-                  <textarea name="description" id="description" required
-                      class="form-control"><?= old('description', $program['description']); ?></textarea>
+                  <label for="description">Description</label>
+                  <textarea name="description" id="description" class="form-control"
+                      required><?= old('description', $program['description']); ?></textarea>
+                  <?php if (isset($errors['description'])): ?>
+                  <div class="text-danger"><?= $errors['description'] ?></div>
+                  <?php endif; ?>
               </div>
 
               <div class="form-group">
-                  <label for="icon">Icon:</label>
-                  <input type="text" name="icon" id="icon" value="<?= old('icon', $program['icon']); ?>" required
-                      class="form-control">
+                  <label for="icon">Icon</label>
+                  <input type="text" name="icon" id="icon" class="form-control"
+                      value="<?= old('icon', $program['icon']); ?>" required>
+                  <?php if (isset($errors['icon'])): ?>
+                  <div class="text-danger"><?= $errors['icon'] ?></div>
+                  <?php endif; ?>
               </div>
 
               <button type="submit" class="btn btn-primary">Update Program</button>
           </form>
       </div>
+
+
+
 
   </div>
   <?= $this->endSection() ?>

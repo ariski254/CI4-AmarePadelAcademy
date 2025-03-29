@@ -7,7 +7,7 @@ use App\Models\AboutUsModel;
 use App\Models\HeroModel;
 use App\Models\GoalsModel;
 use App\Models\ProgramModel;
-use App\Models\MaterialModel;
+
 use App\Models\CertificationModel;
 use App\Models\PortfolioModel;
 use App\Models\CoachModel;
@@ -21,7 +21,7 @@ class Pages extends BaseController
     protected $heroModel;
     protected $goalsModel;
     protected $programModel;
-    protected $materialModel;
+
     protected $certificationModel;
     protected $portfolioModel;
     protected $coachModel;
@@ -36,7 +36,7 @@ class Pages extends BaseController
         $this->heroModel = new HeroModel();
         $this->goalsModel = new GoalsModel();
         $this->programModel = new ProgramModel();
-        $this->materialModel = new MaterialModel();
+
         $this->certificationModel = new CertificationModel();
         $this->portfolioModel = new PortfolioModel();
         $this->coachModel = new CoachModel();
@@ -52,7 +52,7 @@ class Pages extends BaseController
         $heroData = $this->heroModel->getHero();
         $goalsData = $this->goalsModel->getGoals();
         $programData = $this->programModel->findAll();
-        $materialData = $this->materialModel->findAll();
+
         $certificationData = $this->certificationModel->getCertification();
         $portfolioData = $this->portfolioModel->findAll();
         $coachData = $this->coachModel->findAll();
@@ -66,7 +66,7 @@ class Pages extends BaseController
             'heroData' => $heroData,
             'goalsData' => $goalsData,
             'programs' => $programData, // Pass the programs data with the correct key
-            'materialData' => $materialData,
+
             'certificationData' => $certificationData,
             'portfolioData' => $portfolioData,
             'coachData' => $coachData,

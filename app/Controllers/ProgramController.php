@@ -3,63 +3,63 @@
 namespace App\Controllers;
 
 use App\Models\ProgramModel;
+use CodeIgniter\Controller;
 
-class ProgramController extends BaseController
+class ProgramController extends Controller
 {
+    protected $programModel;
+
+    public function __construct()
+    {
+        $this->programModel = new ProgramModel();
+    }
+
+    // Method to display the list of programs (this is your 'index' method)
     public function index()
     {
-        $model = new ProgramModel();
+        // Get all programs from the ProgramModel
+        $programs = $this->programModel->findAll();
 
-        // Get all programs
-        $data['programs'] = $model->findAll();
-
-        // Load the view for the front-end
-        return view('index', $data);
+        // Pass the programs data to the view
+        return view('admin/programs', ['programs' => $programs]);
     }
 
-    public function admin()
-    {
-        $model = new ProgramModel();
-
-        // Get all programs to display for the admin
-        $data['programs'] = $model->findAll();
-
-        // Load the admin view
-        return view('admin/Programs', $data);
-    }
-
+    // Show form for updating a program
     public function update($id)
     {
-        $model = new ProgramModel();
+        $program = $this->programModel->find($id);
 
-        // Validate the input
-        if ($this->request->getMethod() === 'post') {
-            $rules = [
-                'title'       => 'required|min_length[3]|max_length[255]',
-                'description' => 'required|min_length[10]',
-                'icon'        => 'required',
-            ];
-
-            if ($this->validate($rules)) {
-                $data = [
-                    'title'       => $this->request->getPost('title'),
-                    'description' => $this->request->getPost('description'),
-                    'icon'        => $this->request->getPost('icon'),
-                ];
-
-                // Update the program in the database
-                $model->update($id, $data);
-
-                // Redirect back to admin page with a success message
-                return redirect()->to('/admin/programs')->with('success', 'Program updated successfully');
-            } else {
-                // Validation failed, load the update form again with errors
-                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-            }
+        if (!$program) {
+            return redirect()->to('/admin/programs')->with('error', 'Program not found');
         }
 
-        // If no post data, load the update form
-        $data['program'] = $model->find($id);
-        return view('admin/update_program', $data);
+        return view('admin/update_program', ['program' => $program]);
+    }
+
+    // Handle the update request
+    public function updateProgram($id)
+    {
+        $program = $this->programModel->find($id);
+
+        if (!$program) {
+            return redirect()->to('/admin/programs')->with('error', 'Program not found');
+        }
+
+        if ($this->validate([
+            'title'       => 'required|min_length[3]|max_length[255]',
+            'description' => 'required|min_length[10]',
+            'icon'        => 'required'
+        ])) {
+            // Update program
+            $this->programModel->update($id, [
+                'title'       => $this->request->getPost('title'),
+                'description' => $this->request->getPost('description'),
+                'icon'        => $this->request->getPost('icon'),
+            ]);
+
+            return redirect()->to('/admin/programs')->with('success', 'Program updated successfully!');
+        } else {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
     }
 }
