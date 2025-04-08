@@ -348,7 +348,8 @@ strong {
     height: 100vh;
   }
 
-  .custom-video {
+  .custom-video,
+  .news-detail-image {
     object-fit: cover;
     width: 100vw;
     height: 100vh;
@@ -357,10 +358,6 @@ strong {
   .sticky-wrapper {
     position: relative;
     bottom: 76px;
-  }
-
-  .heroText {
-    font-size: 3vw;
   }
 }
 
@@ -372,46 +369,6 @@ strong {
   transform: translate(-50%, -50%);
   width: 85%;
   text-align: center;
-}
-
-.heroText h1,
-.heroText h3,
-.heroText h5 {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  margin: 0;
-}
-
-/* Media query for smaller screens */
-@media screen and (max-width: 992px) {
-  .heroText {
-    width: 90%;
-  }
-
-  .heroText h1 {
-    font-size: 5vw;
-  }
-
-  .heroText h3 {
-    font-size: 4vw;
-  }
-
-  .heroText h5 {
-    font-size: 3vw;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .heroText h1 {
-    font-size: 5vw;
-  }
-
-  .heroText h3 {
-    font-size: 4vw;
-  }
-
-  .heroText h5 {
-    font-size: 3vw;
-  }
 }
 
 /*---------------------------------------
@@ -571,6 +528,9 @@ strong {
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
+  height: 100%; /* penting untuk menyamakan tinggi antar elemen */
+  display: flex;
+  flex-direction: column;
 }
 
 #goals .resume-wrap:hover {
@@ -580,7 +540,7 @@ strong {
 
 #goals .resume-wrap h3 {
   font-size: 22px;
-  color: #444444; /* Tombol warna merah terang */
+  color: #444444;
   margin-bottom: 15px;
 }
 
@@ -588,6 +548,8 @@ strong {
 #goals .resume-wrap ul {
   font-size: 16px;
   color: #333333;
+  margin-bottom: 0;
+  flex-grow: 1;
 }
 
 #goals .resume-wrap ul {
@@ -603,7 +565,7 @@ strong {
 
 #goals .resume-wrap ul li:before {
   content: "•";
-  color: #444444; /* Menggunakan warna merah terang untuk bullet point */
+  color: #444444;
   position: absolute;
   left: 0;
   top: 0;
@@ -974,118 +936,67 @@ strong {
 /*---------------------------------------
   PORTFOLIO               
 -----------------------------------------*/
-/* Portfolio Filter */
-.portfolio-filter {
-  margin-bottom: 60px;
-  text-align: center;
-  padding: 60px 0;
-}
-
-.portfolio-filter button {
-  border: 1px solid rgba(236, 239, 241, 0.07);
-  background: transparent;
-  display: inline-block;
-  font-size: 16px;
-  padding: 8px 24px;
-  font-weight: 600;
-  color: #0061f2;
-  transition: all 0.3s ease;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 50px; /* Rounded edges for buttons */
-}
-
-.portfolio-filter button.active {
-  border-color: #0061f2;
-  color: #fff;
-  background-color: #0061f2; /* Active button style */
-}
-
-.portfolio-filter button:hover {
-  background-color: #0061f2;
-  color: #fff;
-  border-color: #0061f2;
-}
-
-/* Portfolio Items */
 .portfolio-block {
   position: relative;
   overflow: hidden;
-  margin-top: 30px;
-  border-radius: 16px; /* Rounded corners */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-block:hover {
-  transform: scale(1.05); /* Zoom effect on hover */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .portfolio-block img {
   width: 100%;
-  height: auto;
-  object-fit: cover; /* Ensures proper aspect ratio */
+  height: 100%;
+  object-fit: cover;
   transition: opacity 0.3s ease;
 }
 
-/* Hover Effect: Before pseudo-element */
 .portfolio-block:before {
   content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.3); /* Lighter overlay */
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.3);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   z-index: 1;
 }
 
 .portfolio-block:hover:before {
-  opacity: 1; /* Reveal the white overlay on hover */
+  opacity: 1;
 }
 
-/* Caption Styling */
-.portfolio-block .caption {
+.caption {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 80%;
+  width: 85%;
   opacity: 0;
   transition: opacity 0.3s ease, top 0.3s ease;
   z-index: 2;
+  color: white;
 }
 
 .portfolio-block:hover .caption {
   opacity: 1;
-  top: 45%; /* Adjust position on hover */
+  top: 45%;
 }
 
-.portfolio-block .caption h4 {
-  font-size: 20px;
+.caption h4 {
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase; /* Modern typography */
-  pointer-events: none; /* Disable clicking on the title */
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  pointer-events: none;
 }
 
-.portfolio-block .caption h4 a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.portfolio-block .caption h4 a:hover {
-  color: #0061f2; /* Color change on hover */
-}
-
-.portfolio-block .caption .search-icon {
+.caption .search-icon {
   background: #0061f2;
   width: 50px;
   height: 50px;
@@ -1097,87 +1008,30 @@ strong {
   transition: background-color 0.3s ease;
 }
 
-.portfolio-block .caption .search-icon:hover {
-  background: #0033b3; /* Darker shade on hover */
+.caption .search-icon:hover {
+  background: #0033b3;
 }
 
-.portfolio-block .caption .search-icon i {
+.caption .search-icon i {
   line-height: 50px;
 }
 
-/* Responsive Styles */
-@media (max-width: 1200px) {
-  .portfolio-block {
-    margin-top: 20px;
-  }
+.btn-primary {
+  background-color: #0061f2;
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-@media (max-width: 992px) {
-  .portfolio-block .caption h4 {
-    font-size: 16px;
-    color: #fff;
-  }
-
-  .portfolio-filter button {
-    font-size: 14px;
-    padding: 6px 18px;
-  }
-
-  .portfolio-block .caption {
-    width: 90%;
-  }
+.btn-primary:hover {
+  background-color: #0033b3;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-  .portfolio-filter button {
-    font-size: 14px;
-    padding: 6px 15px;
-  }
-
-  .portfolio-block .caption h4 {
-    font-size: 14px;
-    color: #fff;
-  }
-
-  .portfolio-items-wrapper .mix {
-    padding: 5px;
-  }
-
-  .portfolio-block .caption {
-    top: 50%;
-    width: 90%;
-  }
-
-  .filtr-item {
-    width: 100% !important; /* Make items full-width on small screens */
-  }
-
-  .portfolio-block {
-    margin-bottom: 15px; /* Ensure spacing between items */
-  }
-}
-
-@media (max-width: 576px) {
-  .portfolio-filter {
-    margin-bottom: 10px;
-  }
-
-  .portfolio-filter button {
-    font-size: 14px;
-    padding: 5px 10px;
-  }
-
-  .portfolio-block .caption h4 {
-    font-size: 14px;
-    color: #fff;
-  }
-
-  .portfolio-items-wrapper .mix {
-    padding: 5px;
-  }
-
-  .portfolio-block .caption {
-    width: 100%;
+  .col-6 {
+    flex: 0 0 auto;
+    width: 50%;
   }
 }
 

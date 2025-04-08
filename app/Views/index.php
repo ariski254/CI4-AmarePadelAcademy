@@ -9,27 +9,26 @@
     <meta name="author" content="" />
 
     <title>Amare Padel Academy</title>
-    <link rel="icon" href="assets/imgs/placeholder.svg" type="image/svg+xml">
-
+    <link rel="icon" href="<?= base_url('assets/imgs/placeholder.svg') ?>" type="image/svg+xml">
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/css/bootstrap-icons.css') ?>" rel="stylesheet" />
 
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    <link href="assets/css/aos.css" rel="stylesheet" />
-
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url('assets/css/magnific-popup.css') ?>" />
+    <link href="<?= base_url('assets/css/aos.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
+
 
 <body>
     <main>
@@ -146,30 +145,30 @@
                 </div>
                 <div class="row">
                     <!-- First Column (Left) -->
-                    <div class="col-md-6 mb-4">
-                        <div class="resume-wrap ftco-animate p-4 bg-light rounded shadow-sm">
+                    <div class="col-md-6 mb-4 d-flex flex-column gap-4">
+                        <div class="resume-wrap ftco-animate equal-height">
                             <h3 class="text-heading">OUR VISION</h3>
                             <p class="mt-3">
                                 <?= $goalsData['vision'] ?? 'Default Vision' ?>
                             </p>
                         </div>
-                        <div class="resume-wrap ftco-animate p-4 bg-light rounded shadow-sm mt-4">
-                            <h3 class="text-heading">OUR MISSION</h3>
-                            <ul class="mt-3">
-                                <?= isset($goalsData['mission']) ? "<li>" . implode("</li><li>", explode("\n", $goalsData['mission'])) . "</li>" : "Default Mission" ?>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Second Column (Right) -->
-                    <div class="col-md-6 mb-4">
-                        <div class="resume-wrap ftco-animate p-4 bg-light rounded shadow-sm">
+                        <div class="resume-wrap ftco-animate equal-height">
                             <h3 class="text-heading">KEY SUCCESS FACTOR</h3>
                             <ul class="mt-3">
                                 <?= isset($goalsData['key_success_factor']) ? "<li>" . implode("</li><li>", explode("\n", $goalsData['key_success_factor'])) . "</li>" : "Default Key Success Factor" ?>
                             </ul>
                         </div>
-                        <div class="resume-wrap ftco-animate p-4 bg-light rounded shadow-sm mt-4">
+                    </div>
+
+                    <!-- Second Column (Right) -->
+                    <div class="col-md-6 mb-4 d-flex flex-column gap-4">
+                        <div class="resume-wrap ftco-animate equal-height">
+                            <h3 class="text-heading">OUR MISSION</h3>
+                            <ul class="mt-3">
+                                <?= isset($goalsData['mission']) ? "<li>" . implode("</li><li>", explode("\n", $goalsData['mission'])) . "</li>" : "Default Mission" ?>
+                            </ul>
+                        </div>
+                        <div class="resume-wrap ftco-animate equal-height">
                             <h3 class="text-heading">OUR SERVICES</h3>
                             <ul class="mt-3">
                                 <?= isset($goalsData['services']) ? "<li>" . implode("</li><li>", explode("\n", $goalsData['services'])) . "</li>" : "Default Services" ?>
@@ -242,45 +241,42 @@
         <section class="portfolio section" id="portfolio">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <!-- Section Title -->
-                        <div class="title text-center wow fadeInUp" data-wow-duration="500ms">
+                    <div class="col-12 text-center">
+                        <div class="title wow fadeInUp" data-wow-duration="500ms">
                             <h2 class="title mb-5 mt-5">Portfolio</h2>
                         </div>
-                        <!-- /Section Title -->
                     </div>
                 </div>
 
                 <!-- Portfolio Items -->
-                <div class="row mx-auto">
+                <div class="row g-4 justify-content-center">
                     <?php foreach ($portfolioData as $portfolio): ?>
-                    <div class="filtr-item col-lg-4 col-md-6">
+                    <div class="col-6 col-md-6 col-lg-4">
                         <div class="portfolio-block">
                             <img src="<?= base_url('assets/imgs/portfolio/' . $portfolio->image); ?>"
-                                alt="<?= esc($portfolio->title); ?>" />
+                                alt="<?= esc($portfolio->title); ?>" class="img-fluid rounded" />
                             <div class="caption">
-                                <!-- Image Popup -->
                                 <a class="search-icon image-popup" data-effect="mfp-with-zoom"
                                     href="<?= base_url('assets/imgs/portfolio/' . $portfolio->image); ?>"
                                     data-lightbox="image-<?= $portfolio->id; ?>">
                                     <i class="bi bi-search"></i>
                                 </a>
-                                <!-- Portfolio Title -->
                                 <h4><?= esc($portfolio->title); ?></h4>
-                                <!-- Removed the <a> tag to make the text non-clickable -->
-                                <!-- Portfolio Description -->
                                 <p class="mb-0"><?= esc($portfolio->description); ?></p>
                             </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
-                <!-- /Portfolio Items -->
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <a href="<?= base_url('kegiatan/all'); ?>" class="btn btn-primary px-4 py-2 rounded-pill">
+                            View All
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
-
-
-
 
         <!-- Coach -->
         <section id="team" class="team section">
@@ -304,7 +300,7 @@
                                         class="img-fluid" alt="<?= esc($coach['name']); ?>" />
                                     <div class="social">
                                         <a href="<?= esc($coach['twitter']); ?>" class="social-icon"><i
-                                                class="bi bi-twitter"></i></a>
+                                                class="bi bi-twitter-x"></i></a>
                                         <a href="<?= esc($coach['facebook']); ?>" class="social-icon"><i
                                                 class="bi bi-facebook"></i></a>
                                         <a href="<?= esc($coach['instagram']); ?>" class="social-icon"><i
@@ -415,7 +411,7 @@
                                 <a href="<?= $footer['facebook_link']; ?>"><i class="bi bi-facebook"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="<?= $footer['twitter_link']; ?>"><i class="bi bi-twitter"></i></a>
+                                <a href="<?= $footer['twitter_link']; ?>"><i class="bi bi-twitter-x"></i></a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="<?= $footer['youtube_link']; ?>"><i class="bi bi-youtube"></i></a>
@@ -455,15 +451,14 @@
 
 
     <!-- JAVASCRIPT FILES -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.sticky.js"></script>
-    <script src="assets/js/aos.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/magnific-popup-options.js"></script>
-    <script src="assets/js/scrollspy.min.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.sticky.js') ?>"></script>
+    <script src="<?= base_url('assets/js/aos.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.magnific-popup.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/magnific-popup-options.js') ?>"></script>
+    <script src="<?= base_url('assets/js/scrollspy.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/custom.js') ?>"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 

@@ -59,6 +59,17 @@ $routes->get('admin/sponsor/delete/(:num)', 'SponsorController::delete/$1', ['fi
 $routes->get('admin/footer', 'FooterController::index', ['filter' => 'authFilter']);
 $routes->post('admin/footer/update', 'FooterController::update', ['filter' => 'authFilter']);
 
+$routes->get('/admin/kegiatan', 'KegiatanController::index', ['filter' => 'authFilter']);
+$routes->get('/admin/kegiatan/create', 'KegiatanController::create', ['filter' => 'authFilter']);
+$routes->post('/admin/kegiatan/store', 'KegiatanController::store', ['filter' => 'authFilter']);
+$routes->get('/admin/kegiatan/edit/(:num)', 'KegiatanController::edit/$1', ['filter' => 'authFilter']);
+$routes->post('/admin/kegiatan/(:num)/update', 'KegiatanController::update/$1', ['filter' => 'authFilter']);
+$routes->get('/admin/kegiatan/delete_image/(:num)', 'KegiatanController::deleteImage/$1', ['filter' => 'authFilter']);
+$routes->get('/admin/kegiatan/delete/(:num)', 'KegiatanController::delete/$1', ['filter' => 'authFilter']);
+
+$routes->get('kegiatan/all', 'KegiatanController::all', ['filter' => 'authFilter']);
+
+
 // Routes for Admin Controller
 $routes->get('admin/add', 'AdminController::add', ['filter' => 'authFilter']);
 $routes->post('admin/save', 'AdminController::save', ['filter' => 'authFilter']);

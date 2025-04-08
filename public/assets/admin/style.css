@@ -1,4 +1,4 @@
-/* General Body Styling */
+/* ===== GENERAL BODY STYLING ===== */
 body {
   display: flex;
   background-color: #f4f7fa;
@@ -8,18 +8,24 @@ body {
   color: #333;
 }
 
+/* ===== SIDEBAR ===== */
 .sidebar {
   width: 250px;
   background: #2d3748;
   color: #fff;
   min-height: 100vh;
   padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: fixed;
   z-index: 1000;
-  height: 100vh;
   overflow-y: auto;
-  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h4 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 }
 
 .sidebar a {
@@ -28,20 +34,67 @@ body {
   display: flex;
   align-items: center;
   padding: 12px;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 15px;
   transition: background-color 0.3s ease;
 }
 
 .sidebar a:hover,
-.sidebar .active {
+.sidebar a.active {
   background: #4a5568;
 }
 
-.sidebar-collapsed {
-  transform: translateX(-100%);
+.sidebar a:last-child {
+  margin-bottom: 2rem;
 }
 
+/* ===== SCROLLBAR ===== */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* ===== SUBMENU / DROPDOWN SIDEBAR ===== */
+.has-submenu {
+  cursor: pointer;
+}
+
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 20px;
+}
+
+.submenu a {
+  font-size: 14px;
+  padding: 8px 12px;
+  color: #cbd5e0;
+  border-radius: 6px;
+}
+
+.submenu a:hover {
+  background: #4a5568;
+  color: #fff;
+}
+
+.submenu.open {
+  max-height: 200px;
+}
+
+.has-submenu .bi-chevron-down {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.has-submenu.open .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* ===== CONTENT SECTION ===== */
 .content {
   flex: 1;
   padding: 30px;
@@ -52,6 +105,7 @@ body {
   border-radius: 8px;
 }
 
+/* ===== CARD STYLING ===== */
 .card {
   border: none;
   background: #f7fafc;
@@ -60,16 +114,66 @@ body {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
 }
 
+/* ===== TOP BAR ===== */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  padding: 15px;
-  border-bottom: 1px solid #e2e8f0;
-  border-radius: 8px;
+  background: #2d3748;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #4a5568;
+  border-radius: 0 0 8px 8px;
 }
 
+.top-bar h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* ===== NAVBAR TOGGLER ===== */
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  margin-right: 1rem;
+  display: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ===== DROPDOWN STYLING ===== */
+.dropdown i {
+  cursor: pointer;
+  color: #fff;
+  margin-left: 1rem;
+}
+
+.dropdown-menu {
+  background-color: #1a202c;
+  border: 1px solid #4a5568;
+  min-width: 150px;
+  padding: 0.5rem 0;
+  z-index: 1100;
+}
+
+.dropdown-menu .dropdown-item {
+  color: #e2e8f0;
+  padding: 0.5rem 1rem;
+  transition: background 0.2s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #4a5568;
+  color: #fff;
+}
+
+/* ===== NOTIFICATION BADGE ===== */
 .notification {
   position: relative;
 }
@@ -85,75 +189,33 @@ body {
   border-radius: 50%;
 }
 
-.navbar-toggler {
-  display: none;
-}
-
-/* Perubahan untuk responsif */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 991px) {
   .sidebar {
     transform: translateX(-100%);
-  }
-
-  .content {
-    margin-left: 0;
-    transition: margin-left 0.3s ease;
-  }
-
-  .navbar-toggler {
-    display: block;
-  }
-
-  /* Saat sidebar terbuka, konten bergeser */
-  .content.sidebar-open {
-    margin-left: 250px;
+    padding-top: 60px;
   }
 
   .sidebar.show {
     transform: translateX(0);
   }
-}
 
-/* Dropdown */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%; /* Dropdown akan muncul tepat di bawah elemen pemicu */
-  right: 0; /* Dropdown muncul di sebelah kiri elemen pemicu */
-  background: #f7fafc;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  min-width: 100%; /* Menyesuaikan dengan lebar elemen pemicu */
-  z-index: 999; /* Pastikan dropdown berada di atas elemen lainnya */
-  padding: 10px;
-}
+  .content {
+    margin-left: 0;
+  }
 
-/* Menampilkan dropdown saat hover atau fokus */
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-  display: block;
-}
+  .content.sidebar-open {
+    margin-left: 250px;
+  }
 
-/* Styling tambahan untuk memastikan dropdown tetap berada di dalam kontainer */
-.dropdown {
-  position: relative;
-}
-
-/* Responsif untuk perangkat dengan lebar layar di bawah 768px */
-@media (max-width: 768px) {
-  .dropdown-menu {
-    min-width: 200px; /* Menyesuaikan lebar dropdown pada perangkat kecil */
-    width: auto; /* Dropdown menyesuaikan lebar dengan kontennya */
-    right: auto; /* Atur posisi dropdown untuk menyesuaikan dengan elemen pemicu */
-    left: 0; /* Dropdown akan muncul dari sisi kiri elemen pemicu */
+  .navbar-toggler {
+    display: block;
   }
 }
 
-/* Responsif untuk perangkat dengan lebar layar lebih kecil (mobile view) */
-@media (max-width: 576px) {
-  .dropdown-menu {
-    min-width: 100%; /* Dropdown akan memiliki lebar 100% pada perangkat dengan lebar sangat kecil */
-    left: 0; /* Dropdown akan muncul dari kiri */
+@media (max-width: 768px) {
+  .submenu {
+    padding-left: 16px;
   }
 }
 
@@ -3553,3 +3615,5 @@ button[type="submit"]:active {
     font-size: 12px; /* Adjust input fields to fit better */
   }
 }
+
+/* All-Portfolio */
