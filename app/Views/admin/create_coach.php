@@ -19,12 +19,9 @@
               </ul>
           </div>
       </div>
-      <div class="create-coach">
-
-
-          <!-- Display any form validation errors -->
+      <div class="create-coach-container">
           <?php if (session()->getFlashdata('errors')): ?>
-          <div class="alert alert-danger">
+          <div class="form-alert error">
               <ul>
                   <?php foreach (session()->getFlashdata('errors') as $error): ?>
                   <li><?= esc($error); ?></li>
@@ -33,54 +30,57 @@
           </div>
           <?php endif; ?>
 
-          <form action="/admin/coaches/store" method="POST" enctype="multipart/form-data" class="coach-form">
+          <h2 class="create-coach-title">Add New Coach</h2>
+
+          <form action="/admin/coaches/store" method="POST" enctype="multipart/form-data" class="create-coach-form">
               <?= csrf_field() ?>
 
-              <!-- Coach Name -->
               <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-input" value="<?= old('name') ?>" required>
-              </div>
-
-              <!-- Coach Role -->
-              <div class="form-group">
-                  <label for="role">Role</label>
-                  <input type="text" name="role" id="role" class="form-input" value="<?= old('role') ?>" required>
-              </div>
-
-              <!-- Coach Position -->
-              <div class="form-group">
-                  <label for="position">Position</label>
-                  <input type="text" name="position" id="position" class="form-input" value="<?= old('position') ?>"
+                  <label for="name" class="create-coach-label">Name</label>
+                  <input type="text" name="name" id="name" class="create-coach-input" value="<?= old('name') ?>"
                       required>
               </div>
 
-              <!-- Coach Image -->
               <div class="form-group">
-                  <label for="image">Image</label>
-                  <input type="file" name="image" id="image" class="form-input" required>
-              </div>
-
-              <!-- Social Media Links -->
-              <div class="form-group">
-                  <label for="twitter">Twitter URL</label>
-                  <input type="text" name="twitter" id="twitter" class="form-input" value="<?= old('twitter') ?>">
+                  <label for="role" class="create-coach-label">Role</label>
+                  <input type="text" name="role" id="role" class="create-coach-input" value="<?= old('role') ?>"
+                      required>
               </div>
 
               <div class="form-group">
-                  <label for="facebook">Facebook URL</label>
-                  <input type="text" name="facebook" id="facebook" class="form-input" value="<?= old('facebook') ?>">
+                  <label for="position" class="create-coach-label">Position</label>
+                  <input type="text" name="position" id="position" class="create-coach-input"
+                      value="<?= old('position') ?>" required>
               </div>
 
               <div class="form-group">
-                  <label for="instagram">Instagram URL</label>
-                  <input type="text" name="instagram" id="instagram" class="form-input" value="<?= old('instagram') ?>">
+                  <label for="image" class="create-coach-label">Image</label>
+                  <input type="file" name="image" id="image" class="create-coach-input" required>
               </div>
 
-              <!-- Submit Button -->
-              <button type="submit" class="btn btn-success mt-3 btn-block">Create Coach</button>
+              <div class="form-group">
+                  <label for="twitter" class="create-coach-label">Twitter URL</label>
+                  <input type="text" name="twitter" id="twitter" class="create-coach-input"
+                      value="<?= old('twitter') ?>">
+              </div>
+
+              <div class="form-group">
+                  <label for="facebook" class="create-coach-label">Facebook URL</label>
+                  <input type="text" name="facebook" id="facebook" class="create-coach-input"
+                      value="<?= old('facebook') ?>">
+              </div>
+
+              <div class="form-group">
+                  <label for="instagram" class="create-coach-label">Instagram URL</label>
+                  <input type="text" name="instagram" id="instagram" class="create-coach-input"
+                      value="<?= old('instagram') ?>">
+              </div>
+
+              <button type="submit" class="create-coach-button">Create Coach</button>
           </form>
       </div>
+
+
 
 
   </div>

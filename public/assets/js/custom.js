@@ -69,3 +69,43 @@ $(document).ready(function () {
     mainClass: "mfp-fade",
   });
 });
+
+// Loading
+window.addEventListener("load", function () {
+  const preloader = document.getElementById("preloader");
+  preloader.style.opacity = "0";
+  setTimeout(() => {
+    preloader.style.display = "none";
+  }, 500); // Delay untuk smooth fade-out
+});
+
+// Wait until the DOM is fully loaded before executing the script
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all tab links
+  const tabLinks = document.querySelectorAll("#program-tabs .nav-link");
+
+  // Function to handle the tab switching
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default behavior of the link (no page jump)
+
+      // Remove 'active' class from all tab links
+      tabLinks.forEach((link) => link.classList.remove("active"));
+
+      // Add 'active' class to the clicked tab link
+      link.classList.add("active");
+
+      // Hide all tab content
+      const tabContents = document.querySelectorAll(".tab-pane");
+      tabContents.forEach((content) =>
+        content.classList.remove("show", "active")
+      );
+
+      // Show the corresponding tab content
+      const targetTabContent = document.querySelector(
+        `#${link.id.replace("program-tab", "program-tab-content")}`
+      );
+      targetTabContent.classList.add("show", "active");
+    });
+  });
+});

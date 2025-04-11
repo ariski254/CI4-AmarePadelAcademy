@@ -61,9 +61,10 @@
                   <?php endif; ?>
               </div>
 
-              <button type="submit" class="btn btn-primary">Update Program</button>
+              <button type="submit" class="btn-submit">Update Program</button>
           </form>
       </div>
+
 
 
 

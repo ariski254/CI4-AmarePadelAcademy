@@ -20,36 +20,37 @@
               </ul>
           </div>
       </div>
-
-      <div class="add-admin">
-          <h2 class="text-center add-admin-title">Add New Admin</h2>
+      <div class="add-admin-container">
+          <h2 class="form-title">Add New Admin</h2>
 
           <?php if (session()->getFlashdata('success')): ?>
-          <div class="alert alert-success add-admin-alert">
+          <div class="form-alert success">
               <?= session()->getFlashdata('success') ?>
           </div>
           <?php endif; ?>
 
           <?php if (session()->getFlashdata('error')): ?>
-          <div class="alert alert-danger add-admin-alert">
+          <div class="form-alert error">
               <?= session()->getFlashdata('error') ?>
           </div>
           <?php endif; ?>
 
           <form action="<?= site_url('admin/save') ?>" method="post" class="add-admin-form">
-              <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="username" name="username" required>
+              <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" name="username" required />
               </div>
 
-              <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" required>
+              <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" name="password" required />
               </div>
 
-              <button type="submit" class="btn btn-primary add-admin-btn">Add Admin</button>
+              <button type="submit" class="btn-submit">Add Admin</button>
           </form>
       </div>
+
+
 
   </div>
 

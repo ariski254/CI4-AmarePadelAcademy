@@ -18,12 +18,11 @@
               </ul>
           </div>
       </div>
-      <div class="create-sponsor-form">
-          <h2 class="text-center mb-4 create-sponsor-title">Create New Sponsor</h2>
+      <div class="create-sponsor-container">
+          <h2 class="create-sponsor-title">Create New Sponsor</h2>
 
-          <!-- Display any form validation errors -->
           <?php if (session()->getFlashdata('errors')): ?>
-          <div class="alert alert-danger create-sponsor-alert">
+          <div class="form-alert error">
               <ul>
                   <?php foreach (session()->getFlashdata('errors') as $error): ?>
                   <li><?= esc($error); ?></li>
@@ -33,25 +32,31 @@
           <?php endif; ?>
 
           <form action="<?= site_url('admin/sponsor/store'); ?>" method="post" enctype="multipart/form-data"
-              class="create-sponsor-form-body">
+              class="create-sponsor-form">
               <?= csrf_field() ?>
 
-              <div class="form-group create-sponsor-input-group">
+              <div class="form-group">
                   <label for="logo_name" class="create-sponsor-label">Logo Name</label>
                   <input type="text" name="logo_name" id="logo_name" class="create-sponsor-input"
                       value="<?= old('logo_name'); ?>" required>
-                  <div class="create-sponsor-error"><?= session('validation')['logo_name'] ?? ''; ?></div>
+                  <?php if (session('validation')['logo_name'] ?? false): ?>
+                  <div class="input-error"><?= session('validation')['logo_name'] ?></div>
+                  <?php endif; ?>
               </div>
 
-              <div class="form-group create-sponsor-input-group">
+              <div class="form-group">
                   <label for="logo_file" class="create-sponsor-label">Logo File</label>
                   <input type="file" name="logo_file" id="logo_file" class="create-sponsor-input" required>
-                  <div class="create-sponsor-error"><?= session('validation')['logo_file'] ?? ''; ?></div>
+                  <?php if (session('validation')['logo_file'] ?? false): ?>
+                  <div class="input-error"><?= session('validation')['logo_file'] ?></div>
+                  <?php endif; ?>
               </div>
 
-              <button type="submit" class="btn create-sponsor-submit-btn">Save</button>
+              <button type="submit" class="create-sponsor-button">Save</button>
           </form>
       </div>
+
+
 
   </div>
   <?= $this->endSection() ?>

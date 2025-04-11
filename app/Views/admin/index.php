@@ -19,13 +19,11 @@
               </ul>
           </div>
       </div>
-      <div class="iframe-container mt-3"
-          style="width: 100%; overflow: hidden; padding: 0; position: relative; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-          <iframe src="https://amarepadelacademy.unikart.my.id/" width="100%" height="600"
-              style="border: none; display: block; border-radius: 10px; box-sizing: border-box;">
-              Your browser does not support iframes.
-          </iframe>
+      <div class="iframe-container mt-3">
+          <iframe src="https://amarepadelacademy.unikart.my.id/" allowfullscreen loading="lazy"></iframe>
       </div>
+
+
   </div>
 
   <?= $this->endSection() ?>

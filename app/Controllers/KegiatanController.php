@@ -151,6 +151,7 @@ class KegiatanController extends Controller
     {
         $kegiatanModel = new \App\Models\KegiatanModel();
         $imageModel = new \App\Models\KegiatanImageModel();
+        $footerModel = new \App\Models\FooterModel();
 
         $kegiatan = $kegiatanModel->findAll();
         $images = [];
@@ -159,9 +160,12 @@ class KegiatanController extends Controller
             $images[$item->id] = $imageModel->where('kegiatan_id', $item->id)->findAll();
         }
 
-        return view('portfolio/all_portfolio', [
+        $footer = $footerModel->getFooter();
+
+        return view('pages/all_portfolio', [
             'kegiatan' => $kegiatan,
-            'images' => $images
+            'images' => $images,
+            'footer' => $footer, // tambahkan ini
         ]);
     }
 }

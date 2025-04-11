@@ -22,23 +22,49 @@
           </div>
 
       </div>
+      <div class="create-kegiatan-container">
+          <h2 class="create-kegiatan-title text-center mb-4">Tambah Kegiatan</h2>
 
-      <h2>Tambah Kegiatan</h2>
-      <form action="<?= base_url('/admin/kegiatan/store') ?>" method="post" enctype="multipart/form-data">
-          <label>Judul</label>
-          <input type="text" name="title" class="form-control" required>
+          <?php if (session()->getFlashdata('errors')): ?>
+          <div class="form-alert error">
+              <ul>
+                  <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                  <li><?= esc($error); ?></li>
+                  <?php endforeach; ?>
+              </ul>
+          </div>
+          <?php endif; ?>
 
-          <label>Tanggal</label>
-          <input type="date" name="date" class="form-control" required>
+          <form action="<?= base_url('/admin/kegiatan/store') ?>" method="post" enctype="multipart/form-data"
+              class="create-kegiatan-form">
+              <?= csrf_field(); ?>
 
-          <label>Deskripsi</label>
-          <textarea name="description" class="form-control" required></textarea>
+              <div class="form-group">
+                  <label for="title" class="create-kegiatan-label">Judul</label>
+                  <input type="text" id="title" name="title" class="create-kegiatan-input" required />
+              </div>
 
-          <label>Upload 3+ Gambar</label>
-          <input type="file" name="images[]" class="form-control" multiple required>
+              <div class="form-group">
+                  <label for="date" class="create-kegiatan-label">Tanggal</label>
+                  <input type="date" id="date" name="date" class="create-kegiatan-input" required />
+              </div>
 
-          <button class="btn btn-primary mt-3">Simpan</button>
-      </form>
+              <div class="form-group">
+                  <label for="description" class="create-kegiatan-label">Deskripsi</label>
+                  <textarea id="description" name="description" class="create-kegiatan-textarea" required></textarea>
+              </div>
+
+              <div class="form-group">
+                  <label for="images" class="create-kegiatan-label">Upload 3+ Gambar</label>
+                  <input type="file" id="images" name="images[]" class="create-kegiatan-input" multiple required />
+              </div>
+
+              <button type="submit" class="btn-submit">Simpan</button>
+          </form>
+      </div>
+
+
+
 
 
   </div>

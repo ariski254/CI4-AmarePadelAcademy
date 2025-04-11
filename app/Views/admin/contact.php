@@ -19,16 +19,15 @@
               </ul>
           </div>
       </div>
-      <div class="contact">
+      <div class="contact-container">
           <?php if (session()->get('success')): ?>
-          <div class="alert alert-success">
+          <div class="form-alert success">
               <?= session()->get('success') ?>
           </div>
           <?php endif; ?>
 
-          <!-- Error messages -->
           <?php if (session()->get('errors')): ?>
-          <div class="alert alert-danger">
+          <div class="form-alert error">
               <ul>
                   <?php foreach (session()->get('errors') as $error): ?>
                   <li><?= esc($error) ?></li>
@@ -40,39 +39,32 @@
           <form action="/admin/contact/update" method="post" class="contact-form">
               <?= csrf_field() ?>
 
-              <div class="form-group">
-                  <label for="contact_description" class="form-label">Description:</label>
-                  <textarea name="contact_description" id="contact_description" class="form-input"
-                      rows="5"><?= esc($contact['contact_description']) ?></textarea>
-              </div>
+              <label for="contact_description" class="contact-label">Description</label>
+              <textarea name="contact_description" id="contact_description" class="contact-textarea"
+                  rows="5"><?= esc($contact['contact_description']) ?></textarea>
 
-              <div class="form-group">
-                  <label for="contact_address" class="form-label">Address:</label>
-                  <input type="text" name="contact_address" id="contact_address" class="form-input"
-                      value="<?= esc($contact['contact_address']) ?>">
-              </div>
+              <label for="contact_address" class="contact-label">Address</label>
+              <input type="text" name="contact_address" id="contact_address" class="contact-input"
+                  value="<?= esc($contact['contact_address']) ?>">
 
-              <div class="form-group">
-                  <label for="contact_phone" class="form-label">Phone:</label>
-                  <input type="text" name="contact_phone" id="contact_phone" class="form-input"
-                      value="<?= esc($contact['contact_phone']) ?>">
-              </div>
+              <label for="contact_phone" class="contact-label">Phone</label>
+              <input type="text" name="contact_phone" id="contact_phone" class="contact-input"
+                  value="<?= esc($contact['contact_phone']) ?>">
 
-              <div class="form-group">
-                  <label for="contact_email" class="form-label">Email:</label>
-                  <input type="email" name="contact_email" id="contact_email" class="form-input"
-                      value="<?= esc($contact['contact_email']) ?>">
-              </div>
+              <label for="contact_email" class="contact-label">Email</label>
+              <input type="email" name="contact_email" id="contact_email" class="contact-input"
+                  value="<?= esc($contact['contact_email']) ?>">
 
-              <div class="form-group">
-                  <label for="contact_map_url" class="form-label">Google Map URL:</label>
-                  <textarea name="contact_map_url" id="contact_map_url" class="form-input"
-                      rows="3"><?= esc($contact['contact_map_url']) ?></textarea>
-              </div>
+              <label for="contact_map_url" class="contact-label">Google Map URL</label>
+              <textarea name="contact_map_url" id="contact_map_url" class="contact-textarea"
+                  rows="3"><?= esc($contact['contact_map_url']) ?></textarea>
 
-              <button type="submit" class="form-button">Update</button>
+              <button type="submit" class="contact-button">Update Contact</button>
           </form>
       </div>
+
+
+
 
   </div>
 

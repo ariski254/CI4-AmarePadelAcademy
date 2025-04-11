@@ -6,7 +6,6 @@ use App\Controllers\BaseController;
 use App\Models\AboutUsModel;
 use App\Models\HeroModel;
 use App\Models\GoalsModel;
-use App\Models\ProgramModel;
 
 use App\Models\CertificationModel;
 use App\Models\PortfolioModel;
@@ -20,7 +19,6 @@ class Pages extends BaseController
     protected $aboutUsModel;
     protected $heroModel;
     protected $goalsModel;
-    protected $programModel;
 
     protected $certificationModel;
     protected $portfolioModel;
@@ -35,7 +33,6 @@ class Pages extends BaseController
         $this->aboutUsModel = new AboutUsModel();
         $this->heroModel = new HeroModel();
         $this->goalsModel = new GoalsModel();
-        $this->programModel = new ProgramModel();
 
         $this->certificationModel = new CertificationModel();
         $this->portfolioModel = new PortfolioModel();
@@ -51,7 +48,6 @@ class Pages extends BaseController
         $aboutUsData = $this->aboutUsModel->getAboutUs();
         $heroData = $this->heroModel->getHero();
         $goalsData = $this->goalsModel->getGoals();
-        $programData = $this->programModel->findAll();
 
         $certificationData = $this->certificationModel->getCertification();
         $portfolioData = $this->portfolioModel->findAll();
@@ -65,7 +61,6 @@ class Pages extends BaseController
             'aboutUsData' => $aboutUsData,
             'heroData' => $heroData,
             'goalsData' => $goalsData,
-            'programs' => $programData, // Pass the programs data with the correct key
 
             'certificationData' => $certificationData,
             'portfolioData' => $portfolioData,

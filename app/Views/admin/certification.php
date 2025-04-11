@@ -19,40 +19,37 @@
               </ul>
           </div>
       </div>
-      <div class="certification">
-          <!-- Display validation errors -->
+      <div class="certification-container">
+          <!-- Validation errors -->
           <?= \Config\Services::validation()->listErrors(); ?>
 
-          <!-- Display success message if present -->
+          <!-- Flash message -->
           <?php if (session()->getFlashdata('success')): ?>
-          <div class="alert alert-success certification-alert">
+          <div class="form-alert success">
               <?= session()->getFlashdata('success') ?>
           </div>
           <?php endif; ?>
 
-          <h2 class="certification-title">Update Certification</h2>
-
-          <!-- Certification Update Form -->
           <form action="<?= site_url('admin/certification/update'); ?>" method="POST" class="certification-form">
-
-              <!-- Title Input -->
               <div class="form-group">
-                  <label for="title" class="form-label">Certification Title</label>
-                  <input type="text" id="title" name="title" class="form-input"
-                      value="<?= esc($certification['title']); ?>" required>
+                  <label for="title">Certification Title</label>
+                  <input type="text" id="title" name="title" value="<?= esc($certification['title']); ?>" required />
               </div>
 
-              <!-- Description Input -->
               <div class="form-group">
-                  <label for="description" class="form-label">Certification Description</label>
-                  <textarea id="description" name="description" class="form-input"
+                  <label for="description">Certification Description</label>
+                  <textarea id="description" name="description"
                       required><?= esc($certification['description']); ?></textarea>
               </div>
 
-              <!-- Update Button -->
-              <button type="submit" class="form-button">Update Certification</button>
+              <button type="submit" class="btn-submit">Update Certification</button>
           </form>
       </div>
+
+
+
+
+
 
 
   </div>

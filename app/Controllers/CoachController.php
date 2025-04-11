@@ -145,4 +145,42 @@ class CoachController extends BaseController
         // Redirect to the coach list page with a success message
         return redirect()->to('/admin/coach')->with('message', 'Coach deleted successfully');
     }
+
+    public function index()
+    {
+        // Load models
+        $coachModel = new \App\Models\CoachModel();
+        $footerModel  = new \App\Models\FooterModel();
+        $certificationModel = new \App\Models\CertificationModel();
+        $coachingModel = new \App\Models\CoachingModel();
+        $imageModel = new \App\Models\CoachingImageModel();
+
+        // Ambil 9 sesi coaching terbaru
+        $sessions = $coachingModel->orderBy('date', 'DESC')->findAll(9);
+        $coachingSessions = [];
+
+        foreach ($sessions as $session) {
+            $images = $imageModel->where('coaching_id', $session['id'])->findAll();
+
+            // Ambil 1 gambar acak jika ada
+            if (!empty($images)) {
+                $randomImage = $images[array_rand($images)];
+                $session['image'] = $randomImage['image'];
+            } else {
+                $session['image'] = 'default.jpg'; // fallback image
+            }
+
+            $coachingSessions[] = $session;
+        }
+
+        // Gabungkan semua data ke dalam 1 array
+        $data = [
+            'coachData' => $coachModel->findAll(),
+            'footer' => $footerModel->getFooter(),
+            'certificationData' => $certificationModel->getCertification(),
+            'coachingSessions' => $coachingSessions
+        ];
+
+        return view('pages/coach', $data);
+    }
 }

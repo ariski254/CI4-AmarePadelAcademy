@@ -18,67 +18,64 @@
           </div>
       </div>
       <div class="edit-coach-container">
-
+          <h2 class="edit-coach-title">Edit Coach</h2>
 
           <form action="/admin/coaches/update/<?= $coach['id'] ?>" method="POST" enctype="multipart/form-data"
               class="edit-coach-form">
               <?= csrf_field() ?>
-
-              <!-- Hidden input to preserve the existing image -->
               <input type="hidden" name="existing_image" value="<?= $coach['image'] ?>">
 
-              <!-- Name Field -->
-              <div class="form-group edit-coach-input-group">
+              <div class="form-group">
                   <label for="name" class="edit-coach-label">Name</label>
                   <input type="text" name="name" id="name" class="edit-coach-input"
                       value="<?= old('name', $coach['name']) ?>" required>
               </div>
 
-              <!-- Role Field -->
-              <div class="form-group edit-coach-input-group">
+              <div class="form-group">
                   <label for="role" class="edit-coach-label">Role</label>
                   <input type="text" name="role" id="role" class="edit-coach-input"
                       value="<?= old('role', $coach['role']) ?>" required>
               </div>
 
-              <!-- Position Field -->
-              <div class="form-group edit-coach-input-group">
+              <div class="form-group">
                   <label for="position" class="edit-coach-label">Position</label>
                   <input type="text" name="position" id="position" class="edit-coach-input"
                       value="<?= old('position', $coach['position']) ?>" required>
               </div>
 
-              <!-- Image Field -->
-              <div class="form-group edit-coach-input-group">
-                  <label for="image" class="edit-coach-label">Image (Leave empty to keep existing)</label>
+              <div class="form-group">
+                  <label for="image" class="edit-coach-label">Image (leave empty to keep current)</label>
                   <input type="file" name="image" id="image" class="edit-coach-input">
-                  <img src="<?= base_url('assets/imgs/coach/' . $coach['image']); ?>" alt="Coach Image"
-                      class="edit-coach-image" width="100">
+                  <div class="mt-2">
+                      <img src="<?= base_url('assets/imgs/coach/' . $coach['image']); ?>" alt="Coach Image"
+                          class="edit-coach-image-preview" width="100">
+                  </div>
               </div>
 
-              <!-- Social Media Fields -->
-              <div class="form-group edit-coach-input-group">
+              <div class="form-group">
                   <label for="twitter" class="edit-coach-label">Twitter URL</label>
                   <input type="text" name="twitter" id="twitter" class="edit-coach-input"
                       value="<?= old('twitter', $coach['twitter']) ?>">
               </div>
 
-              <div class="form-group edit-coach-input-group">
+              <div class="form-group">
                   <label for="facebook" class="edit-coach-label">Facebook URL</label>
                   <input type="text" name="facebook" id="facebook" class="edit-coach-input"
                       value="<?= old('facebook', $coach['facebook']) ?>">
               </div>
 
-              <div class="form-group edit-coach-input-group">
+              <div class="form-group">
                   <label for="instagram" class="edit-coach-label">Instagram URL</label>
                   <input type="text" name="instagram" id="instagram" class="edit-coach-input"
                       value="<?= old('instagram', $coach['instagram']) ?>">
               </div>
 
-              <!-- Submit Button -->
-              <button type="submit" class="btn edit-coach-submit-btn mt-3">Update Coach</button>
+              <button type="submit" class="edit-coach-submit-btn">Update Coach</button>
           </form>
       </div>
+
+
+
 
   </div>
 

@@ -56,4 +56,21 @@ class AboutUsController extends Controller
 
         return null; // No file uploaded
     }
+    public function index()
+    {
+        // Load models
+        $aboutUsModel = new \App\Models\AboutUsModel();
+        $footerModel  = new \App\Models\FooterModel();
+        $goalsModel   = new \App\Models\GoalsModel();
+
+        // Get data from models
+        $data = [
+            'aboutUsData' => $aboutUsModel->getAboutUs(),
+            'footer'      => $footerModel->getFooter(),
+            'goalsData'       => $goalsModel->getGoals()
+        ];
+
+        // Load the view with data
+        return view('pages/about', $data);
+    }
 }

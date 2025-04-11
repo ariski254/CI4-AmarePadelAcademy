@@ -10,46 +10,50 @@
               <i class="bi bi-list fs-3"></i>
           </button>
           <h4>Page About Us</h4>
-          <div class="d-flex align-items-center dropdown">
+          <div class="d-flex align-items-center dropdown hover-dropdown">
               <!-- Settings Icon -->
-              <i class="bi bi-gear fs-4" id="settings-icon" data-bs-toggle="dropdown" aria-expanded="false"></i>
+              <i class="bi bi-gear fs-4" id="settings-icon"></i>
 
               <!-- Dropdown Menu -->
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settings-icon">
+              <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item" href="<?= site_url('admin/add') ?>">Add Admin</a></li>
                   <li><a class="dropdown-item" href="<?= site_url('auth/logout') ?>">Logout</a></li>
               </ul>
           </div>
-
       </div>
-      <div class="about-us">
-          <form action="<?= base_url('admin/update_about_us'); ?>" method="POST" enctype="multipart/form-data">
-              <!-- Hidden ID to identify the record being updated -->
+      <div class="about-us-container">
+          <form action="<?= base_url('admin/update_about_us'); ?>" method="POST" enctype="multipart/form-data"
+              class="about-us-form">
               <input type="hidden" name="id" value="<?= $aboutUsData['id']; ?>" />
 
-              <!-- Title Input -->
-              <label for="title" class="about-us-label">Title:</label>
-              <input type="text" name="title" value="<?= esc($aboutUsData['title']); ?>" class="about-us-input"
-                  required />
+              <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" name="title" value="<?= esc($aboutUsData['title']); ?>" required />
+              </div>
 
-              <!-- Subtitle Input -->
-              <label for="subtitle" class="about-us-label">Subtitle:</label>
-              <input type="text" name="subtitle" value="<?= esc($aboutUsData['subtitle']); ?>" class="about-us-input"
-                  required />
+              <div class="form-group">
+                  <label for="subtitle">Subtitle</label>
+                  <input type="text" name="subtitle" value="<?= esc($aboutUsData['subtitle']); ?>" required />
+              </div>
 
-              <!-- Description Textarea -->
-              <label for="description" class="about-us-label">Description:</label>
-              <textarea name="description" class="about-us-textarea"
-                  required><?= esc($aboutUsData['description']); ?></textarea>
+              <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" required><?= esc($aboutUsData['description']); ?></textarea>
+              </div>
 
-              <!-- Image Upload Input -->
-              <label for="image" class="about-us-label">Image:</label>
-              <input type="file" name="image" class="about-us-input-file" />
+              <div class="form-group">
+                  <label for="image">Image</label>
+                  <input type="file" name="image" accept="image/*" />
+              </div>
 
-              <!-- Submit Button -->
-              <button type="submit" class="about-us-submit">Update About Us</button>
+              <button type="submit" class="btn-submit">Update About Us</button>
           </form>
       </div>
+
+
+
+
+
 
 
 

@@ -19,17 +19,17 @@
               </ul>
           </div>
       </div>
-      <div class="coach">
+      <div class="coach-container">
           <?php if (session()->getFlashdata('message')): ?>
-          <div class="alert alert-success coach-alert">
+          <div class="form-alert success">
               <?= session()->getFlashdata('message') ?>
           </div>
           <?php endif; ?>
 
-          <a href="/admin/coaches/create" class="btn btn-primary coach-add-btn mb-3 mt-3">Add New Coach</a>
+          <a href="/admin/coaches/create" class="btn-add-coach">+ Add New Coach</a>
 
-          <div class="table-responsive">
-              <table class="table table-striped coach-table">
+          <div class="table-wrapper">
+              <table class="coach-table">
                   <thead>
                       <tr>
                           <th>Name</th>
@@ -43,25 +43,25 @@
                       <?php foreach ($coaches as $coach): ?>
                       <tr>
                           <td>
-                              <div class="coach-image">
+                              <div class="coach-info">
                                   <img src="<?= base_url('assets/imgs/coach/' . $coach['image']); ?>" alt="Coach Image"
-                                      class="img-fluid rounded-circle" width="50">
-                                  <?= esc($coach['name']) ?>
+                                      class="coach-avatar">
+                                  <span><?= esc($coach['name']) ?></span>
                               </div>
                           </td>
                           <td><?= esc($coach['role']) ?></td>
                           <td><?= esc($coach['position']) ?></td>
-                          <td>
+                          <td class="coach-social">
                               <a href="<?= esc($coach['twitter']) ?>" target="_blank" class="social-icon twitter"><i
-                                      class="bi bi-twitter"></i></a>
+                                      class="bi bi-twitter-x"></i></a>
                               <a href="<?= esc($coach['facebook']) ?>" target="_blank" class="social-icon facebook"><i
                                       class="bi bi-facebook"></i></a>
                               <a href="<?= esc($coach['instagram']) ?>" target="_blank" class="social-icon instagram"><i
                                       class="bi bi-instagram"></i></a>
                           </td>
                           <td>
-                              <a href="/admin/coaches/edit/<?= $coach['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                              <a href="/admin/coaches/delete/<?= $coach['id'] ?>" class="btn btn-danger btn-sm"
+                              <a href="/admin/coaches/edit/<?= $coach['id'] ?>" class="btn-action edit">Edit</a>
+                              <a href="/admin/coaches/delete/<?= $coach['id'] ?>" class="btn-action delete"
                                   onclick="return confirm('Are you sure?')">Delete</a>
                           </td>
                       </tr>
@@ -70,6 +70,8 @@
               </table>
           </div>
       </div>
+
+
 
 
   </div>

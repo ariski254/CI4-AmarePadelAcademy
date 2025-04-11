@@ -31,6 +31,9 @@
 
 
 <body>
+    <div class="spinner-wrapper" id="preloader">
+        <div class="spinner"></div>
+    </div>
     <main>
 
         <!-- Hero -->
@@ -45,6 +48,11 @@
                 <h5 class="text-secondary-white-color" data-aos="fade-up" data-aos-delay="1000">
                     <?= !empty($heroData) && isset($heroData[0]['sub_title']) ? $heroData[0]['sub_title'] : 'member of AMARE SPORT GROUP'; ?>
                 </h5>
+
+                <!-- Button -->
+                <a href="#program" class="hero-btn" data-aos="flip-left" data-aos-delay="1200">
+                    View Program
+                </a>
             </div>
 
             <div class="videoWrapper">
@@ -60,11 +68,13 @@
             <div class="overlay"></div>
         </section>
 
+
+
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/imgs/placeholder.svg" alt="Nomad Force Logo" style="height: 40px" />
+                    <img src="assets/imgs/placeholder.svg" alt="image" style="height: 40px" />
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -84,9 +94,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#goals">Goals</a>
+                            <a class="nav-link" href="#program">Program</a>
                         </li>
-
 
                         <li class="nav-item">
                             <a class="nav-link" href="#portfolio">Portfolio</a>
@@ -115,103 +124,147 @@
 
         <!-- about -->
         <section class="about-us" id="about-us">
-            <div class="container">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="about-content">
-                    <div class="image-container">
+                    <!-- Gambar -->
+                    <div class="image-container" data-aos="fade-right" data-aos-delay="200">
                         <?php if (isset($aboutUsData['image']) && !empty($aboutUsData['image'])): ?>
                         <img src="<?= base_url($aboutUsData['image']); ?>" alt="About Us Image" class="about-image" />
                         <?php else: ?>
                         <img src="path/to/default-image.jpg" alt="Default About Us Image" class="about-image" />
                         <?php endif; ?>
                     </div>
-                    <div class="text-container">
+
+                    <!-- Teks -->
+                    <div class="text-container" data-aos="fade-left" data-aos-delay="400">
                         <h2 class="title"><?= $aboutUsData['title'] ?? 'Default Title'; ?></h2>
                         <p class="subtitle"><?= $aboutUsData['subtitle'] ?? 'Default Subtitle'; ?></p>
-                        <p class="description"><?= $aboutUsData['description'] ?? 'Default Description'; ?></p>
+                        <p class="description">
+                            <?= $aboutUsData['description'] ?? 'Default Description'; ?>
+                            <a href="<?= base_url('/about'); ?>" class="btn-link">Learn More →</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
-
-
-        <!-- Goals -->
-        <section id="goals" class="ftco-section ftco-no-pb">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <!-- Title -->
-                    <div class="col-lg-12 text-center wow fadeInUp" data-wow-duration="500ms">
-                        <h2 class="text-center mb-5 mt-5">Our Goals</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- First Column (Left) -->
-                    <div class="col-md-6 mb-4 d-flex flex-column gap-4">
-                        <div class="resume-wrap ftco-animate equal-height">
-                            <h3 class="text-heading">OUR VISION</h3>
-                            <p class="mt-3">
-                                <?= $goalsData['vision'] ?? 'Default Vision' ?>
-                            </p>
-                        </div>
-                        <div class="resume-wrap ftco-animate equal-height">
-                            <h3 class="text-heading">KEY SUCCESS FACTOR</h3>
-                            <ul class="mt-3">
-                                <?= isset($goalsData['key_success_factor']) ? "<li>" . implode("</li><li>", explode("\n", $goalsData['key_success_factor'])) . "</li>" : "Default Key Success Factor" ?>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Second Column (Right) -->
-                    <div class="col-md-6 mb-4 d-flex flex-column gap-4">
-                        <div class="resume-wrap ftco-animate equal-height">
-                            <h3 class="text-heading">OUR MISSION</h3>
-                            <ul class="mt-3">
-                                <?= isset($goalsData['mission']) ? "<li>" . implode("</li><li>", explode("\n", $goalsData['mission'])) . "</li>" : "Default Mission" ?>
-                            </ul>
-                        </div>
-                        <div class="resume-wrap ftco-animate equal-height">
-                            <h3 class="text-heading">OUR SERVICES</h3>
-                            <ul class="mt-3">
-                                <?= isset($goalsData['services']) ? "<li>" . implode("</li><li>", explode("\n", $goalsData['services'])) . "</li>" : "Default Services" ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
 
         <!-- Programs -->
-        <section id="programs" class="custom-programs section">
-            <!-- Section Title -->
-            <div class="container custom-section-title" data-aos="fade-up">
-                <h2 class="custom-section-heading mb-5 mt-5">Programs</h2>
-                <p class="custom-section-description">Our expertly designed programs to suit every level.</p>
-            </div>
-            <!-- End Section Title -->
-
+        <section id="program" class="program section py-5">
             <div class="container">
-                <div class="row gy-4">
-                    <?php foreach ($programs as $program): ?>
-                    <div class="col-lg-4 col-md-6 custom-program-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="custom-program-card">
-                            <div class="custom-program-icon">
-                                <i class="bi <?= esc($program['icon']); ?>"></i>
+                <div class="row justify-content-center mb-4">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="custom-section-heading">ACADEMY PROGRAM</h2>
+                    </div>
+                </div>
+
+                <div class="row g-4 align-items-start">
+                    <div class="col-lg-5">
+                        <img src="assets/imgs/trainer-img1.jpg" class="img-fluid rounded shadow" alt="Program Image" />
+                    </div>
+
+                    <div class="col-lg-7">
+                        <ul class="nav nav-pills mb-4" id="program-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="program-tab1" data-bs-toggle="pill"
+                                    href="#program-tab-content1" role="tab" aria-selected="true">Kids Programs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="program-tab2" data-bs-toggle="pill" href="#program-tab-content2"
+                                    role="tab" aria-selected="false">Adult Programs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="program-tab3" data-bs-toggle="pill" href="#program-tab-content3"
+                                    role="tab" aria-selected="false">Competition Programs</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="program-tab-content">
+                            <!-- Tab Content 1 -->
+                            <div class="tab-pane fade show active" id="program-tab-content1" role="tabpanel">
+                                <p class="program-description">Our Kids Programs are designed to engage, inspire, and
+                                    teach kids essential skills in a fun and supportive environment.</p>
+
+                                <div class="program-feature">
+
+                                    <h5>Fun and Engaging Activities</h5>
+                                    <p>We offer a variety of activities that keep kids engaged while building their
+                                        skills and confidence.</p>
+                                </div>
+
+                                <div class="program-feature">
+
+                                    <h5>Learning through Play</h5>
+                                    <p>Kids will learn and grow through play-based learning and hands-on experiences.
+                                    </p>
+                                </div>
+
+                                <div class="program-feature">
+
+                                    <h5>Qualified Instructors</h5>
+                                    <p>Our programs are led by experienced instructors who are passionate about helping
+                                        kids succeed.</p>
+                                </div>
                             </div>
-                            <a href="#" class="custom-program-link">
-                                <h3 class="custom-program-title"><?= esc($program['title']); ?></h3>
-                            </a>
-                            <p class="custom-program-description">
-                                <?= esc($program['description']); ?>
-                            </p>
+
+                            <!-- Tab Content 2 -->
+                            <div class="tab-pane fade" id="program-tab-content2" role="tabpanel">
+                                <p class="program-description">For adults looking to learn new skills or refine existing
+                                    ones, our Adult Programs offer a variety of options.</p>
+
+                                <div class="program-feature">
+
+                                    <h5>Flexible Schedules</h5>
+                                    <p>We offer flexible scheduling to fit your busy lifestyle, with options for
+                                        evenings and weekends.</p>
+                                </div>
+
+                                <div class="program-feature">
+
+                                    <h5>Skilled Instructors</h5>
+                                    <p>Our team of instructors are skilled professionals with years of experience in
+                                        their respective fields.</p>
+                                </div>
+
+                                <div class="program-feature">
+
+                                    <h5>Comprehensive Learning</h5>
+                                    <p>Adults will have the opportunity to learn comprehensive, real-world skills that
+                                        can be applied in daily life.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tab Content 3 -->
+                            <div class="tab-pane fade" id="program-tab-content3" role="tabpanel">
+                                <p class="program-description">Our competition-level programs are designed for advanced
+                                    individuals aiming to refine their skills and compete at the highest levels.</p>
+
+                                <div class="program-feature">
+
+                                    <h5>Advanced Training Techniques</h5>
+                                    <p>We utilize proven advanced training techniques to ensure our competitors reach
+                                        their peak performance.</p>
+                                </div>
+
+                                <div class="program-feature">
+
+                                    <h5>Experienced Coaches</h5>
+                                    <p>Our coaches are experienced and have a deep understanding of the competitive
+                                        landscape.</p>
+                                </div>
+
+                                <div class="program-feature">
+
+                                    <h5>Individualized Attention</h5>
+                                    <p>Each participant receives personalized attention to address their strengths and
+                                        areas of improvement.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- End program Item -->
-                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
+
 
 
         <!-- Coach Seritikat -->
@@ -220,13 +273,17 @@
                 <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
                     <div class="col-xl-10">
                         <div class="cta-content text-center">
-                            <!-- Make sure to use 'certificationData' instead of 'certification' -->
-                            <h3 class="cta-title"><?= esc($certificationData['title']); ?></h3>
-                            <p class="cta-description">
+                            <h3 class="cta-title" data-aos="fade-up" data-aos-delay="200">
+                                <?= esc($certificationData['title']); ?>
+                            </h3>
+                            <p class="cta-description" data-aos="fade-up" data-aos-delay="300">
                                 <?= esc($certificationData['description']); ?>
                             </p>
                             <!-- Optional button for action -->
-                            <a href="#team" class="cta-button">Get Started</a>
+                            <a href="<?= base_url('coach'); ?>" class="cta-button" data-aos="slide-up"
+                                data-aos-delay="400">
+                                Get Started
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -241,8 +298,8 @@
         <section class="portfolio section" id="portfolio">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="title wow fadeInUp" data-wow-duration="500ms">
+                    <div class="col-12 text-center" data-aos="fade-up" data-aos-duration="800">
+                        <div class="title">
                             <h2 class="title mb-5 mt-5">Portfolio</h2>
                         </div>
                     </div>
@@ -250,8 +307,9 @@
 
                 <!-- Portfolio Items -->
                 <div class="row g-4 justify-content-center">
-                    <?php foreach ($portfolioData as $portfolio): ?>
-                    <div class="col-6 col-md-6 col-lg-4">
+                    <?php foreach ($portfolioData as $index => $portfolio): ?>
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-4" data-aos="zoom-in"
+                        data-aos-delay="<?= 100 + ($index * 100); ?>">
                         <div class="portfolio-block">
                             <img src="<?= base_url('assets/imgs/portfolio/' . $portfolio->image); ?>"
                                 alt="<?= esc($portfolio->title); ?>" class="img-fluid rounded" />
@@ -268,8 +326,9 @@
                     </div>
                     <?php endforeach; ?>
                 </div>
+
                 <div class="row mt-4">
-                    <div class="col-12 text-center">
+                    <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="100">
                         <a href="<?= base_url('kegiatan/all'); ?>" class="btn btn-primary px-4 py-2 rounded-pill">
                             View All
                         </a>
@@ -278,10 +337,11 @@
             </div>
         </section>
 
+
         <!-- Coach -->
         <section id="team" class="team section">
             <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
+            <div class="container section-title" data-aos="fade-up" data-aos-delay="100">
                 <h2 class="title">Our Coaches</h2>
                 <p>Meet our amazing Coaches.</p>
             </div>
@@ -289,11 +349,11 @@
 
             <!-- Swiper Container -->
             <div class="container">
-                <div class="swiper-container">
+                <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
                     <div class="swiper-wrapper">
                         <!-- Loop through each coach -->
-                        <?php foreach ($coachData as $coach): ?>
-                        <div class="swiper-slide">
+                        <?php foreach ($coachData as $index => $coach): ?>
+                        <div class="swiper-slide" data-aos="zoom-in" data-aos-delay="<?= 300 + ($index * 100); ?>">
                             <div class="team-member">
                                 <div class="member-img">
                                     <img src="<?= base_url('assets/imgs/coach/' . $coach['image']); ?>"
@@ -318,7 +378,7 @@
                     </div>
                     <!-- End swiper-wrapper -->
 
-                    <!-- Swiper Pagination and Navigation buttons -->
+                    <!-- Swiper Pagination -->
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
@@ -326,58 +386,46 @@
 
 
         <!-- Contact -->
-        <section id="contact-us" class="contact-us section-bg">
+        <section id="contact-us" class="section-bg">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="title text-center wow fadeIn" data-wow-duration="500ms">
-                            <h2 class="title mb-5 mt-3">
-                                Get In <span class="color">Touch</span>
-                            </h2>
-                        </div>
-                    </div>
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Get In <span class="color">Touch</span></h2>
+                </div>
 
-                    <!-- Contact Details -->
-                    <div class="contact-info col-lg-6 wow fadeInUp" data-wow-duration="500ms">
+                <div class="contact-wrapper" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
                         <h3>Contact Details</h3>
                         <p>
                             <?= !empty($contactData['contact_description']) ? esc($contactData['contact_description']) : 'Description not available'; ?>
                         </p>
                         <div class="contact-details">
-                            <div class="con-info clearfix">
+                            <div class="con-info">
                                 <i class="bi bi-geo-alt"></i>
-                                <span>Address:
-                                    <?= !empty($contactData['contact_address']) ? esc($contactData['contact_address']) : 'Address not available'; ?>
-                                </span>
+                                <span><?= !empty($contactData['contact_address']) ? esc($contactData['contact_address']) : 'Address not available'; ?></span>
                             </div>
-
-                            <div class="con-info clearfix">
+                            <div class="con-info">
                                 <i class="bi bi-phone"></i>
-                                <span>Phone:
-                                    <?= !empty($contactData['contact_phone']) ? esc($contactData['contact_phone']) : 'Phone not available'; ?>
-                                </span>
+                                <span><?= !empty($contactData['contact_phone']) ? esc($contactData['contact_phone']) : 'Phone not available'; ?></span>
                             </div>
-
-                            <div class="con-info clearfix">
+                            <div class="con-info">
                                 <i class="bi bi-envelope"></i>
-                                <span>Email:
-                                    <?= !empty($contactData['contact_email']) ? esc($contactData['contact_email']) : 'Email not available'; ?>
-                                </span>
+                                <span><?= !empty($contactData['contact_email']) ? esc($contactData['contact_email']) : 'Email not available'; ?></span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Google Map moved to the right -->
-                    <div class="google-map col-lg-6 mt-5 mt-lg-0 wow fadeInUp" data-wow-duration="500ms">
+                    <!-- Google Map -->
+                    <div class="google-map">
                         <iframe
                             src="<?= !empty($contactData['contact_map_url']) ? esc($contactData['contact_map_url']) : ''; ?>"
-                            width="100%" height="100%" style="border: 0; border-radius: 15px" allowfullscreen=""
-                            loading="lazy"></iframe>
+                            allowfullscreen="" loading="lazy"></iframe>
                     </div>
-
                 </div>
             </div>
         </section>
+
+
 
 
 
